@@ -8,6 +8,12 @@ if(!isset($_SESSION['step'])){
 
 }
 
+if(!isset($_SESSION['isRegister'])){
+
+    $_SESSION['isRegister'] = false;
+
+}
+
 function nextStep() {
 
     $_SESSION['step'] = $_SESSION['step'] + 1;
@@ -20,10 +26,26 @@ function prevStep() {
 
 }
 
+if($_GET['op'] == 'register' || $_GET['op'] == 'login'){
+
+    
+
+}
+
 if($_GET['op'] == 'next_step'){
 
     nextStep();
-    header("Location: /project/public/index.php?register_step=" . $_SESSION['step']);
+    if($_SESSION['step'] == 2){
+
+
+        echo $_POST['firstName'];
+
+    }else{
+
+
+        header("Location: /project/public/index.php?register_step=" . $_SESSION['step']);
+
+    }
     
 }
 

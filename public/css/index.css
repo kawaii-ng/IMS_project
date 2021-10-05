@@ -214,3 +214,15 @@ select:focus {
     object-fit: cover;
 
 }
+
+#login-form {
+
+    display: block;
+
+}
+
+#register-form {
+
+    display: none;
+
+}
