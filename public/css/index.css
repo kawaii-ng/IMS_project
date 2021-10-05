@@ -191,27 +191,40 @@ select:focus {
 
 }
 
-#next-step-link {
+#next-btn {
 
-    width: 100%;
-    text-align: right;
+    position: absolute;
+    right: 0;
 
 }
 
-#prev-step-link {
+#prev-btn {
+
+    position: absolute;
+    left: 0;
+
+}
+
+.profile-img-container {
 
     width: 100%;
-    text-align: left;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3em 0em;
+   
 }
 
 .profile-img {
 
-    width: 150px;
-    height: 150px;
-    border:#007777 1px solid;
-    margin: .5em;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #007777;
     object-fit: cover;
+    cursor: pointer;
+    overflow: hidden;
+
+
 
 }
 
@@ -224,5 +237,14 @@ select:focus {
 #register-form {
 
     display: none;
+
+}
+
+.error {
+
+    position: absolute;
+    margin: -15px 0em;
+    color: red;
+    font-size: 8px;
 
 }
