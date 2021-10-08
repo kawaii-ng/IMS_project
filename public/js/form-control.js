@@ -1,17 +1,37 @@
 $('document').ready(()=>{
 
     var step = 0;
+    var showAnimation = {
 
-    const errorMessage = (myElement, type) => {
+        'opacity': '1',
+        'marginLeft': '0px'
+
+    }
+
+    var hideAnimation = {
+
+        'opacity': '0',
+        'marginLeft': '-50px'
+
+    }
+
+    const errorMessage = (elementName, type) => {
 
         if(type == "empty")
-            return "<p class='error'><i class='fas fa-exclamation-circle'></i> Please fill in " + myElement + ".</p>"
+            return "<p class='error'><i class='fas fa-exclamation-circle'></i> Please fill in " + elementName + ".</p>"
 
         if(type == "notMatch")
-            return "<p class='error'><i class='fas fa-exclamation-circle'></i> " + myElement + " is not matched.</p>"
+            return "<p class='error'><i class='fas fa-exclamation-circle'></i> " + elementName + " is not matched.</p>"
         
-        if(type == "other")
-            return "<p class='error'><i class='fas fa-exclamation-circle'></i> " + myElement 
+        if(type == "custom")
+            return "<p class='error'><i class='fas fa-exclamation-circle'></i> " + elementName 
+
+    }
+
+    const errorDisplay = (elementID, elementName, type) => {
+
+        $(elementID).css('border-color', 'red');
+        $(elementID).after(errorMessage(elementName, type))
 
     }
 
@@ -27,18 +47,14 @@ $('document').ready(()=>{
 
             if($('#login-id').val().length == 0){
 
-                $('#login-id').css('border-color', 'red');
-                $('#login-id').after(errorMessage("user ID", "empty"))
-
+                errorDisplay('#login-id', 'User ID', 'empty')
                 isValid = false;
 
             }
 
             if($('#login-pw').val().length == 0){
 
-                $('#login-pw').css('border-color', 'red');
-                $('#login-pw').after(errorMessage("password", "empty"))
-
+                errorDisplay('#login-pw', 'password', 'empty')
                 isValid = false;
 
             }
@@ -52,19 +68,24 @@ $('document').ready(()=>{
 
             if($('#first-name').val().length == 0){
 
-                $('#first-name').css('border-color', 'red');
-                $('#first-name').after(errorMessage("first name", "empty"))
-
+                errorDisplay('#first-name', 'first name', 'empty')
                 isValid = false;
 
             }
             
             if($('#last-name').val().length == 0){
 
-                $('#last-name').css('border-color', 'red');
-                $('#last-name').after(errorMessage("last name", "empty"))
-
+                errorDisplay('#last-name', 'last name', 'empty')
                 isValid = false;
+
+            }
+
+            if($('#birthday').val().length !== 0 
+                && (new Date($('#birthday').val()).getFullYear() < new Date().getFullYear() - 100
+                || new Date($('#birthday').val()).getFullYear() > new Date().getFullYear() - 10)){
+
+                    errorDisplay('#birthday', 'Birthday is invalid.', 'custom')
+                    isValid = false;
 
             }
 
@@ -77,54 +98,42 @@ $('document').ready(()=>{
 
             if($('#user-id').val().length == 0){
 
-                $('#user-id').css('border-color', 'red');
-                $('#user-id').after(errorMessage("user ID", "empty"))
-
+                errorDisplay('#user-id', 'user ID', 'empty');
                 isValid = false 
 
             }   
 
             if($('#user-pw').val().length == 0){
 
-                $('#user-pw').css('border-color', 'red');
-                $('#user-pw').after(errorMessage("password", "empty"))
-
+                errorDisplay('#user-pw', 'password', 'empty')
                 isValid = false 
 
             }
 
             if($('#user-pw').val().length > 0 && $('#user-pw').val().length < 8){
 
-                $('#user-pw').css('border-color', 'red');
-                $('#user-pw').after(errorMessage("Password", "other") + " is not less than 8. </p>")
-
+                errorDisplay('#user-pw', 'Password is not less than 8.', 'custom')
                 isValid = false 
 
             }
 
             if($('#confirm-pw').val().length == 0){
 
-                $('#confirm-pw').css('border-color', 'red');
-                $('#confirm-pw').after(errorMessage("Confirmed password", "empty"))
-
+                errorDisplay("#confirm-pw", 'Confirmed password', 'empty')
                 isValid = false 
 
             }
 
             if($('#confirm-pw').val().length != 0 && $('#confirm-pw').val() !== $('#user-pw').val()){
 
-                $('#confirm-pw').css('border-color', 'red');
-                $('#confirm-pw').after(errorMessage("Confirmed password", "notMatch"))
-
+                errorDisplay("#confirm-pw", 'Confirmed password', 'notMatch')
                 isValid = false 
 
             }
             
             if($('#security-ans').val().length == 0){
 
-                $('#security-ans').css('border-color', 'red');
-                $('#security-ans').after(errorMessage("answer", "empty"))
-
+                errorDisplay('#security-ans', 'answer', 'empty')
                 isValid = false 
 
             }
@@ -140,14 +149,25 @@ $('document').ready(()=>{
     }
 
     $('#create-ac-btn').click(()=>{
+    
+        $('#form-action-btn').animate(hideAnimation, 100, () => {
+
+            setTimeout(()=>{$('#form-action-btn').hide()}, 500)
+
+        })
         
-        $('#login-form').css('display', 'none');
-        $('#register-form').css('display', 'block');
-        $('#register-form-1').css('display', 'block');
-        $('#register-form-2').css('display', 'none');
-        $('#register-form-3').css('display', 'none');
-        $('#form-action-btn').hide();
-        $('#prev-btn').hide();
+        $('#login-form').animate(hideAnimation, 100, () => { 
+            setTimeout(()=>{
+                $('#login-form').css('display', 'none')
+                $('#register-form').css('display', 'block')
+                $('#register-form').animate(showAnimation, 100);
+                $('#register-form-1').css('display', 'block');
+                $('#register-form-1').animate(showAnimation, 100);
+                $('#register-form-2').css('display', 'none');
+                $('#register-form-3').css('display', 'none');
+                $('#prev-btn').hide();
+            }, 500)
+        });
 
         step = 1;
   
@@ -155,11 +175,22 @@ $('document').ready(()=>{
     
     $('#login-ac-btn').click(()=>{
         
-        $('#login-form').css('display', 'block');
-        $('#register-form').css('display', 'none');
-        $('#form-action-btn').show();
-        $('#form-action-btn').val("Login");
+        $('#register-form').animate(hideAnimation, 100, () => {
 
+            setTimeout(()=>{
+
+                $('#register-form').css('display', 'none');
+                $('#login-form').css('display', 'block');
+                $('#login-form').animate(showAnimation, 100);
+
+            }, 500)
+
+        })
+
+        $('#form-action-btn').val('Login')
+        $('#form-action-btn').show(500)
+        $('#form-action-btn').animate(showAnimation, 100)
+        
         step = 0;
   
     })
@@ -169,35 +200,45 @@ $('document').ready(()=>{
         //if(step !== 3 && checkValid())
             step++;
 
-        if(step == 1){
-
-            $('#register-form-1').css('display', 'block');
-            $('#register-form-2').css('display', 'none');
-            $('#register-form-3').css('display', 'none');
-            $('#prev-btn').hide();
-            $('#next-btn').show();
-
-        }
-
         if(step == 2){
 
-            $('#register-form-1').css('display', 'none');
-            $('#register-form-2').css('display', 'block');
-            $('#register-form-3').css('display', 'none');
-            $('#prev-btn').show();
-            $('#next-btn').show();
+            $('#register-form-1').animate(hideAnimation, 100, () => {
+
+                setTimeout(()=>{
+    
+                    $('#register-form-1').css('display', 'none');
+                    $('#register-form-2').css('display', 'block');
+                    $('#register-form-2').animate(showAnimation, 100);
+                    $('#register-form-3').css('display', 'none');
+                    $('#prev-btn').show(100);
+                    $('#next-btn').show(100);
+    
+                }, 500)
+    
+            })
 
         }
         
         if(step == 3){
 
-            $('#register-form-1').css('display', 'none');
-            $('#register-form-2').css('display', 'none');
-            $('#register-form-3').css('display', 'block');
-            $('#prev-btn').show();
-            $('#next-btn').hide();
-            $('#form-action-btn').show();
-            $('#form-action-btn').val("Register");
+            $('#register-form-2').animate(hideAnimation, 100, () => {
+
+                setTimeout(()=>{
+    
+                    $('#register-form-1').css('display', 'none');
+                    $('#register-form-2').css('display', 'none');
+                    $('#register-form-3').css('display', 'block');
+                    $('#register-form-3').animate(showAnimation, 100);
+                    $('#prev-btn').show(100);
+                    $('#next-btn').hide(100);
+                    
+                }, 500)
+    
+            })
+
+            $('#form-action-btn').val('Register')
+            $('#form-action-btn').show(500)
+            $('#form-action-btn').animate(showAnimation, 100)
 
         }
 
@@ -205,38 +246,50 @@ $('document').ready(()=>{
     
     $('#prev-btn').click(()=>{
 
-        if(step !== 1)
+        if(step > 1)
             step--;
 
         if(step == 1){
 
-            $('#register-form-1').css('display', 'block');
-            $('#register-form-2').css('display', 'none');
-            $('#register-form-3').css('display', 'none');
-            $('#prev-btn').hide();
-            $('#next-btn').show();
+            $('#register-form-2').animate(hideAnimation, 100, () => {
+
+                setTimeout(()=>{
+    
+                    $('#register-form-1').css('display', 'block');
+                    $('#register-form-1').animate(showAnimation, 100);
+                    $('#register-form-2').css('display', 'none');
+                    $('#register-form-3').css('display', 'none');
+                    $('#prev-btn').hide(100);
+                    $('#next-btn').show(100);
+                    
+                }, 500)
+    
+            })
 
         }
 
         if(step == 2){
 
-            $('#register-form-1').css('display', 'none');
-            $('#register-form-2').css('display', 'block');
-            $('#register-form-3').css('display', 'none');
-            $('#prev-btn').show();
-            $('#next-btn').show();
+            $('#form-action-btn').animate(hideAnimation, 100, () => {
 
-        }
+                setTimeout(()=>{$('#form-action-btn').hide()}, 500)
+    
+            })
 
-        if(step == 3){
+            $('#register-form-3').animate(hideAnimation, 100, () => {
 
-            $('#register-form-1').css('display', 'none');
-            $('#register-form-2').css('display', 'none');
-            $('#register-form-3').css('display', 'block');
-            $('#prev-btn').show();
-            $('#next-btn').hide();
-            $('#form-action-btn').show();
-            $('#form-action-btn').val("Register");
+                setTimeout(()=>{
+    
+                    $('#register-form-1').css('display', 'none');
+                    $('#register-form-2').css('display', 'block');
+                    $('#register-form-2').animate(showAnimation, 100);
+                    $('#register-form-3').css('display', 'none');
+                    $('#prev-btn').show(100);
+                    $('#next-btn').show(100);
+                    
+                }, 500)
+    
+            })
 
 
         }

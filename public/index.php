@@ -118,7 +118,9 @@
             <div id='register-form-3'>
                 <h3>Upload Profile Image</h3>
                 <div class='profile-img-container'>
-                    <img src="./images/icon-add.png" alt="" class='profile-img'>       
+                    <div class="profile-img-border">
+                        <img src="./images/icon-add-128.png" alt="" class='profile-img'>       
+                    </div>
                 </div>
             </div>
 

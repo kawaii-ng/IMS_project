@@ -215,28 +215,50 @@ select:focus {
    
 }
 
+.profile-img-border {
+
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #007777;
+    cursor: pointer;
+    overflow: hidden;
+
+}
+
 .profile-img {
 
     width: 100px;
     height: 100px;
-    border: 1px solid #007777;
     object-fit: cover;
-    cursor: pointer;
-    overflow: hidden;
 
+}
 
+.profile-img:hover {
+
+    opacity: .8;
 
 }
 
 #login-form {
 
     display: block;
+    opacity: 1;
 
 }
 
 #register-form {
 
     display: none;
+    margin-left: -50px;
+    opacity: 0;
+
+}
+
+#register-form-1, #register-form-2, #register-form-3 {
+
+    margin-left: -50px;
+    opacity: 0;
 
 }
 
