@@ -1,0 +1,115 @@
+.scroll-to-top {
+
+    background-color: #007777;
+    padding: .5em;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #f4f4f4;
+
+}
+
+.navbar {
+
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 1em 2em;
+
+}
+
+.logo {
+    color: #007777;
+}
+
+.menu {
+
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.menu p {
+
+    margin-right: .5em;
+
+}
+
+.menu-btn {
+
+    margin: 0em .5em;
+    background: #f4f4f4;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.menu-btn i {
+
+    margin-right: .5em;
+
+}
+
+.menu-btn:hover {
+
+    text-decoration: underline;
+
+}
+
+.fashion-section {
+
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: scroll;
+
+}
+
+.product-grid {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1em;
+
+}
+
+.product-card {
+
+    margin: 1em;
+    width: 80%;
+    min-width: 300px;
+    max-width: 300px;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    justify-self: center;
+
+}
+
+.product-img {
+
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+
+}
+
+.product-content {
+
+    width: 100%;
+    height: 20%;
+
+}
+
