@@ -1,0 +1,98 @@
+.scroll-to-top {
+
+    background-color: #007777;
+    padding: .5em;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #f4f4f4;
+
+}
+
+.scroll-to-top:hover {
+
+    text-decoration: none;
+    animation: btn-shake 1s infinite ease-in-out;
+
+}
+
+.navbar {
+
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 1em 2em;
+
+}
+
+.logo {
+    color: #007777;
+}
+
+.menu {
+
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.menu p {
+
+    margin-right: .5em;
+
+}
+
+.menu-btn {
+
+    height: 30px;
+    margin: 0em .5em;
+    padding: .5em 1em;
+    background: #f4f4f4;
+    color: black;
+    border: none;
+    border-radius: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.menu-btn i {
+
+    margin-right: .5em;
+    font-size: 1rem;
+
+}
+
+.menu-btn:hover {
+
+    animation: btn-shake infinite 1s ease-in-out;
+    text-decoration: none;
+
+}
+
+@keyframes btn-shake {
+    0% {transform: rotate(0deg);}
+    30% {transform: rotate(5deg);}
+    80% {transform: rotate(-5deg);}
+    100% {transform: rotate(0deg);}
+}
+
+.main-section {
+
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: scroll;
+
+}
