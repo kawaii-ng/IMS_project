@@ -10,7 +10,7 @@ $('document').ready(()=>{
 
     $('#product-123-close').click(()=>{
 
-        $('#count').val() = 0;
+        $('#count').val(0);
 
         $('#product-123-modal').animate({opacity: '0', top: '50px'}, 100, ()=>{
 
