@@ -2,13 +2,14 @@
 
     include_once("../includes/header.html");
     session_start();
+    include_once("../config/db-connection.php");
 
 ?>
 
 <div class="container">
 
     <div class="form-section">
-        <form action="" method="post" class="my-form">
+        <form action="/project/functions/login-functions.php" method="post" class="my-form">
             <h5>
                 <i class="fas fa-gem"></i>
                 <span>I</span>nventory <span>M</span>anagement <span>S</span>ystem
@@ -35,16 +36,11 @@
                 <h3>Personal Information</h3>
                 <table width='100%' cellspacing='10px'>
                     <tr width='100%'>
-                        <td>
-                            <label for="firstName" name="firstName">First Name</label> 
+                        <td colspan="2">
+                            <label for="nickName" name="nickName">Nick Name</label> 
                             <br>
-                            <input type="text" name="firstName" id="first-name" placeholder="First Name" spellcheck="false">
-                        </td>
-                        <td>
-                            <label for="lastName" name="firstName">Last Name</label> 
-                            <br>
-                            <input type="text" name="lastName" id="last-name" placeholder="Last Name" spellcheck="false">
-                        </td>                                
+                            <input type="text" name="nickName" id="nick-name" placeholder="Nick Name" spellcheck="false">
+                        </td>                          
                     </tr>
                     <tr>
                         <td>

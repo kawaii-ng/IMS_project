@@ -66,16 +66,9 @@ $('document').ready(()=>{
 
         if(step == 1){
 
-            if($('#first-name').val().length == 0){
+            if($('#nick-name').val().length == 0){
 
-                errorDisplay('#first-name', 'first name', 'empty')
-                isValid = false;
-
-            }
-            
-            if($('#last-name').val().length == 0){
-
-                errorDisplay('#last-name', 'last name', 'empty')
+                errorDisplay('#nick-name', 'nick name', 'empty')
                 isValid = false;
 
             }

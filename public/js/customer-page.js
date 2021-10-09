@@ -34,4 +34,33 @@ $('document').ready(()=>{
 
     })
 
+    $('.color').click((e)=>{
+
+        if(!($(e.target).attr("class").includes("color-size-active"))){
+            
+            $('.color').removeClass('color-size-active')
+            $(e.target).toggleClass('color-size-active');
+            var color = $(e.target).text()
+            $('#color').val(color.trim());
+
+
+        }
+
+    })
+
+    $('.size').click((e)=>{
+
+        
+        if(!($(e.target).attr("class").includes("color-size-active"))){
+            
+            $('.size').removeClass('color-size-active')
+            $(e.target).toggleClass('color-size-active');
+            var size = $(e.target).text()
+            $('#size').val(size.trim());
+
+
+        }
+
+    })
+
 })
