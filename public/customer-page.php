@@ -1,6 +1,7 @@
 <?php 
 
     include_once("../includes/header.html");
+    include_once("../functions/login-functions.php");
     session_start();
 
 ?>
@@ -15,12 +16,20 @@
             </h5>
         </div>
         <div class="menu">
-            <p>Hi, Evan Ng! </p>
+            <a><p>Hi, 
+                <?php 
+                    if(isset($_SESSION['userID'])) 
+                        echo $_SESSION['userID']; 
+                ?>! 
+            </p></a>
+            <a class="menu-btn" href="/project/public/customer-page.php?page=products">
+                <i class="fas fa-tshirt"></i></i>
+            </a>
             <a class="menu-btn" href="/project/public/customer-page.php?page=shopping_cart">
                 <i class="fas fa-shopping-cart"></i>
                 <?php echo "(0)";?>
             </a>
-            <a class="menu-btn" href="/project/public/customer-page.php?page=products">
+            <a class="menu-btn" href="/project/functions/login-functions.php?op=sign_out">
                 <i class="fas fa-sign-out-alt"></i>
             </a>
         </div>

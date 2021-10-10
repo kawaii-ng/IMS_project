@@ -20,12 +20,13 @@ function loginAC($userID, $userPW) {
             // first time login
             setcookie('userID', $userID, time() + (60 * 60 * 24));
             setcookie('userPW', $userPW, time() + (60 * 60 * 24));
-            header("Location: /project/public/customer-page.php?page='products'");
+            $_SESSION['userID'] = $userID;
+            header("Location: /project/public/customer-page.php?page=products");
         
         }else {
         
             if($userID == $_COOKIE['userID'] && $userPW == $_COOKIE['userPW']){
-        
+
                 // valid user
                 header("Location: /project/public/customer-page.php?page=products");
         
@@ -99,6 +100,18 @@ if($_POST['submitType'] == 'Register'){
         header("Location: /project/public/index.php?error=user_exist");
 
     }
+
+}
+
+// logout 
+
+if(isset($_GET['op']) && $_GET['op'] == 'sign_out'){
+
+    setcookie('userID', $userID, time() - (60 * 60 * 24));
+    setcookie('userPW', $userPW, time() - (60 * 60 * 24));
+    session_unset();
+    session_destroy();
+    header("Location: /project/public/index.php");
 
 }
 
