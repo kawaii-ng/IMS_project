@@ -141,6 +141,22 @@ $('document').ready(()=>{
 
     }
 
+    $('#form-action-btn').click(()=>{
+
+        if((step == 0 && checkValid()) || step !== 0){
+
+            $('#form-action-btn').attr('type', 'submit');
+            myForm.submit();
+
+        }else {
+
+            $('#form-action-btn').attr('type', 'button');
+
+        }
+        
+
+    })
+
     $('#create-ac-btn').click(()=>{
     
         $('#form-action-btn').animate(hideAnimation, 100, () => {

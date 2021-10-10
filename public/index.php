@@ -9,7 +9,7 @@
 <div class="container">
 
     <div class="form-section">
-        <form action="/project/functions/login-functions.php" method="post" class="my-form">
+        <form action="/project/functions/login-functions.php" method="post" name="myForm" class="my-form">
             <h5>
                 <i class="fas fa-gem"></i>
                 <span>I</span>nventory <span>M</span>anagement <span>S</span>ystem
@@ -18,12 +18,16 @@
             <div id="login-form">
                 <!-- login -->
                 <h1>Login</h1>
-                <label for="userID" name="userID">User ID</label> 
+                <label for="userID">User ID</label> 
                 <input type="text" name="userID" id='login-id' placeholder="User ID" spellcheck="false">
-                <label for="userPW" name="userPW">Password</label> 
+                <label for="userPW">Password</label> 
                 <input type="password" name="userPW" id='login-pw' placeholder="Password">
                 <a href=""><p>Forgot password?</p></a>
                 <a id="create-ac-btn"><p>Do not have a account?</p></a>
+                <?php 
+                    if(isset($_GET['error']) && $_GET['error'] == "login_fail")
+                        echo "<p class=\"error\"><i class='fas fa-exclamation-circle'></i> Login Failed. </p>";
+                ?>
             </div>
 
             <div id="register-form">
@@ -37,14 +41,14 @@
                 <table width='100%' cellspacing='10px'>
                     <tr width='100%'>
                         <td colspan="2">
-                            <label for="nickName" name="nickName">Nick Name</label> 
+                            <label for="nickName">Nick Name</label> 
                             <br>
                             <input type="text" name="nickName" id="nick-name" placeholder="Nick Name" spellcheck="false">
                         </td>                          
                     </tr>
                     <tr>
                         <td>
-                            <label for="gender" name="gender">Gender</label>
+                            <label for="gender">Gender</label>
                             <br>
                             <select name="gender">
                                 <option value='male'>Male</option>
@@ -53,13 +57,13 @@
                             </select>
                         </td>
                         <td>
-                            <label for="birth" name="birth">Birthday</label>
+                            <label for="birth">Birthday</label>
                             <input type="date" name="birth" id='birthday'>
                         </td>
                     </tr>
                     <tr>
                         <td colspan='2'>
-                            <label for="email" name="email">Email</label> 
+                            <label for="email">Email</label> 
                             <br>
                             <input type="email" name="email" id='email' placeholder="Email" spellcheck="false">
                         </td>
@@ -75,17 +79,17 @@
                 <table width='100%' cellspacing='10px'>
                     <tr>
                         <td colspan='2'>
-                            <label for="userID" name="userID">User ID</label> 
-                            <input type="text" name="userID" id='user-id' placeholder="User ID" spellcheck="false">
+                            <label for="regUserID">User ID</label> 
+                            <input type="text" name="regUserID" id='user-id' placeholder="User ID" spellcheck="false">
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="userPW" name="userPW">Password</label> 
-                            <input type="password" name="userPW" id='user-pw' placeholder="Password">
+                            <label for="regUserPW">Password</label> 
+                            <input type="password" name="regUserPW" id='user-pw' placeholder="Password">
                         </td>
                         <td>
-                            <label for="confirmPW" name="confirmPW">Confirm Password</label> 
+                            <label for="confirmPW">Confirm Password</label> 
                             <input type="password" name="confirmPW" id='confirm-pw' placeholder="Confirm Password">
                         </td>
                     </tr>
