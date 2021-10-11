@@ -1,6 +1,6 @@
 $('document').ready(()=>{
 
-    var step = 0;
+    var step = 1;
     var showAnimation = {
 
         'opacity': '1',
@@ -22,7 +22,10 @@ $('document').ready(()=>{
 
         if(type == "notMatch")
             return "<p class='error'><i class='fas fa-exclamation-circle'></i> " + elementName + " is not matched.</p>"
-        
+            
+        if(type == 'notValid')
+            return "<p class='error'><i class='fas fa-exclamation-circle'></i> " + elementName + " is not valid.</p>"
+
         if(type == "custom")
             return "<p class='error'><i class='fas fa-exclamation-circle'></i> " + elementName 
 
@@ -302,6 +305,31 @@ $('document').ready(()=>{
 
 
         }
+
+    })
+
+    $('#profile-btn').click((e)=>{
+
+        $('#profile-path').change((e)=>{
+
+            $('.error').remove();
+            var file = e.target.files[0];
+            var path = URL.createObjectURL(file);
+            var defaultPath = "../public/images/icon-add-128.png"
+            var re = /.png|.jpg|.jpeg/i;
+            if(file.name.search(re) !== -1){
+                
+                $('#reg-profile').attr('src', path);
+
+            }else {
+
+                e.value = '';
+                $('#reg-profile').attr('src', 'images/icon-add-128.png');
+                errorDisplay('#profile-path', 'Image', 'notValid');
+
+            }
+
+        })
 
     })
 

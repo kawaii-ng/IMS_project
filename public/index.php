@@ -119,8 +119,11 @@
                 <h3>Upload Profile Image</h3>
                 <div class='profile-img-container'>
                     <div class="profile-img-border">
-                        <img src="./images/icon-add-128.png" alt="" class='profile-img'>       
+                        <img src="./images/icon-add-128.png" alt="" class='reg-profile' id="reg-profile">       
                     </div>
+                    <br>
+                    <label for="profile-path" class="select-img-btn" id="profile-btn">Select Image</label>
+                    <input type='file' name="regProfileImg" id="profile-path">
                 </div>
             </div>
 

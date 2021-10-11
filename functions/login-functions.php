@@ -75,6 +75,19 @@ if($_POST['submitType'] == 'Register'){
 
     if($user == null){
 
+        $imgName = $_FILES['regProfileImg']['name'];
+        $imgTMP = $_FILES['regProfileImg']['tmp_name'];
+        $imgEX = strtolower(pathinfo($imgName, PATHINFO_EXTENSION));
+        $imgPath = "uploads/profile/" . $image_name . "." . $imgEX;
+
+        if(!$imgName){
+
+            $imgPath = "\'\'";
+
+        }
+
+        move_uploaded_file($imgTMP, 'uploads/profile/' . $image_name . $imgEX);
+
         $userSQL = "INSERT INTO `user` (
             `userID`, `userName`, `password`, `gender`, 
             `birthday`, `email`, `icon`, `question`, `answer`
@@ -82,7 +95,7 @@ if($_POST['submitType'] == 'Register'){
             '". $_POST['regUserID'] ."', '". $_POST['nickName'] ."', 
             '". $_POST['regUserPW'] ."', '". $_POST['gender'] ."', 
             '". $_POST['birth'] ."', '". $_POST['email'] ."', 
-            '\'\'', '". $_POST['securityQuestion'] ."', '". $_POST['securityAns'] ."'
+            '$imgPath', '". $_POST['securityQuestion'] ."', '". $_POST['securityAns'] ."'
         )";
     
         if(mysqli_query($connect, $userSQL)){
