@@ -78,7 +78,7 @@ if($_POST['submitType'] == 'Register'){
         $imgName = $_FILES['regProfileImg']['name'];
         $imgTMP = $_FILES['regProfileImg']['tmp_name'];
         $imgEX = strtolower(pathinfo($imgName, PATHINFO_EXTENSION));
-        $imgPath = "uploads/profile/" . $image_name . "." . $imgEX;
+        $imgPath = "../uploads/profile/" . $imgName;
 
         if(!$imgName){
 
@@ -86,7 +86,7 @@ if($_POST['submitType'] == 'Register'){
 
         }
 
-        move_uploaded_file($imgTMP, 'uploads/profile/' . $image_name . $imgEX);
+        move_uploaded_file($imgTMP, $imgPath);
 
         $userSQL = "INSERT INTO `user` (
             `userID`, `userName`, `password`, `gender`, 

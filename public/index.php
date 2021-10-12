@@ -9,7 +9,7 @@
 <div class="container">
 
     <div class="form-section">
-        <form action="/project/functions/login-functions.php" method="post" name="myForm" class="my-form">
+        <form action="/project/functions/login-functions.php" method="post" name="myForm" enctype="multipart/form-data" class="my-form">
             <h5>
                 <i class="fas fa-gem"></i>
                 <span>I</span>nventory <span>M</span>anagement <span>S</span>ystem
