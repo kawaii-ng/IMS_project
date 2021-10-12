@@ -16,7 +16,7 @@
             </h5>
         </div>
         <div class="menu">
-            <a><p>Hi, 
+            <a href="/project/public/customer-page.php?page=profile"><p>Hi, 
                 <?php 
                     if(isset($_SESSION['userID'])) 
                         echo $_SESSION['userID']; 
@@ -45,6 +45,12 @@
             }
             if($_GET["page"] == 'shopping_cart')
                 include_once("./shopping-cart.php");
+
+            if($_GET['page'] == 'profile'){
+
+                include_once('./profile.php');
+
+            }
         ?>
     </div>
 
