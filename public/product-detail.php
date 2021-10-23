@@ -1,58 +1,144 @@
-<div class="detail-modal" id="product-123-modal">
+<!-- render the modal from the db -->
 
-    <i class="close-btn far fa-window-close" id='product-123-close'></i>
+<?php 
 
-    <form action="" method="post" class='purchase-form'>
-    <div class="purchase-section">
-        <div>
-            <strong>
-                <h1>Oversized jacket</h1>
-                <small>Women</small>
-            </strong>
-            <br>
-            <p>Short dress in patterned jersey with narrow shoulder straps that cross and tie at the black. </p>
-            <br>
-            <h3>HK$1,000.00</h3>
-           
-                <input type="hidden" name="price" value="1000">
-                <div class="counter">
-                    <a class="count-btn" id='count-add-btn'>
-                        <i class="fas fa-plus-square"></i>
-                    </a>
-                    <input type="text" value='1' id="count">
-                    <a class="count-btn" id="count-minus-btn">
-                        <i class="fas fa-minus-square"></i>
-                    </a>
+        $productSQL = "Select * from product";
+        $productQ = mysqli_query($connect, $productSQL);
+
+        while ($product = mysqli_fetch_assoc($productQ)) {
+
+
+            $colorSQL = "
+            
+                Select colorID from stock, product
+                where stock.productID = product.productID and stock.productID = ". $product['productID'] ."
+                group by colorID
+
+            ";
+
+            $colorQ = mysqli_query($connect, $colorSQL);
+
+            $sizeSQL = "
+            
+                Select size from stock, product
+                where stock.productID = product.productID and stock.productID = ". $product['productID'] ."
+                group by size
+
+            ";
+
+            $sizeQ = mysqli_query($connect, $sizeSQL);
+
+            echo "
+            
+                    <div class='detail-modal' id='product-modal-". $product['productID'] ."'>
+
+                    <i class='close-btn far fa-window-close' id='product-close-" . $product['productID'] . "'></i>
+                
+                    <form action='/project/functions/customer-functions.php?op=add_to_cart' name='purchaseForm' method='post' class='purchase-form'>
+                    <input type='hidden' name='productID' value='" . $product['productID'] . "'>
+                    <div class='purchase-section'>
+                        <div>
+                            <strong>
+                                <h1>". $product['productName'] ."</h1>
+                                <small>". $product['productGender'] ."</small>
+                            </strong>
+                            <br>
+                            <p>". $product['productDescription'] ."</p>
+                            <br>
+                            <h3>HK$". $product['productPrice'] ."</h3>
+                                <div class='counter'>
+                                    <a class='count-btn count-add-btn'>
+                                        <i class='fas fa-plus-square'></i>
+                                    </a>
+                                    <input type='number' value='1' min='1' name='qty' class='count' onchange='this.value = this.value == 0? 1:Math.abs(this.value)'>
+                                    <a class='count-btn count-minus-btn'>
+                                        <i class='fas fa-minus-square'></i>
+                                    </a>
+                                </div>
+                                <input id='product-btn-".$product['productID']."' class='my-form-btn' type='button' value='Add to Cart'></input>
+                        </div>
+                    </div>
+                    
+                    <div class='detail-section'>
+                        <div>
+                            <h5>Colors</h5>
+                            ";
+
+                            $count = 0;
+                            while($color = mysqli_fetch_assoc($colorQ)){
+
+                                $hexSQL = "
+                                
+                                    select colorCode from color
+                                    where colorID = ". $color['colorID'] ."
+
+                                ";
+
+                                if($hexQ = mysqli_query($connect, $hexSQL)){
+
+                                    $hex =  mysqli_fetch_assoc($hexQ);
+                                    
+                                }   
+
+                                if($count == 0){
+
+                                    echo "<input type='hidden' name='color' class='colorValue' value='".$hex['colorCode']."'>";
+                                    
+                                }
+
+                                echo "<div class='color";
+                                if($count == 0){
+
+                                    echo " color-size-active";
+                                    
+                                }
+                                echo "' style='background:".$hex['colorCode']."'>".$color['colorID']."</div>";
+                                $count++;
+
+                            }
+                    
+                    echo"
+                        
+                            <br>
+                            <h5>Sizes</h5>";
+
+                            $count = 0;
+                            while($size = mysqli_fetch_assoc($sizeQ)){
+
+                                if($count == 0){
+
+                                    echo "<input type='hidden' name='size' class='sizeValue' value='".$size['size']."'>";
+                                    
+                                }
+
+                                echo "<div class='size";
+                                if($count == 0){
+
+                                    echo " color-size-active";
+                                    
+                                }
+                                echo "'>". $size['size'] ."</div>";
+                                $count++;
+
+                            }
+
+                    echo"
+                           
+                        </div>
+                        
+                    </div>
+                    </form>
+                
+                    <div class='img-section'>
+                        <img src='".$product['productImage']."' alt=''>
+                    </div>
+                
                 </div>
-                <input id='product-123-btn' type="submit" value="Add to Cart"></input>
-        </div>
-    </div>
-    
-    <div class="detail-section">
-        <div>
-            <h5>Colors</h5>
-            <input type="hidden" name="color" id="color" value="">
-            <div id="product-123-color-1" class="color color-size-active" style="background: #007777"></div>
-            <div id="product-123-color-2" class="color" style="background: #770077"></div>
-            <br>
-            <h5>Sizes</h5>
-            <input id="size" type="hidden" name="size" value="">
-            <div id="product-123-size-1" class="size color-size-active">
-                XS
-            </div>
-            <div id="product-123-size-2" class="size">
-                SS
-            </div>
-            <div id="product-123-size-3" class="size">
-                S
-            </div>
-        </div>
         
-    </div>
-    </form>
+            
+            ";
 
-    <div class="img-section">
-        <img src="./images/t-shirt.jpeg" alt="">
-    </div>
+        }
 
-</div>
+?>
+

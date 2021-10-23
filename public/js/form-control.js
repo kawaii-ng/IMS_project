@@ -1,4 +1,4 @@
-$('document').ready(()=>{
+$('document').ready(function() {
 
     var step = 1;
     var showAnimation = {
@@ -144,7 +144,7 @@ $('document').ready(()=>{
 
     }
 
-    $('#form-action-btn').click(()=>{
+    $('#form-action-btn').click(function() {
 
         if((step == 0 && checkValid()) || step !== 0){
 
@@ -160,7 +160,7 @@ $('document').ready(()=>{
 
     })
 
-    $('#create-ac-btn').click(()=>{
+    $('#create-ac-btn').click(function() {
     
         $('#form-action-btn').animate(hideAnimation, 100, () => {
 
@@ -185,7 +185,7 @@ $('document').ready(()=>{
   
     })
     
-    $('#login-ac-btn').click(()=>{
+    $('#login-ac-btn').click(function() {
         
         $('#register-form').animate(hideAnimation, 100, () => {
 
@@ -207,7 +207,7 @@ $('document').ready(()=>{
   
     })
 
-    $('#next-btn').click(()=>{
+    $('#next-btn').click(function() {
 
         //if(step !== 3 && checkValid())
             step++;
@@ -256,7 +256,7 @@ $('document').ready(()=>{
 
     })
     
-    $('#prev-btn').click(()=>{
+    $('#prev-btn').click(function() {
 
         if(step > 1)
             step--;

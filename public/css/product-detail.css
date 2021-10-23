@@ -81,17 +81,23 @@
 
 .color {
 
-    margin: .5em 0em;
+    margin: 6px 0em;
     width: 15px;
     height: 15px;
     border-radius: 50%;
     cursor: pointer;
+    border: white solid 3px; 
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .2);
+    font-size: 0px;
+    color: transparent;
 
 }
 
 .color-size-active {
 
-    transform: scale(1.5);
+    transform: scale(1.8);
+    font-weight: 700;
+    color: #007777;
 
 }
 

@@ -7,12 +7,12 @@ function loginAC($userID, $userPW) {
 
     global $connect;
 
-    $userSQL = "select * from user
+    $userSQL = "select * from permission
     where userID ='" . $userID . "'";
     $userQuery = mysqli_query($connect, $userSQL);
     $user = mysqli_fetch_assoc($userQuery);
 
-    if($userID == $user['userID'] && $userPW == $user['password']){
+    if($userID == $user['userID'] && password_verify($userPW, $user['password'])){
 
         // setting cookie
         if(!isset($_COOKIE['userID'])){
@@ -25,7 +25,7 @@ function loginAC($userID, $userPW) {
         
         }else {
         
-            if($userID == $_COOKIE['userID'] && $userPW == $_COOKIE['userPW']){
+            if($userID == $_COOKIE['userID'] && password_verify($userPW, $_COOKIE['userPW'])){
 
                 // valid user
                 header("Location: /project/public/customer-page.php?page=products");
@@ -44,6 +44,7 @@ function loginAC($userID, $userPW) {
     }else{
 
         // login unsuccessfully
+        echo "not ok";
         header("Location: /project/public/index.php?error=login_fail");
 
     }
@@ -88,19 +89,29 @@ if($_POST['submitType'] == 'Register'){
 
         move_uploaded_file($imgTMP, $imgPath);
 
+        $loginInfoSQL = "
+
+            INSERT INTO `permission`(
+                `pid`, `userID`, `password`, `role`
+            ) VALUES (
+                NULL,'".$userID."','".password_hash($userPW, PASSWORD_BCRYPT)."','user'
+            )
+
+        ";
+
         $userSQL = "INSERT INTO `user` (
-            `userID`, `userName`, `password`, `gender`, 
+            `userID`, `userName`, `gender`, 
             `birthday`, `email`, `icon`, `question`, `answer`
         ) VALUES (
             '". $_POST['regUserID'] ."', '". $_POST['nickName'] ."', 
-            '". $_POST['regUserPW'] ."', '". $_POST['gender'] ."', 
-            '". $_POST['birth'] ."', '". $_POST['email'] ."', 
-            '$imgPath', '". $_POST['securityQuestion'] ."', '". $_POST['securityAns'] ."'
+            '". $_POST['gender'] ."', '". $_POST['birth'] ."', 
+            '". $_POST['email'] ."', '$imgPath', 
+            '". $_POST['securityQuestion'] ."', '". $_POST['securityAns'] ."'
         )";
     
-        if(mysqli_query($connect, $userSQL)){
+        if(mysqli_query($connect, $loginInfoSQL) && mysqli_query($connect, $userSQL)){
 
-            loginAC($_POST['regUserID'], $_POST['regUserPW']);
+            loginAC($_POST['regUserID'], $userPW);
 
         }else{
 
