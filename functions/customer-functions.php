@@ -62,4 +62,26 @@
 
     }
 
+    if($_GET['op'] == 'remove_cart'){
+
+        $cartSQL = "
+        
+            delete from cart
+            where cartID = '".$_POST['cart-ID']."'
+        
+        ";
+
+        if(mysqli_query($connect, $cartSQL)){
+
+            header("Location: /project/public/customer-page.php?page=shopping_cart");
+
+
+        }else{
+
+            header("Location: /project/public/customer-page.php?page=shopping_cart&error=delete_fail");
+
+        }
+
+    }
+
 ?>

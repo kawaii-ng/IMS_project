@@ -1,0 +1,62 @@
+.remove-modal-container {
+
+    position: absolute;
+    z-index: 999;
+
+    background: rgba(0, 0, 0, .3);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
+
+.remove-modal {
+
+    width: 350px;
+    height: 200px;
+    background: white;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, .6);
+
+}
+
+.remove-modal::before {
+
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+
+}
+
+.modal-header {
+
+    margin: 0em 1em;
+    height: 25px;
+    border-bottom:  1px solid #007777;
+
+}
+
+.modal-content {
+
+    position: absolute;
+    margin: 0em 1em;
+    height: 150px;
+
+}
+
+.modal-content .btn-group {
+
+    width: 100%;
+    margin: 0em 1em;
+
+}
