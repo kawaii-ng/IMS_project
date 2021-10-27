@@ -28,6 +28,8 @@
         $total = mysqli_fetch_assoc($totalQ);
 
         $hasOrder = false;
+
+        $totalPrice = $total['price']? $total['price']: 0;
         
         echo "
         <form method='post' name='cartForm' action='/project/functions/customer-functions.php?op=remove_cart'>
@@ -37,7 +39,7 @@
         <div class='cart-bar'>
         <h3>My Shopping Cart</h3>
         <div>
-        <strong>Total: HK$" .  $total['price'] ."</strong> 
+        <strong>Total: HK$" .  $totalPrice ."</strong> 
                 <button class='btn buy-btn'>Buy all</button>
                 </div>
         </div>
@@ -102,7 +104,7 @@
             echo "
             <i class='fas fa-socks no-cloth-icon'></i>
             <p class='no-cloth-msg'>It seems that you haven't buy any cloth yet. <br>
-            <a href='/project/public/customer-page.php?page=products'>Let's purchase some clothes now.</a> 
+            <a href='/project/public/dashboard-page.php?page=products'>Let's purchase some clothes now.</a> 
             </p>";
 
         }

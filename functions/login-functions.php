@@ -21,20 +21,38 @@ function loginAC($userID, $userPW) {
             setcookie('userID', $userID, time() + (60 * 60 * 24));
             setcookie('userPW', $userPW, time() + (60 * 60 * 24));
             $_SESSION['userID'] = $userID;
-            header("Location: /project/public/customer-page.php?page=products");
+            $_SESSION['role'] = $user['role'];
+            
+            if($user['role'] == "admin"){
+
+                header("Location: /project/public/dashboard-page.php?page=products");
+                
+            }else {
+                
+                header("Location: /project/public/dashboard-page.php?page=products");
+
+            }
         
         }else {
         
             if($userID == $_COOKIE['userID'] && password_verify($userPW, $_COOKIE['userPW'])){
 
                 // valid user
-                header("Location: /project/public/customer-page.php?page=products");
-        
+                if($user['role'] == "admin"){
+
+                    header("Location: /project/public/dashboard-page.php?page=products");
+                    
+                }else {
+                    
+                    header("Location: /project/public/dashboard-page.php?page=products");
+    
+                }
+
             }else {
         
                 // invalid user
-                setcookie('userID', $userID, time() - (60 * 60 * 24));
-                setcookie('userPW', $userPW, time() - (60 * 60 * 24));
+                setcookie('userID', $userID, time() - (1060 * 60 * 24));
+                setcookie('userPW', $userPW, time() - (1060 * 60 * 24));
                 header("Location: /project/public/index.php?error=invalid_user");
         
             }

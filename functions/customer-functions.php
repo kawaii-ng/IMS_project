@@ -41,12 +41,12 @@
                 if($cartQ = mysqli_query($connect, $cartSQL)){
 
                     // insert successfully
-                    header("Location: /project/public/customer-page.php?page=products");
+                    header("Location: /project/public/dashboard-page.php?page=products");
     
                 }else {
     
                     // fail to insert
-                    header("Location: /project/public/customer-page.php?page=products&error=true");
+                    header("Location: /project/public/dashboard-page.php?page=products&error=true");
     
                 }    
 
@@ -73,12 +73,12 @@
 
         if(mysqli_query($connect, $cartSQL)){
 
-            header("Location: /project/public/customer-page.php?page=shopping_cart");
+            header("Location: /project/public/dashboard-page.php?page=shopping_cart");
 
 
         }else{
 
-            header("Location: /project/public/customer-page.php?page=shopping_cart&error=delete_fail");
+            header("Location: /project/public/dashboard-page.php?page=shopping_cart&error=delete_fail");
 
         }
 
