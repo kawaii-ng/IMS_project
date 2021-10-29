@@ -1,5 +1,6 @@
 /*
 
+Color scheme: 
 Hex	RGB
 #007777	(0,119,119)
 #006666	(0,102,102)
@@ -64,58 +65,6 @@ h5 span {
 
 }
 
-.container {
-
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    top: 0; 
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    background: #f4f4f4;
-
-}
-
-.flex-column {
-
-    flex-direction: column;
-
-}
-
-.img-section {
-
-    width: 40vw;
-    height: 100vh;
-    object-fit: cover;
-
-}
-
-.form-section {
-
-    background-color: white;
-    width: 60vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.my-form {
-
-    width: 30vw;
-    margin: 1em;
-    display: flex;
-    flex-direction: column;
-
-
-}
-
 input {
 
     margin: 1em 0em;
@@ -160,21 +109,17 @@ input[type=file] {
     display:none;
 }
 
-.select-img-btn {
+textarea {
 
-    padding: .5em 1em;
-    border: 2px solid #007777;
-    background-color: #007777;
-    color: white;
-    cursor: pointer;
-    transition: all .4s ease-in-out;
+    border: none;
+    border-bottom: 1px solid #007777;
+    resize: none;
 
 }
 
-.select-img-btn:hover {
+textarea:focus{
 
-    background-color: transparent;
-    color: #007777;
+    outline-style: none;
 
 }
 
@@ -228,113 +173,147 @@ select:focus {
 
 }
 
-.my-form-btn {
+/*
 
-    margin: 2em 0em;
-    background-color: #007777;
-    border: 2px solid #007777;
-    padding: 1em;
-    color: white;
-    font-weight: 700;
-    cursor: pointer;
+    Floating Action Button
+
+*/
+
+.fab-group {
+
+    position: absolute;
+    z-index: 1000;
+    bottom: 50px;
+    right: 50px;
+
 
 }
 
-.my-form-btn:hover {
+.fab {
 
-    background: white;
+    background-color: #007777;
+    margin: 1em 0em;
+    padding: .5em;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #f4f4f4;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+.fab:hover {
+
+    text-decoration: none;
+    animation: btn-shake 1s infinite ease-in-out;
+
+}
+
+/*
+
+    Button
+
+*/
+
+.btn-group {
+
+    position: absolute;
+    width: 90%;
+    bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.btn {
+
+    width: 100%;
+    padding: .8em 1em;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 5px;
+
+}
+
+.btn:hover {
+
+    filter: brightness(.9);
+
+}
+
+.btn-group .btn {
+
+    width: 40%;
+
+}
+
+.edit-btn {
+
+    color: #007777;
+    background: #efefef;
+
+}
+
+
+.del-btn {
+
+    background: red;
+    color: white;
+
+}
+
+.buy-btn {
+
+    width: fit-content;
     color: #007777;
 
 }
 
-.step-link-container {
+/*
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: fit-content;
-    position: relative;
+    Animation
 
+*/
+
+@keyframes btn-shake {
+    0% {transform: rotate(0deg);}
+    30% {transform: rotate(5deg);}
+    80% {transform: rotate(-5deg);}
+    100% {transform: rotate(0deg);}
 }
 
-#next-btn {
+/*
 
-    position: absolute;
-    right: 0;
+    Color Display
 
-}
+*/
 
-#prev-btn {
+.color {
 
-    position: absolute;
-    left: 0;
-
-}
-
-.profile-img-container {
-
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    margin: 3em 0em;
-   
-}
-
-.profile-img-border {
-
-    width: 100px;
-    height: 100px;
-    padding: 10px;
-    border: 1px solid #007777;
+    margin: 6px 0em;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
     cursor: pointer;
-    overflow: hidden;
+    border: white solid 3px; 
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .2);
+    font-size: 0px;
+    color: transparent;
 
 }
 
-.reg-profile {
+.color-size-active {
 
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-
-}
-
-.reg-profile:hover {
-
-    opacity: .8;
-
-}
-
-#login-form {
-
-    display: block;
-    opacity: 1;
-
-}
-
-#register-form {
-
-    display: none;
-    margin-left: -50px;
-    opacity: 0;
-
-}
-
-#register-form-1, #register-form-2, #register-form-3 {
-
-    margin-left: -50px;
-    opacity: 0;
-
-}
-
-.error {
-
-    position: absolute;
-    margin: -15px 0em;
-    color: red;
-    font-size: 8px;
+    transform: scale(1.8);
+    font-weight: 700;
+    color: #007777;
 
 }

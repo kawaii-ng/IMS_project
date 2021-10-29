@@ -1,6 +1,9 @@
 
 <div id="top"></div>
-<a class="scroll-to-top" href="#top"><i class="fas fa-arrow-up"></i></a>
+
+<div class="fab-group">
+    <a class="fab" href="#top"><i class="fas fa-arrow-up"></i></a>
+</div>
 
 <div class="product-grid">
 

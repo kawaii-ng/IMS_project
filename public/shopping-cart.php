@@ -1,4 +1,4 @@
-<div class='shopping-cart-section'>
+<div class='main-section'>
 
     <?php
 
@@ -36,14 +36,14 @@
         
         <input type='hidden' name='cart-ID' id='cart-ID' value=''>
         
-        <div class='cart-bar'>
-        <h3>My Shopping Cart</h3>
-        <div>
-        <strong>Total: HK$" .  $totalPrice ."</strong> 
+        <div class='title-bar'>
+            <h3>My Shopping Cart</h3>
+            <div>
+                <strong>Total: HK$" .  $totalPrice ."</strong> 
                 <button class='btn buy-btn'>Buy all</button>
-                </div>
+             </div>
         </div>
-        <div class='cart'>";
+        <div class='content'>";
         
         while($order = mysqli_fetch_assoc($orderQ)){
             

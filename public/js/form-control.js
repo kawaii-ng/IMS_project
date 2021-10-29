@@ -1,6 +1,7 @@
 $('document').ready(function() {
 
     var step = 1;
+    var progress = 33.33;
     var showAnimation = {
 
         'opacity': '1',
@@ -211,6 +212,8 @@ $('document').ready(function() {
 
         //if(step !== 3 && checkValid())
             step++;
+            progress += 33.33
+            $('.progress').css('width', progress + "%")
 
         if(step == 2){
 
@@ -228,6 +231,7 @@ $('document').ready(function() {
                 }, 500)
     
             })
+
 
         }
         
@@ -254,12 +258,18 @@ $('document').ready(function() {
 
         }
 
+
     })
     
     $('#prev-btn').click(function() {
 
-        if(step > 1)
-            step--;
+        if(step > 1){
+
+            step--
+            progress -= 33.33
+            $('.progress').css('width', progress + "%")
+
+        }
 
         if(step == 1){
 

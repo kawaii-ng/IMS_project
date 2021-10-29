@@ -20,13 +20,15 @@
     
     <!-- css style sheet -->
     <link rel="stylesheet" href="../public/css/index.css">
-    <link rel="stylesheet" href="../public/css/login.css">
-    <link rel="stylesheet" href="../public/css/customer-page.css">
+    <link rel="stylesheet" href="../public/css/login-page.css">
+    <link rel="stylesheet" href="../public/css/navbar.css">
+    <link rel="stylesheet" href="../public/css/dashboard-page.css">
     <link rel="stylesheet" href="../public/css/products.css">
     <link rel="stylesheet" href="../public/css/product-detail.css">
     <link rel="stylesheet" href="../public/css/shopping-cart.css">
     <link rel="stylesheet" href="../public/css/remove-modal.css">
     <link rel="stylesheet" href="../public/css/profile.css">
+    <link rel="stylesheet" href="../public/css/stock-checking.css">
 </head>
 <body>
 
