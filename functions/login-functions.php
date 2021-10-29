@@ -71,7 +71,7 @@ function loginAC($userID, $userPW) {
 
 // login
 
-if($_POST['submitType'] == "Login"){
+if(isset($_POST['submitType']) && $_POST['submitType'] == "Login"){
 
     $userID = $_POST['userID'];
     $userPW = $_POST['userPW'];
@@ -82,7 +82,7 @@ if($_POST['submitType'] == "Login"){
 
 // register
 
-if($_POST['submitType'] == 'Register'){
+if(isset($_POST['submitType']) && $_POST['submitType'] == 'Register'){
 
     $userID = $_POST['regUserID'];
     $userPW = $_POST['regUserPW'];

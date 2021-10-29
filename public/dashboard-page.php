@@ -2,11 +2,10 @@
 
     include_once("./header.php");
     include_once("../functions/login-functions.php");
-    session_start();
 
 ?>
 
-<div class="container flex-column">
+<div class="dashboard">
 
 <?php
 
@@ -14,7 +13,7 @@
 
 ?>
     
-    <div class="container">
+    <div class="dashboard-content">
         <?php 
         
             if($_SESSION['role'] == "user"){
@@ -31,7 +30,7 @@
                         break;
                     
                     case "profile":
-                        include_once('./profile.php');
+                        // include_once('./profile.php');
                         break;
 
                     default:

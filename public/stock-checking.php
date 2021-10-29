@@ -1,6 +1,6 @@
-<div class="shopping-cart-section">
+<div id="top"></div>
+<div class="content">
         
-    <div id="top"></div>
 
     <div class="fab-group">
         <div class='fab'>
@@ -12,7 +12,7 @@
         </a>
     </div>
 
-    <div class="cart-bar">
+    <div class="title-bar">
         <h3>Stock</h3>
         <div>
             <button onclick="location.href='/project/public/dashboard-page.php?page=stock_checking&table=category'"
@@ -50,7 +50,7 @@
     if($_GET['table'] == 'category'){
 
         echo "
-        <div class='cart'>
+        <div class=''>
         <table class='stock-table'>
             <tr>
                 <th></th>

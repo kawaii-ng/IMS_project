@@ -1,4 +1,4 @@
-<div class='main-section'>
+<div class='content'>
 
     <?php
 
@@ -29,21 +29,17 @@
 
         $hasOrder = false;
 
-        $totalPrice = $total['price']? $total['price']: 0;
+        $_SESSION['totalPrice'] = $total['price']? $total['price']: 0;
         
         echo "
         <form method='post' name='cartForm' action='/project/functions/customer-functions.php?op=remove_cart'>
         
-        <input type='hidden' name='cart-ID' id='cart-ID' value=''>
+        <input type='hidden' name='cart-ID' id='cart-ID' value=''>";
+
+        include_once('./titlebar.php');
         
-        <div class='title-bar'>
-            <h3>My Shopping Cart</h3>
-            <div>
-                <strong>Total: HK$" .  $totalPrice ."</strong> 
-                <button class='btn buy-btn'>Buy all</button>
-             </div>
-        </div>
-        <div class='content'>";
+        echo "<div class='content'>
+        <div>";
         
         while($order = mysqli_fetch_assoc($orderQ)){
             
@@ -110,6 +106,8 @@
         }
     
     ?>
+
+    </div>
 
     </div>
 
