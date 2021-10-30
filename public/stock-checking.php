@@ -12,21 +12,11 @@
         </a>
     </div>
 
-    <div class="title-bar">
-        <h3>Stock</h3>
-        <div>
-            <button onclick="location.href='/project/public/dashboard-page.php?page=stock_checking&table=category'"
-                class="btn buy-btn">
-                Category
-            </button>
-            <button onclick="location.href='/project/public/dashboard-page.php?page=stock_checking&table=inventory'"
-                class='btn buy-btn'>
-                Inventory
-            </button>
-        </div>
-    </div>
+    
 
 <?php
+
+    include_once('./title-bar.php');
 
     $stockSQL = "
 
@@ -51,7 +41,7 @@
 
         echo "
         <div class=''>
-        <table class='stock-table'>
+        <table class='my-table'>
             <tr>
                 <th></th>
                 <th>Product</th>
@@ -68,7 +58,7 @@
 
         echo "
         <div class='cart'>
-        <table class='stock-table'>
+        <table class='my-table'>
             <tr>
                 <th></th>
                 <th>Product</th>

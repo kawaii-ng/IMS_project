@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="../public/css/index.css">
     <link rel="stylesheet" href="../public/css/login-page.css">
     <link rel="stylesheet" href="../public/css/navbar.css">
-    <link rel="stylesheet" href="../public/css/titlebar.css">
+    <link rel="stylesheet" href="../public/css/title-bar.css">
     <link rel="stylesheet" href="../public/css/dashboard-page.css">
     <link rel="stylesheet" href="../public/css/products.css">
     <link rel="stylesheet" href="../public/css/product-detail.css">
@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="../public/css/remove-modal.css">
     <link rel="stylesheet" href="../public/css/profile.css">
     <link rel="stylesheet" href="../public/css/stock-checking.css">
+    <link rel="stylesheet" href="../public/css/order-page.css">
 </head>
 <body>
 

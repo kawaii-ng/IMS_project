@@ -4,6 +4,12 @@
 <div class="fab-group">
     <a class="fab" href="#top"><i class="fas fa-arrow-up"></i></a>
 </div>
+<div class="content">
+<?php
+
+    include_once('./title-bar.php');
+
+?>
 
 <div class="product-grid">
 
@@ -35,5 +41,5 @@
       
 
 </div>
-
+</div>
 

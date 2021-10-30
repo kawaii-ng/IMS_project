@@ -36,10 +36,10 @@
         
         <input type='hidden' name='cart-ID' id='cart-ID' value=''>";
 
-        include_once('./titlebar.php');
+        include_once('./title-bar.php');
         
         echo "<div class='content'>
-        <div>";
+        <div class='order-grid'>";
         
         while($order = mysqli_fetch_assoc($orderQ)){
             

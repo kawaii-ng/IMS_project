@@ -20,6 +20,7 @@ Hex	RGB
 ::-webkit-scrollbar {
 
     width: 5px;
+    height: 0px;
 
 }
 
@@ -55,6 +56,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
 
     color: #007777;
+    margin: .3em 0em;
     
 }
 
@@ -67,9 +69,13 @@ h5 span {
 
 input {
 
-    margin: 1em 0em;
+    margin: .5em 0em;
+    padding: .5em 0em;
+    padding-left: .3em;
     border: none;
-    border-bottom: 1px solid #007777;
+    /* border-bottom: 1px solid #007777; */
+    border: 1px solid #007777;
+    border-radius: 5px;
     font-size: 16px;
     width: 100%;
 
@@ -151,9 +157,12 @@ a:hover {
 
 select {
 
-    margin: 1em 0em;
+    margin: .5em 0em;
+    padding: .8em .3em;
     border: none;
-    border-bottom:#007777 1px solid;
+    /* border-bottom:#007777 1px solid; */
+    border:#007777 1px solid;
+    border-radius: 5px;
     width: 100%;
 
 }
@@ -273,7 +282,8 @@ select:focus {
 .buy-btn {
 
     width: fit-content;
-    color: #007777;
+    color: white;
+    background-color: #007777;
 
 }
 

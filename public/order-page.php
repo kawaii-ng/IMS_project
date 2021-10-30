@@ -1,4 +1,4 @@
-<div class="shopping-cart-section">
+<div class="content">
         
     <div id="top"></div>
 
@@ -8,23 +8,13 @@
         </a>
     </div>
 
-    <div class='cart-bar'>
-        <h3>Order</h3>
-        <div class='search-container'>
-            <form action="/project/public/dashboard-page.php" method="get">
-                <label for="">User ID: </label>
-                <input type="hidden" name='page' value='order'>
-                <input type="text" name='search_id'>
-                <input type="submit" value="Search">
-            </form>
-            <form action="/project/public/dashboard-page.php" method="get">
-                <input type="hidden" name='page' value='order'>
-                <input type="submit" name='asc_order' value="Ascending">
-            </form>
-        </div>
-    </div>
+    <?php 
+    
+        include_once('./title-bar.php');
+    
+    ?>
 
-    <div class='cart'>
+    <div class='content'>
 
     <?php
     
@@ -36,7 +26,7 @@
             
                 SELECT * FROM `cart`, `user`
                 WHERE cart.userID = user.userID
-                AND userID = '".$_GET['search_id']."'
+                AND user.userID = '".$_GET['search_id']."'
             
             ";
     
@@ -68,12 +58,13 @@
             ";
 
             $orderQ = mysqli_query($connect, $orderSQL);
+            
 
         }
 
 ?>
 
-        <table class='stock-table'>
+        <table class='my-table'>
 
             <tr>
                 <th>Cart ID</th>

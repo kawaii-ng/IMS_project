@@ -1,3 +1,13 @@
+<?php
+
+    function isActive($thisPage) {
+
+        return  $_GET['page'] == $thisPage? "menu-btn-active":"";
+
+    }
+
+?>
+
 <div class="navbar">
     <div class="logo">
         <h3>
@@ -6,24 +16,31 @@
         </h3>
     </div>
     <div class="menu">
-        <a href="<?php if ($_SESSION['role'] == 'user')
+        <?php 
+            echo "<a class='menu-btn ". isActive('profile')  ."' href='";
+                     if ($_SESSION['role'] == 'user')
                             echo "/project/public/dashboard-page.php?page=profile";
                         else 
-                            echo "#";?>">
-        <p>Hi, 
+                            echo "#";
+
+                    echo "'>";
+            ?>
+            <i class="fas fa-user"></i>
+            <span>
             <?php 
                 if(isset($_SESSION['userID'])) 
                     echo $_SESSION['userID']; 
-            ?>! 
-        </p></a>
+            ?>
+            </span>
+        </a>
         
         <?php 
 
             if($_SESSION['role'] == "user"){
 
                 echo "
-                    <a class='menu-btn' href='/project/public/dashboard-page.php?page=products'>
-                        <i class='fas fa-tshirt'></i></i> Tops
+                    <a class='menu-btn ". isActive('products') ."' href='/project/public/dashboard-page.php?page=products'>
+                        <i class='fas fa-tshirt'></i></i><span> Tops</span>
                     </a>";
 
                 $orderNumSQL = "
@@ -42,21 +59,24 @@
 
                     if($orderNum['num'] > 0){
 
-                        echo "active-cart";
+                        echo "active-cart ";
 
                     }
 
-                    echo"' href='/project/public/dashboard-page.php?page=shopping_cart'>
-                        <i class='fas fa-shopping-cart'></i>Cart ";
+                    echo isActive('shopping_cart');
+
+                    echo "' href='/project/public/dashboard-page.php?page=shopping_cart' >
+                        <i class='fas fa-shopping-cart'></i>
+                        <span>Cart <span>";
 
 
-                    echo "(" . $orderNum['num'] . ")";
+                    echo "<span>" . $orderNum['num'] . "</span>";
 
                 }else {
                     
                     echo "
-                    <a class='menu-btn' href='/project/public/dashboard-page.php?page=shopping_cart'>
-                        <i class='fas fa-shopping-cart'></i>Cart (0)
+                    <a class='menu-btn ". isActive("shopping_cart") ."' href='/project/public/dashboard-page.php?page=shopping_cart'>
+                        <i class='fas fa-shopping-cart'></i><span>Cart <span>0</span></span>
                     </a>";
 
                 }          
@@ -64,14 +84,15 @@
             }else if($_SESSION['role'] == 'admin'){
 
                 echo "
-                    <a class='menu-btn' href='/project/public/dashboard-page.php?page=stock_checking'>
-                        <i class='fas fa-box-open'></i>Stock
+                    <a class='menu-btn ". isActive("stock_checking") ."' href='/project/public/dashboard-page.php?page=stock_checking&table=inventory'
+                    >
+                        <i class='fas fa-box-open'></i><span>Stock</span>
                     </a>
-                    <a class='menu-btn' href='/project/public/dashboard-page.php?page=order'>
-                        <i class='fas fa-tasks'></i>Order
+                    <a class='menu-btn ". isActive("order") ."' href='/project/public/dashboard-page.php?page=order'>
+                        <i class='fas fa-tasks'></i><span>Order</span>
                     </a>
-                    <a class='menu-btn' href='/project/public/dashboard-page.php?page=statistic'>
-                        <i class='fas fa-chart-line'></i>Statistic
+                    <a class='menu-btn ". isActive("statisitic") ."' href='/project/public/dashboard-page.php?page=statistic'>
+                        <i class='fas fa-chart-line'></i><span>Statistic</span>
                     </a>
                 ";
 
@@ -80,7 +101,7 @@
         ?>
         
         <a class="menu-btn" href="/project/functions/login-functions.php?op=sign_out">
-            <i class="fas fa-sign-out-alt"></i>Logout
+            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
         </a>
     </div>
 </div>

@@ -1,0 +1,28 @@
+.search-container label {
+
+    width: fit-content;
+
+}
+
+.search-container input {
+
+    width: 100px;
+
+}
+
+.search-container label, .search-container input {
+
+    margin-right: 1em;
+    background: #f4f4f4;
+
+}
+
+.search-container, .search-container form{
+
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+

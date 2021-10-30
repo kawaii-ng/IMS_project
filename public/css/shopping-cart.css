@@ -11,6 +11,17 @@
     font-size: 16px;
     color: gray;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.order-grid {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
 }
 
@@ -67,6 +78,12 @@
     left: 0;
     right: 0;
 
+
+}
+
+.order-content table {
+
+    margin: 0;
 
 }
 

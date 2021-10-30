@@ -93,6 +93,8 @@
     margin: 2em 0em;
     background-color: #007777;
     border: 2px solid #007777;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .3);
     padding: 1em;
     color: white;
     font-weight: 700;
@@ -116,12 +118,14 @@
     height: fit-content;
     position: relative;
     margin-bottom: 1em;
+    margin-top: 1em;
 
 }
 
 #next-btn, #prev-btn {
 
     border: 1px solid #007777;
+    border-radius: 5px;
     padding: .5em;
     text-decoration: none;
 

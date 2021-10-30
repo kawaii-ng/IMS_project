@@ -25,13 +25,18 @@ function loginAC($userID, $userPW) {
             
             if($user['role'] == "admin"){
 
-                header("Location: /project/public/dashboard-page.php?page=stock_checking");
+                header("Location: /project/public/dashboard-page.php?page=stock_checking&table=inventory");
+                // $_SESSION['page'] = 'stock_check';
                 
             }else {
                 
                 header("Location: /project/public/dashboard-page.php?page=products");
-
+                // $_SESSION['page'] = 'products';
+                
             }
+            
+            // header("Location: /project/public/dashboard-page.php");
+            
         
         }else {
         
@@ -40,14 +45,18 @@ function loginAC($userID, $userPW) {
                 // valid user
                 if($user['role'] == "admin"){
 
-                    header("Location: /project/public/dashboard-page.php?page=stock_checking");
+                    header("Location: /project/public/dashboard-page.php?page=stock_checking&table=inventory");
+                    // $_SESSION['page'] = 'stock_check';
                     
                 }else {
                     
                     header("Location: /project/public/dashboard-page.php?page=products");
-    
+                    // $_SESSION['page'] = 'products';
+                    
                 }
-
+                
+                // header("Location: /project/public/dashboard-page.php");
+                
             }else {
         
                 // invalid user

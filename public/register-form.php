@@ -6,16 +6,6 @@
     </div>
     <h1>Register</h1>
     
-    
-    <div class="step-link-container">
-        <a class="step-btn" id='prev-btn'>
-            <i class="fas fa-long-arrow-alt-left"></i> Previous
-        </a>
-        <a class="step-btn" id='next-btn'>
-            Next <i class="fas fa-long-arrow-alt-right"></i>
-        </a>
-    </div>
-    
     <!-- step 1 -->
     <div id="register-form-1">
         
@@ -107,6 +97,16 @@
             <label for="profile-path" class="select-img-btn" id="profile-btn">Select Image</label>
             <input type='file' name="regProfileImg" id="profile-path">
         </div>
+    </div>
+
+     
+    <div class="step-link-container">
+        <a class="step-btn" id='prev-btn'>
+            <i class="fas fa-long-arrow-alt-left"></i> Previous
+        </a>
+        <a class="step-btn" id='next-btn'>
+            Next <i class="fas fa-long-arrow-alt-right"></i>
+        </a>
     </div>
 
 </div>
