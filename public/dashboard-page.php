@@ -30,7 +30,7 @@
                         break;
                     
                     case "profile":
-                        // include_once('./profile.php');
+                        include_once('./profile.php');
                         break;
 
                     default:

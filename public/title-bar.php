@@ -3,6 +3,10 @@
 
         switch ($_GET['page']){
 
+            case 'profile':
+                echo "<h3>Profile</h3>";
+                break;
+
             case 'products':
                 echo "
                     <h3>Tops</h3>

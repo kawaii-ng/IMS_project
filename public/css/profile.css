@@ -49,7 +49,7 @@
 
 }
 
-#profile-img-label {
+#new-profile-label {
 
     position: absolute;
     cursor: pointer;
@@ -57,10 +57,11 @@
     height: 350px;
     transition: all .4s ease-in-out;
     overflow: hidden;
+    margin-top: 2em;
 
 }
 
-#profile-img-label::after {
+#new-profile-label::after {
 
     content: '';
     position: absolute;
@@ -76,17 +77,28 @@
 
 }
 
-#profile-img-label:hover #profile-img {
+#new-profile-label:hover #profile-img {
 
     transform: scale(1.2);
     transition: all .4s ease-in-out;
 
 }
 
-#profile-img-label:hover::after {
+#new-profile-label:hover::after {
 
     content: 'Upload';
     background-color: rgba(0, 0, 0, 0.5);
 
 }
 
+#new-profile-error {
+
+    opacity: 0;
+    line-height: 50px;
+}
+
+#new-pw-error {
+
+    opacity: 0;
+    line-height: 50px;
+}

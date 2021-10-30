@@ -3,6 +3,89 @@
     session_start();
     include_once('../config/db-connection.php');
 
+    if($_GET['op'] == 'update_profile'){
+
+        $newImgName = $_FILES['newProfileImg']['name'];
+        $imgTMP = $_FILES['newProfileImg']['tmp_name'];
+        $imgEX = strtolower(pathinfo($newImgName, PATHINFO_EXTENSION));
+        $imgPath = "../uploads/profile/" . $newImgName;
+        
+        if(!$imgName){
+
+            $imgPath = "\'\'";
+
+        }
+
+        move_uploaded_file($imgTMP, $imgPath);
+
+        if($_POST['nickName'] != ""){
+
+            $updateNameSQL = "
+    
+                UPDATE `user` SET userName = '".$_POST['nickName']."'
+                WHERE userID = ".$_POST['userID']."
+            
+            ";
+
+            $updateNameQ = mysqli_query($connect, $updateNameSQL);
+
+        }
+        
+        if($imgPath != "\'\'"){
+
+            $imgPathSQL = "
+    
+                UPDATE `user` SET icon = '".$imgPath."'
+                WHERE userID = ".$_POST['userID']."
+            
+            ";
+
+            $imgPathQ = mysqli_query($connect, $imgPathSQL);
+
+        }
+
+        if($_POST['email'] != ''){
+
+            $newEmailSQL = "
+    
+                UPDATE `user` SET email = '".$_POST['email']."'
+                WHERE userID = ".$_POST['userID']."
+            
+            ";
+
+            $newEmailQ = mysqli_query($connect, $newEmailSQL);
+
+
+        }
+
+        if($_POST['password'] != ""){
+
+            $newPwSQL = "
+    
+                UPDATE `user` SET password = '".$_POST['password']."'
+                WHERE userID = ".$_POST['userID']."
+            
+            ";
+
+            $newPwQ = mysqli_query($connect, $newPwSQL);
+
+        }
+
+
+        $newGenderSQL = "
+
+            UPDATE `user` SET gender = '".$_POST['gender']."'
+            WHERE userID = ".$_POST['userID']."
+        
+        ";
+
+        $newGenderQ = mysqli_query($connect, $newGenderSQL);
+
+        header("Location: /project/public/dashboard-page.php?page=profile");
+
+    }
+
+
     if($_GET['op'] == 'add_to_cart'){
 
         $stockSQL = "

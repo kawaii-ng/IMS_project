@@ -342,6 +342,49 @@ $('document').ready(function() {
         })
 
     })
+   
+    $('#new-profile-label').click((e)=>{
+
+        $('#new-profile-path').change((e)=>{
+            
+            var file = e.target.files[0];
+            var path = URL.createObjectURL(file);
+            // var defaultPath = "../public/images/icon-add-128.png"
+            var re = /.png|.jpg|.jpeg/i;
+            if(file.name.search(re) !== -1){
+                
+                $('#new-profile-error').css('opacity', '0');
+                $('#profile-img').attr('src', path);
+
+            }else {
+
+                console.log('error')
+                e.value = '';
+                $('#profile-img').attr('src', '');
+                $('#new-profile-error').css('opacity', '1');
+                // errorDisplay('#profile-path', 'Image', 'notValid');
+
+            }
+
+        })
+
+    })
+
+    $('#update-profile-btn').click(function () {
+
+        $('#new-profile-error').css('opacity', '0');
+
+        if($('#new-pw').val() != $('#new-confirm-pw').val() || ($('#new-pw').val().length < 8 && $('#new-pw').val().length > 1)){
+
+            $('#new-pw-error').css('opacity', '1');
+
+        }else {
+
+            profileForm.submit();
+
+        }
+
+    })
 
 
 })
