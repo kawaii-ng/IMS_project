@@ -4,13 +4,13 @@
     include_once('../config/db-connection.php');
 
     if($_GET['op'] == 'update_profile'){
-
+    
         $newImgName = $_FILES['newProfileImg']['name'];
         $imgTMP = $_FILES['newProfileImg']['tmp_name'];
         $imgEX = strtolower(pathinfo($newImgName, PATHINFO_EXTENSION));
         $imgPath = "../uploads/profile/" . $newImgName;
         
-        if(!$imgName){
+        if(!$newImgName){
 
             $imgPath = "\'\'";
 
@@ -23,7 +23,7 @@
             $updateNameSQL = "
     
                 UPDATE `user` SET userName = '".$_POST['nickName']."'
-                WHERE userID = ".$_POST['userID']."
+                WHERE userID = '".$_POST['userID']."'
             
             ";
 
@@ -36,7 +36,7 @@
             $imgPathSQL = "
     
                 UPDATE `user` SET icon = '".$imgPath."'
-                WHERE userID = ".$_POST['userID']."
+                WHERE userID = '".$_POST['userID']."'
             
             ";
 
@@ -49,7 +49,7 @@
             $newEmailSQL = "
     
                 UPDATE `user` SET email = '".$_POST['email']."'
-                WHERE userID = ".$_POST['userID']."
+                WHERE userID = '".$_POST['userID']."'
             
             ";
 
@@ -63,7 +63,7 @@
             $newPwSQL = "
     
                 UPDATE `user` SET password = '".$_POST['password']."'
-                WHERE userID = ".$_POST['userID']."
+                WHERE userID = '".$_POST['userID']."'
             
             ";
 
@@ -75,7 +75,7 @@
         $newGenderSQL = "
 
             UPDATE `user` SET gender = '".$_POST['gender']."'
-            WHERE userID = ".$_POST['userID']."
+            WHERE userID = '".$_POST['userID']."'
         
         ";
 
@@ -145,7 +145,7 @@
 
     }
 
-    if($_GET['op'] == 'remove_cart'){
+    if($_POST['op'] == 'remove_cart'){
 
         $cartSQL = "
         

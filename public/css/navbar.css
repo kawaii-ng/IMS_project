@@ -107,6 +107,26 @@
 
 }
 
+.profile-btn {
+
+    border-radius: 50px;
+    color:rgba(0, 119, 119, 1);
+
+}
+
+.profile-btn:hover {
+
+    box-shadow: 0px 0px 10px rgba(0, 119, 119, .50);
+
+}
+
+.admin-profile-btn:hover{
+
+    box-shadow: none;
+    text-decoration: none;    
+
+}
+
 .active-cart {
 
     font-weight: 700;

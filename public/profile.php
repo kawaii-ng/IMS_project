@@ -16,7 +16,7 @@ $user = mysqli_fetch_assoc(mysqli_query($connect, $userSQL));
 <div class="profile-section">
 
     
-    <form action="/project/functions/customer-functions.php?op=update_profile" method="post" class='profile-form' name='profileForm'>
+    <form action="/project/functions/customer-functions.php?op=update_profile" method="post" class='profile-form' name='profileForm' enctype="multipart/form-data">
         
         <div>
             <h6>User ID: <?php echo $user['userID'];?></h6>
@@ -33,7 +33,7 @@ $user = mysqli_fetch_assoc(mysqli_query($connect, $userSQL));
                         echo "https://avatars.dicebear.com/api/initials/".$user['userName'].".svg";
                     }?>" alt="" id="profile-img">
             </label>
-            <input type="file" name='newProfileImg' id='new-profile-path'>
+            <input type='file' name='newProfileImg' id='new-profile-path' />
 
         </div>
 

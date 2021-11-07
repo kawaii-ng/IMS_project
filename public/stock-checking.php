@@ -1,9 +1,8 @@
 <div id="top"></div>
 <div class="content">
-        
-
+    
     <div class="fab-group">
-        <div class='fab'>
+        <div class='fab' id='add-product-btn'>
             <i class='fas fa-plus-square'></i>
         </div>
         
@@ -12,7 +11,7 @@
         </a>
     </div>
 
-    
+    <div class='edit-modal'></div>
 
 <?php
 
@@ -102,22 +101,9 @@
                     <td>
                         <img src='".$stock['productImage']."' alt=''>
                     </td>
-                    <td><textarea>".$stock['productName']."</textarea></td>
-                    <td>
-                        <select>
-                            <option value='".$stock['productGender']."'>".$stock['productGender']."</option>
-                            ";
-                            if($stock['productGender']!="Men")
-                                echo "<option value='Men'>Men</option>";
-                            if($stock['productGender']!="Women")
-                                echo "<option value='Women'>Women</option>";
-                            if($stock['productGender']!="Unisex")
-                                echo "<option value='Unisex'>Unisex</option>";
-
-                    echo "
-                    </select>    
-                    </td>
-                    <td>HK$<input type='number' value='".$stock['productPrice']."'/>
+                    <td>".$stock['productName']."</td>
+                    <td>".$stock['productGender']."</td>
+                    <td>HK$".$stock['productPrice']."</td>
                     <td>";
                     
                         while($color = mysqli_fetch_assoc($colorQ)){
@@ -139,10 +125,10 @@
                     echo"
                     </td>
                     <td>
-                        <button class='btn edit-btn'>Edit</button>
+                        <button class='btn edit-btn open-edit-btn' id='open-edit-model-".$stock['productID']."'>Edit</button>
                     </td>
                     <td>
-                        <button class='btn del-btn'>Delete</button>
+                        <button class='btn del-btn delete-product-btn' id='delete-product-".$stock['productID']."'>Delete</button>
                     </td>
                 </tr>
             

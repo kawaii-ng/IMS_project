@@ -118,8 +118,11 @@ input[type=file] {
 textarea {
 
     border: none;
-    border-bottom: 1px solid #007777;
+    border: 1px solid #007777;
+    border-radius: 5px;
     resize: none;
+    width: 100%;
+    height: 100px;
 
 }
 

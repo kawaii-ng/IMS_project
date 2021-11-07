@@ -3,7 +3,8 @@
 <script src="./js/form-control.js"></script>
 <script src='./js/customer-page.js'></script>
 <script src='./js/cart-page.js'></script>
-<script src='./js/stock-qty.js'></script>
+<script src='./js/stock.js'></script>
+<script src='./js/stock-form.js'></script>
 <script src='./js/navbar.js'></script>
 
 </body>

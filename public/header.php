@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="../public/css/profile.css">
     <link rel="stylesheet" href="../public/css/stock-checking.css">
     <link rel="stylesheet" href="../public/css/order-page.css">
+    <link rel="stylesheet" href="../public/css/edit-modal.css">
 </head>
 <body>
 

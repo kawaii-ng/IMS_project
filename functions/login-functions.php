@@ -95,13 +95,14 @@ if(isset($_POST['submitType']) && $_POST['submitType'] == 'Register'){
 
     $userID = $_POST['regUserID'];
     $userPW = $_POST['regUserPW'];
-
+    
     $userSQL = "select * from user
     where userID ='" . $userID . "'";
     $userQuery = mysqli_query($connect, $userSQL);
     $user = mysqli_fetch_assoc($userQuery);
 
     if($user == null){
+
 
         $imgName = $_FILES['regProfileImg']['name'];
         $imgTMP = $_FILES['regProfileImg']['tmp_name'];

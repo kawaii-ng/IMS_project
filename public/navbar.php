@@ -17,7 +17,12 @@
     </div>
     <div class="menu">
         <?php 
-            echo "<a class='menu-btn ". isActive('profile')  ."' href='";
+            echo "<a class='menu-btn profile-btn ";
+            echo isActive('profile');
+                    if ($_SESSION['role'] == 'admin')
+                        echo " admin-profile-btn";
+                    
+                    echo "' href='";
                      if ($_SESSION['role'] == 'user')
                             echo "/project/public/dashboard-page.php?page=profile";
                         else 
