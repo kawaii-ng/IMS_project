@@ -35,7 +35,7 @@
                     <i class='close-btn far fa-window-close' id='product-close-" . $product['productID'] . "'></i>
                 
                     <form action='/project/functions/customer-functions.php?op=add_to_cart' name='purchaseForm' method='post' class='purchase-form'>
-                    <input type='hidden' name='productID' value='" . $product['productID'] . "'>
+                    <input type='hidden' name='productID' class='pID' value='" . $product['productID'] . "'>
                     <div class='purchase-section'>
                         <div>
                             <strong>
@@ -50,12 +50,14 @@
                                     <a class='count-btn count-add-btn'>
                                         <i class='fas fa-plus-square'></i>
                                     </a>
-                                    <input type='number' value='1' min='1' name='qty' class='count' onchange='this.value = this.value == 0? 1:Math.abs(this.value)'>
+                                    <input type='number' value='1' min='1' name='qty' class='count' disabled>
                                     <a class='count-btn count-minus-btn'>
                                         <i class='fas fa-minus-square'></i>
                                     </a>
                                 </div>
+                                
                                 <input id='product-btn-".$product['productID']."' class='my-form-btn' type='button' value='Add to Cart'></input>
+                                
                         </div>
                     </div>
                     

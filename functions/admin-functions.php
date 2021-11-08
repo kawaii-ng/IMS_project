@@ -7,7 +7,7 @@ function getSize($pid) {
 
     global $connect;
 
-    $allSize;
+    $allSize = array();
 
     $getSizeSQL = "
         select size from stock
@@ -25,10 +25,12 @@ function getSize($pid) {
 
     }
 
+    $counter = 0;
     while($size = mysqli_fetch_assoc($getSizeQ)){
         
-        $allSize[] = $size;
-    
+        $allSize[$counter] = $size;
+        $counter++;
+
     }
 
     return $allSize;
@@ -39,7 +41,7 @@ function getSize($pid) {
 function getColor($pid) {
 
     global $connect;
-    $allColor; 
+    $allColor = array(); 
 
     $getColorSQL = "
         select color.colorID, color.colorCode from stock, color
@@ -52,9 +54,12 @@ function getColor($pid) {
 
         echo "ok";
 
+        $counter = 0;
+
         while($color = mysqli_fetch_assoc($getColorQ)){
 
-            $allColor[] = $color;
+            $allColor[$counter] = $color;
+            $counter++;
     
         }
 
@@ -95,6 +100,8 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_qty'){
 
 if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
+    // get all data from html form first
+
     $newName = $_POST['newName'];
     $newDes = $_POST['newDes'];
     // new Type later
@@ -121,6 +128,10 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
     
     if($_POST['submitType'] == 'Update'){
 
+        // if user is updating 
+
+        // do update the product basic info first
+
         $updateSQL = "
         
             UPDATE `product` 
@@ -143,37 +154,50 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
         }
 
+        // then, get all the size and delete the stock record which are needed to remove
+
         $allSizeArr = getSize($pid);
+
+        echo "<br>allSizeArr:<br>";
+        var_dump($allSizeArr);
+        echo "<br>";
+        echo "sizeArr:<br>";
+        var_dump($sizeArr);
+        echo "<br>";
 
         for ($i = 0; $i < count($allSizeArr); $i++){
 
-            $index = array_search($allSizeArr[$i], $sizeArr);
+            $index = array_search($allSizeArr[$i]['size'], $sizeArr);
+            echo "$index<br>";
 
-            if($index != false){
+            if($index === false){
 
                 // delete
+
+                echo "delete" . $allSizeArr[$i]['size'] . "<br>";
+                
                 $deleteSQL = "
                 
                     DELETE FROM `stock` 
                     WHERE productID = '".$pid. "'
-                    AND size = '".$allSizeArr[$i]."'
+                    AND size = '".$allSizeArr[$i]['size']."'
                 
                 ";
-
+                
                 if(mysqli_query($connect, $deleteSQL)){
-
-                    echo"OK";
-
-
+                    
+                    echo "OK";
+                    
                 }else {
-
-                    echo"delelte size fail\n";
-
+                        
+                    echo "delelte size fail\n";
+                        
                 }
-
+                        
             }else{
-
-                // remove from array
+                        
+                //remove from array
+                echo "remove from list: " . $sizeArr[$index] . "<br>";
                 $sizeArr[$index] = "";
 
             }
@@ -182,10 +206,20 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
         $allColorArr = getColor($pid);
 
+        echo "<br>allColorArr:<br>";
+        var_dump($allColorArr);
+        echo "<br>";
+        echo "newColors:<br>";
+        var_dump($newColors);
+        echo "<br>";
+
         for($i = 0; $i < count($allColorArr); $i++){
 
             $index = array_search($allColorArr[$i]['colorCode'], $newColors);
-            if($index != false){
+            echo "index: $index<br>";
+
+            if($index === false){
+                
                 $deleteSQL = "
                 
                     DELETE FROM `stock` 
@@ -204,8 +238,11 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
                 }
 
+                echo "detete color: " . $allColorArr[$i]['colorCode'] . "<br>";
+
             }else{
 
+                echo "remove from list: " .  $newColors[$index] . "<br>";
                 $newColors[$index] = "";
 
             }
@@ -231,17 +268,24 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
                     echo 'add new color fail\n';
 
                 }
+
                 $newColorID = mysqli_insert_id($connect);
 
-                $allSizeArr = getSize($pid);
 
-                for($i = 0; $i < count($allSizeArr); $i++){
+                echo "add new color: ". $newColors[$i]. "<br>";
+                $allSizeArr = getSize($pid);
+                echo "into the size : <br>"; 
+                var_dump($allSizeArr);
+                echo "<br>";
+
+
+                for($j = 0; $j < count($allSizeArr); $j++){
 
                     $newColorSQL = "
                         INSERT INTO `stock`(
                             `stockID`, `productID`, `colorID`, `size`, `stockQuantity`
                         ) VALUES (
-                            NULL,'".$pid."','".$newColorID."','".$allSizeArr[$i]['size']."','0'
+                            NULL,'".$pid."','".$newColorID."','".$allSizeArr[$j]['size']."','0'
                         )
                     ";
 
@@ -255,25 +299,36 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
                     }
 
+                    echo $allSizeArr[$j]['size'];
+                    echo "add ".$newColors[$i]." into ". $allSizeArr[$j]['size'] . "<br>";
+
                 }
 
             }
 
         }
 
+        echo "sizeArr: <br>";
+        var_dump($sizeArr);
+        echo "<br>";
+
         for($i = 0; $i < count($sizeArr); $i++){
+
+            echo "$i : $sizeArr[$i]<br>";
 
             if($sizeArr[$i] != ""){
 
                $allColorArr = getColor($pid);
+               var_dump($allColorArr);
+               echo "<br>";
                
-               for($i = 0; $i < count($allColorArr); $i++){
+               for($j = 0; $j < count($allColorArr); $j++){
 
                     $newSizeSQL = "
                         INSERT INTO `stock`(
                             `stockID`, `productID`, `colorID`, `size`, `stockQuantity`
                         ) VALUES (
-                            NULL,'".$pid."','".$allColorArr[$i]['colorID']."','".$sizeArr[$i]."','0'
+                            NULL,'".$pid."','".$allColorArr[$j]['colorID']."','".$sizeArr[$i]."','0'
                         )
                     ";
 
@@ -286,6 +341,8 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
                         echo 'add new size fail\n';
 
                     }
+
+                    echo "add new size: " .$sizeArr[$i]. " to " .$allColorArr[$j]['colorCode'] . "<br>";
 
                }
 

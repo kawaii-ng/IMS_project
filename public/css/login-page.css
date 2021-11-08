@@ -109,6 +109,21 @@
 
 }
 
+.my-form-btn:disabled{
+
+    background: lightgrey;
+    border-color: lightgrey;
+
+}
+
+.my-form-btn:disabled:hover{
+
+    background: lightgrey;
+    border-color: lightgrey;
+    color: white;
+
+}
+
 .step-link-container {
 
     display: flex;
