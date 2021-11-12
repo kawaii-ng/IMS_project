@@ -12,6 +12,8 @@ function loginAC($userID, $userPW) {
     $userQuery = mysqli_query($connect, $userSQL);
     $user = mysqli_fetch_assoc($userQuery);
 
+    echo $userID; 
+
     if($userID == $user['userID'] && password_verify($userPW, $user['password'])){
 
         // setting cookie
@@ -36,7 +38,6 @@ function loginAC($userID, $userPW) {
             }
             
             // header("Location: /project/public/dashboard-page.php");
-            
         
         }else {
         
@@ -151,6 +152,33 @@ if(isset($_POST['submitType']) && $_POST['submitType'] == 'Register'){
 
         header("Location: /project/public/index.php?error=user_exist");
 
+    }
+
+}
+
+if(isset($_POST['submitType']) && $_POST['submitType'] == 'Reset'){
+
+    $userID = $_POST['resetUser'];
+    $userPW = $_POST['resetPW'];
+
+
+    $resetSQL = "
+        
+        UPDATE `permission` 
+        SET 
+        `password`='". password_hash($userPW, PASSWORD_BCRYPT) ."'
+        WHERE userID = '".$userID."'
+    
+    ";
+
+    if(mysqli_query($connect, $resetSQL)){
+
+        loginAC($userID, $userPW);
+    
+    }else {
+
+        header("Location: /project/public/index.php?error=reset_fail");
+        
     }
 
 }

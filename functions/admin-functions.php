@@ -175,7 +175,33 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
                 // delete
 
                 echo "delete" . $allSizeArr[$i]['size'] . "<br>";
-                
+
+                // updatae the status in cart table 
+                // if pending -> invalid
+                // if purchased -> refunding  
+                $cartSQL = "
+                    UPDATE cart, stock 
+                    SET cart.status = CASE
+                        WHEN cart.status = 'pending' THEN 'invalid'
+                        WHEN cart.status = 'purchased' THEN 'refunding'
+                        ELSE cart.status
+                        END
+                    WHERE cart.stockID = stock.stockID
+                    AND stock.productID = '".$pid."'
+                    AND size = '".$allSizeArr[$i]['size']."'                     
+                ";
+
+                if(mysqli_query($connect, $cartSQL)){
+
+                    echo "OK";
+
+                }else {
+
+                    echo "update SQL fail";
+
+                }
+
+                // delete the extra stock from the stock table
                 $deleteSQL = "
                 
                     DELETE FROM `stock` 
@@ -187,6 +213,7 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
                 if(mysqli_query($connect, $deleteSQL)){
                     
                     echo "OK";
+                    
                     
                 }else {
                         
@@ -219,6 +246,31 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
             echo "index: $index<br>";
 
             if($index === false){
+
+                // updatae the status in cart table 
+                // if pending -> invalid
+                // if purchased -> refunding  
+                $cartSQL = "
+                    UPDATE cart, stock 
+                    SET cart.status = CASE
+                        WHEN cart.status = 'pending' THEN 'invalid'
+                        WHEN cart.status = 'purchased' THEN 'refunding'
+                        ELSE cart.status
+                        END
+                    WHERE cart.stockID = stock.stockID
+                    AND stock.productID = '".$pid."'
+                    AND colorID = '".$allColorArr[$i]['colorID']."'                     
+                ";
+
+                if(mysqli_query($connect, $cartSQL)){
+
+                    echo "OK";
+
+                }else {
+
+                    echo "update SQL fail";
+
+                }
                 
                 $deleteSQL = "
                 
@@ -456,6 +508,30 @@ if(isset($_POST['op']) && $_POST['op'] == 'delete_product'){
     ";
 
     if(mysqli_query($connect, $deleteSQL)){
+
+        // updatae the status in cart table 
+        // if pending -> invalid
+        // if purchased -> refunding  
+        $cartSQL = "
+            UPDATE cart, stock 
+            SET cart.status = CASE
+                WHEN cart.status = 'pending' THEN 'invalid'
+                WHEN cart.status = 'purchased' THEN 'refunding'
+                ELSE cart.status
+                END
+            WHERE cart.stockID = stock.stockID
+            AND stock.productID = '".$pid."'                  
+        ";
+
+        if(mysqli_query($connect, $cartSQL)){
+
+            echo "OK";
+
+        }else {
+
+            echo "update SQL fail";
+
+        }
     
         header('Location: /project/public/dashboard-page.php?page=stock_checking&table=category&status=updated');
     

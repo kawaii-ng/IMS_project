@@ -6,7 +6,7 @@
         
         $orderSQL = "
         
-            SELECT * FROM `cart` , `stock`, `product`
+            SELECT * FROM `cart`, `stock`, `product`
             WHERE cart.userID = '".$_SESSION['userID']."' and cart.status = 'pending'
             and cart.stockID = stock.stockID
             and stock.productID = product.productID
@@ -17,10 +17,10 @@
         
         $totalSQL = "
         
-        SELECT sum(productPrice * quantity) as price FROM `cart` , `stock`, `product`
-        WHERE cart.userID = '".$_SESSION['userID']."' and cart.status = 'pending'
-        and cart.stockID = stock.stockID
-        and stock.productID = product.productID
+            SELECT sum(productPrice * quantity) as price FROM `cart` , `stock`, `product`
+            WHERE cart.userID = '".$_SESSION['userID']."' and cart.status = 'pending'
+            and cart.stockID = stock.stockID
+            and stock.productID = product.productID
         
         ";
         
@@ -42,13 +42,13 @@
         <div class='order-grid'>";
         
         while($order = mysqli_fetch_assoc($orderQ)){
-            
+
             $hasOrder = true;
             
             $colorSQL = "
             
-            select colorCode from color
-            where colorID = ".$order['colorID']."
+                select colorCode from color
+                where colorID = ".$order['colorID']."
             
             ";
             

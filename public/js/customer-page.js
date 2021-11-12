@@ -36,7 +36,6 @@ $('document').ready(function () {
 
     }
 
-
     for(let i = 0; i < idList.length; i++){
 
         var idName = idList[i].toString()

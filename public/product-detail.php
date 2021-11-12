@@ -50,7 +50,7 @@
                                     <a class='count-btn count-add-btn'>
                                         <i class='fas fa-plus-square'></i>
                                     </a>
-                                    <input type='number' value='1' min='1' name='qty' class='count' disabled>
+                                    <input type='number' value='1' min='1' name='productQty' class='count' readonly>
                                     <a class='count-btn count-minus-btn'>
                                         <i class='fas fa-minus-square'></i>
                                     </a>

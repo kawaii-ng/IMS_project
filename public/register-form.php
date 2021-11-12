@@ -41,7 +41,7 @@
                 </td>
             </tr>
         </table>
-        <a id="login-ac-btn"><p>Already have a account?</p></a>
+        <a class="login-ac-btn"><p>Already have a account?</p></a>
     </div>
     
     <!-- step 2 -->

@@ -2,6 +2,9 @@ $('document').ready(function() {
 
     var step = 1;
     var progress = 33.33;
+    var currentPage = "Login";
+    var isOK = true;
+
     var showAnimation = {
 
         'opacity': '1',
@@ -13,6 +16,14 @@ $('document').ready(function() {
 
         'opacity': '0',
         'marginLeft': '-50px'
+
+    }
+
+    const setIsOK = (isok) => {
+
+        console.log('running')
+        isOK = isok
+        console.log('isOK: ', isOK)
 
     }
 
@@ -147,7 +158,35 @@ $('document').ready(function() {
 
     $('#form-action-btn').click(function() {
 
-        if((step == 0 && checkValid()) || step !== 0){
+        var canReset = true;
+        
+        $('input').css('border-color', '#007777');
+        $('.error').remove();
+
+        if(currentPage == "Reset"){
+
+            if(step == 3){
+
+
+                if($('#reset-pw').val() != $('#confirm-reset-pw').val() && $('#reset-pw').val().length >= 8){
+
+                    errorDisplay('#confirm-reset-pw', 'Password', 'notMatch')
+                    canReset = false;
+
+                }
+
+                if($('#reset-pw').val().length < 8){
+
+                    errorDisplay('#reset-pw', 'Password should not less than 8.', 'custom')
+                    canReset = false;
+
+                }
+
+            }
+
+        }
+
+        if(((step == 0 && checkValid()) || step !== 0) && (currentPage == 'Login' || currentPage == "Register") || (currentPage == "Reset") && canReset){
 
             $('#form-action-btn').attr('type', 'submit');
             myForm.submit();
@@ -157,12 +196,16 @@ $('document').ready(function() {
             $('#form-action-btn').attr('type', 'button');
 
         }
-        
-
+    
     })
 
-    $('#create-ac-btn').click(function() {
-    
+    $('#forgot-pw-btn').click(function() {
+
+        currentPage = "Reset";
+
+        $('input').css('border-color', '#007777');
+        $('.error').remove();
+
         $('#form-action-btn').animate(hideAnimation, 100, () => {
 
             setTimeout(()=>{$('#form-action-btn').hide()}, 500)
@@ -172,13 +215,41 @@ $('document').ready(function() {
         $('#login-form').animate(hideAnimation, 100, () => { 
             setTimeout(()=>{
                 $('#login-form').css('display', 'none')
+                $('#reset-form').css('display', 'block')
+                $('#reset-form').animate(showAnimation, 100)
+                $('#reset-form-1').css('display', 'block');
+                $('#reset-form-1').animate(showAnimation, 100);
+                $('#reset-form-2').css('display', 'none');
+                $('#reset-form-3').css('display', 'none');
+                $('.prev-btn').hide();
+            }, 500)
+        });
+
+        step = 1;
+
+    })
+
+    $('#create-ac-btn').click(function() {
+
+        currentPage = "Register";
+    
+        $('#form-action-btn').animate(hideAnimation, 100, () => {
+
+            setTimeout(()=>{$('#form-action-btn').hide()}, 500)
+
+        })
+        
+        $('#login-form').animate(hideAnimation, 100, () => { 
+            
+            setTimeout(()=>{
+                $('#login-form').css('display', 'none')
                 $('#register-form').css('display', 'block')
                 $('#register-form').animate(showAnimation, 100);
                 $('#register-form-1').css('display', 'block');
                 $('#register-form-1').animate(showAnimation, 100);
                 $('#register-form-2').css('display', 'none');
                 $('#register-form-3').css('display', 'none');
-                $('#prev-btn').hide();
+                $('.prev-btn').hide();
             }, 500)
         });
 
@@ -186,19 +257,40 @@ $('document').ready(function() {
   
     })
     
-    $('#login-ac-btn').click(function() {
+    $('.login-ac-btn').click(function() {
         
-        $('#register-form').animate(hideAnimation, 100, () => {
+        if(currentPage == 'Register'){
 
-            setTimeout(()=>{
+            $('#register-form').animate(hideAnimation, 100, () => {
+    
+                setTimeout(()=>{
+    
+                    $('#register-form').css('display', 'none');
+                    $('#login-form').css('display', 'block');
+                    $('#login-form').animate(showAnimation, 100);
+    
+                }, 500)
+    
+            })
 
-                $('#register-form').css('display', 'none');
-                $('#login-form').css('display', 'block');
-                $('#login-form').animate(showAnimation, 100);
+        }
 
-            }, 500)
+        if(currentPage == "Reset"){
 
-        })
+            $('#reset-form').animate(hideAnimation, 100, () => {
+    
+                setTimeout(()=>{
+    
+                    $('#reset-form').css('display', 'none');
+                    $('#login-form').css('display', 'block');
+                    $('#login-form').animate(showAnimation, 100);
+    
+                }, 500)
+    
+            })
+
+        }
+
 
         $('#form-action-btn').val('Login')
         $('#form-action-btn').show(500)
@@ -208,60 +300,181 @@ $('document').ready(function() {
   
     })
 
-    $('#next-btn').click(function() {
+    $('.next-btn').click(function() {
 
-        //if(step !== 3 && checkValid())
-            step++;
-            progress += 33.33
-            $('.progress').css('width', progress + "%")
+        if(currentPage == 'Register'){
 
-        if(step == 2){
+            if(step !== 3 && checkValid()){
 
-            $('#register-form-1').animate(hideAnimation, 100, () => {
-
-                setTimeout(()=>{
+                step++;
+                progress += 33.33
+                $('.progress').css('width', progress + "%")
     
-                    $('#register-form-1').css('display', 'none');
-                    $('#register-form-2').css('display', 'block');
-                    $('#register-form-2').animate(showAnimation, 100);
-                    $('#register-form-3').css('display', 'none');
-                    $('#prev-btn').show(100);
-                    $('#next-btn').show(100);
+            }
+            if(step == 2){
     
-                }, 500)
+                $('#register-form-1').animate(hideAnimation, 100, () => {
     
-            })
-
-
-        }
+                    setTimeout(()=>{
         
-        if(step == 3){
-
-            $('#register-form-2').animate(hideAnimation, 100, () => {
-
-                setTimeout(()=>{
+                        $('#register-form-1').css('display', 'none');
+                        $('#register-form-2').css('display', 'block');
+                        $('#register-form-2').animate(showAnimation, 100);
+                        $('#register-form-3').css('display', 'none');
+                        $('.prev-btn').show(100);
+                        $('.next-btn').show(100);
+        
+                    }, 500)
+        
+                })
     
-                    $('#register-form-1').css('display', 'none');
-                    $('#register-form-2').css('display', 'none');
-                    $('#register-form-3').css('display', 'block');
-                    $('#register-form-3').animate(showAnimation, 100);
-                    $('#prev-btn').show(100);
-                    $('#next-btn').hide(100);
-                    
-                }, 500)
     
-            })
+            }
+            
+            if(step == 3){
+    
+                if(currentPage == 'Register'){
+    
+    
+                    $('#register-form-2').animate(hideAnimation, 100, () => {
+        
+                        setTimeout(()=>{
+            
+                            $('#register-form-1').css('display', 'none');
+                            $('#register-form-2').css('display', 'none');
+                            $('#register-form-3').css('display', 'block');
+                            $('#register-form-3').animate(showAnimation, 100);
+                            $('.prev-btn').show(100);
+                            $('.next-btn').hide(100);
+                            
+                        }, 500)
+            
+                    })
+        
+                    $('#form-action-btn').val('Register')
+                    $('#form-action-btn').show(500)
+                    $('#form-action-btn').animate(showAnimation, 100)
+    
+                }
+    
+            }
 
-            $('#form-action-btn').val('Register')
-            $('#form-action-btn').show(500)
-            $('#form-action-btn').animate(showAnimation, 100)
+        }    
+
+        if(currentPage == 'Reset'){
+
+            if(step == 1){
+
+                $.ajax({
+
+                    url: "/project/functions/check-user-id.php",
+                    method: "POST",
+                    data: {op: "check_user_id",id: $('#reset-id').val()},
+                    success: function(data){
+            
+                        console.log("data: " + data)
+                        isTrue = (data !== 'false')
+                        console.log('isTrue: ', isTrue)
+                        $('#sQuestion').html(data)
+                        setIsOK(isTrue)
+            
+                    }   
+                
+                })
+
+            }
+
+            if(step == 2){
+
+                $.ajax({
+
+                    url: "/project/functions/check-user-id.php",
+                    method: "POST",
+                    data: {op: "check_answer",id: $('#reset-id').val(), ans: $('#question-ans').val()},
+                    success: function(data){
+            
+                        console.log("data: " + data)
+                        isOK = (data === 'true')
+                        console.log('isOK: ', isOK)
+                        setIsOK(isOK)
+            
+                    }   
+                
+                })
+
+
+            }
+
+            setTimeout(()=>{
+
+                if(step !== 3 && isOK ){
+
+                    $('input').css('border-color', '#007777');
+                    $('.error').remove();
+                    step++;
+
+                    if(step == 2){
+
+                        $('#reset-form-1').animate(hideAnimation, 100, () => {
+        
+                            setTimeout(()=>{
+                
+                                $('#reset-form-1').css('display', 'none');
+                                $('#reset-form-2').css('display', 'block');
+                                $('#reset-form-2').animate(showAnimation, 100);
+                                $('#reset-form-3').css('display', 'none');
+                                $('.prev-btn').show(100);
+                                $('.next-btn').show(100);
+                
+                            }, 500)
+                
+                        })
+
+                    }
+
+                    if(step == 3){
+
+                        $('#reset-form-2').animate(hideAnimation, 100, () => {
+        
+                            setTimeout(()=>{
+                
+                                $('#reset-form-1').css('display', 'none');
+                                $('#reset-form-2').css('display', 'none');
+                                $('#reset-form-3').css('display', 'block');
+                                $('#reset-form-3').animate(showAnimation, 100);
+                                $('.prev-btn').show(100);
+                                $('.next-btn').hide(100);
+                                
+                            }, 500)
+                
+                        })
+
+                        $('#form-action-btn').val('Reset')
+                        $('#form-action-btn').show(500)
+                        $('#form-action-btn').animate(showAnimation, 100)
+
+                    }
+                }else {
+
+                    if($('#reset-id').val() == "")
+                        errorDisplay('#reset-id', 'User ID', 'empty')
+                    if(step == 1)
+                        errorDisplay('#reset-id', 'User ID', 'notValid')
+
+                    if(step == 2)
+                        errorDisplay('#question-ans', 'Answer', 'notMatch')
+
+                }
+
+
+            }, 1000)
 
         }
 
 
     })
     
-    $('#prev-btn').click(function() {
+    $('.prev-btn').click(function() {
 
         if(step > 1){
 
@@ -273,46 +486,104 @@ $('document').ready(function() {
 
         if(step == 1){
 
-            $('#register-form-2').animate(hideAnimation, 100, () => {
+            if(currentPage == "Register"){
+    
+                $('#register-form-2').animate(hideAnimation, 100, () => {
+    
+                    setTimeout(()=>{
+        
+                        $('#register-form-1').css('display', 'block');
+                        $('#register-form-1').animate(showAnimation, 100);
+                        $('#register-form-2').css('display', 'none');
+                        $('#register-form-3').css('display', 'none');
+                        $('.prev-btn').hide(100);
+                        $('.next-btn').show(100);
+                        
+                    }, 500)
+        
+                })
 
-                setTimeout(()=>{
+            }
+
+            if(currentPage == 'Reset'){
+
+                $('input').css('border-color', '#007777');
+                $('.error').remove();
+
+                $('#reset-form-2').animate(hideAnimation, 100, () => {
     
-                    $('#register-form-1').css('display', 'block');
-                    $('#register-form-1').animate(showAnimation, 100);
-                    $('#register-form-2').css('display', 'none');
-                    $('#register-form-3').css('display', 'none');
-                    $('#prev-btn').hide(100);
-                    $('#next-btn').show(100);
-                    
-                }, 500)
-    
-            })
+                    setTimeout(()=>{
+        
+                        $('#reset-form-1').css('display', 'block');
+                        $('#reset-form-1').animate(showAnimation, 100);
+                        $('#reset-form-2').css('display', 'none');
+                        $('#reset-form-3').css('display', 'none');
+                        $('.prev-btn').hide(100);
+                        $('.next-btn').show(100);
+                        
+                    }, 500)
+        
+                })
+
+            }
 
         }
 
         if(step == 2){
 
-            $('#form-action-btn').animate(hideAnimation, 100, () => {
+            if(currentPage == 'Register'){
 
-                setTimeout(()=>{$('#form-action-btn').hide()}, 500)
+                $('#form-action-btn').animate(hideAnimation, 100, () => {
     
-            })
-
-            $('#register-form-3').animate(hideAnimation, 100, () => {
-
-                setTimeout(()=>{
+                    setTimeout(()=>{$('#form-action-btn').hide()}, 500)
+        
+                })
     
-                    $('#register-form-1').css('display', 'none');
-                    $('#register-form-2').css('display', 'block');
-                    $('#register-form-2').animate(showAnimation, 100);
-                    $('#register-form-3').css('display', 'none');
-                    $('#prev-btn').show(100);
-                    $('#next-btn').show(100);
-                    
-                }, 500)
+                $('#register-form-3').animate(hideAnimation, 100, () => {
     
-            })
+                    setTimeout(()=>{
+        
+                        $('#register-form-1').css('display', 'none');
+                        $('#register-form-2').css('display', 'block');
+                        $('#register-form-2').animate(showAnimation, 100);
+                        $('#register-form-3').css('display', 'none');
+                        $('.prev-btn').show(100);
+                        $('.next-btn').show(100);
+                        
+                    }, 500)
+        
+                })
 
+            }    
+
+            if(currentPage == 'Reset'){
+
+                $('input').css('border-color', '#007777');
+                $('.error').remove();
+
+                $('#form-action-btn').animate(hideAnimation, 100, () => {
+    
+                    setTimeout(()=>{$('#form-action-btn').hide()}, 500)
+        
+                })
+    
+                $('#reset-form-3').animate(hideAnimation, 100, () => {
+    
+                    setTimeout(()=>{
+        
+                        $('#reset-form-1').css('display', 'none');
+                        $('#reset-form-2').css('display', 'block');
+                        $('#reset-form-2').animate(showAnimation, 100);
+                        $('#reset-form-3').css('display', 'none');
+                        $('.prev-btn').show(100);
+                        $('.next-btn').show(100);
+                        
+                    }, 500)
+        
+                })
+
+
+            }
 
         }
 

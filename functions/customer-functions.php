@@ -112,14 +112,14 @@
                     NULL,
                     '".$_SESSION['userID']."',
                     '".$stock['stockID']."',
-                    '".$_POST['qty']."',
+                    '".$_POST['productQty']."',
                     'pending'
 
                 )
             
             ";
 
-            if($stock['stockQuantity'] >= $_POST['qty']){
+            if($stock['stockQuantity'] >= $_POST['productQty']){
 
                 if($cartQ = mysqli_query($connect, $cartSQL)){
 
@@ -145,7 +145,7 @@
 
     }
 
-    if($_POST['op'] == 'remove_cart'){
+    if(isset($_GET['op']) && $_GET['op'] == 'remove_cart'){
 
         $cartSQL = "
         

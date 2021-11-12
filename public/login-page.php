@@ -11,6 +11,8 @@
 
             <?php include_once('./register-form.php'); ?>
 
+            <?php include_once('./reset-form.php'); ?>
+
             <input type="submit" name="submitType" value="Login" id="form-action-btn" class="my-form-btn">
 
         </form>

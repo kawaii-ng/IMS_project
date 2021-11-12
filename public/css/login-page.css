@@ -137,7 +137,7 @@
 
 }
 
-#next-btn, #prev-btn {
+.next-btn, .prev-btn {
 
     border: 1px solid #007777;
     border-radius: 5px;
@@ -147,21 +147,21 @@
 }
 
 
-#next-btn:hover, #prev-btn:hover {
+.next-btn:hover, .prev-btn:hover {
 
     background: #007777;
     color: white;
 
 }
 
-#next-btn {
+.next-btn {
 
     position: absolute;
     right: 0;
 
 }
 
-#prev-btn {
+.prev-btn {
 
     position: absolute;
     left: 0;
@@ -211,7 +211,7 @@
 
 }
 
-#register-form {
+#reset-form, #register-form {
 
     display: none;
     margin-left: -50px;
@@ -219,7 +219,8 @@
 
 }
 
-#register-form-1, #register-form-2, #register-form-3 {
+#register-form-1, #register-form-2, #register-form-3,
+#reset-form-1, #reset-form-2, #reset-form-3 {
 
     margin-left: -50px;
     opacity: 0;
@@ -232,5 +233,13 @@
     margin: -15px 0em;
     color: red;
     font-size: 8px;
+
+}
+
+#sQuestion {
+
+    font-weight: bold;
+    color: black;
+    
 
 }
