@@ -52,6 +52,7 @@
                         break;
 
                     case "statistic":
+                        include_once('./statistic-page.php');
                         break;
                     
                     default:

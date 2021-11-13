@@ -145,7 +145,7 @@
 
     }
 
-    if(isset($_GET['op']) && $_GET['op'] == 'remove_cart'){
+    if(isset($_GET['op']) && $_GET['op'] == 'update_cart'){
 
         $cartSQL = "
         
@@ -167,4 +167,33 @@
 
     }
 
-?>
+    if(isset($_POST['op']) && $_POST['op'] == 'buy_all'){
+        
+        $id = $_SESSION['userID'];
+
+        $buySQL = "
+        
+            UPDATE `cart` 
+            SET 
+            `status`='purchased',`time`='' 
+            WHERE userID = '".$id."'
+        
+        ";
+
+        mysqli_query($connect, $buySQL);
+        
+        $buySQL = "
+        
+        UPDATE `cart`, `stock`
+        SET
+        stock.stockQuantity = stock.stockQuantity - cart.quantity
+        WHERE userID = '".$id."'
+        and cart.stockID = stock.stockID
+        and cart.status = 'purchased'
+        
+        ";
+        mysqli_query($connect, $buySQL);
+        
+    }
+    
+    ?>

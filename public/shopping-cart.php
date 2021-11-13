@@ -32,7 +32,7 @@
         $_SESSION['totalPrice'] = $total['price']? $total['price']: 0;
         
         echo "
-        <form method='post' name='cartForm' action='/project/functions/customer-functions.php?op=remove_cart'>
+        <form method='post' name='cartForm' action='/project/functions/customer-functions.php?op=update_cart'>
         
         <input type='hidden' name='cart-ID' id='cart-ID' value=''>";
 
@@ -54,6 +54,7 @@
             
             $color = mysqli_fetch_assoc(mysqli_query($connect, $colorSQL));
             include_once("./remove-modal.php");
+            include_once('./purchase-modal.php');
 
             echo "<div class='order-card' id='order-".$order['cartID']."'>
             
@@ -81,8 +82,8 @@
                     </table>
 
                     <div class='btn-group'>
-                        <button class='btn edit-btn'>Edit</button>
-                        <input type='button' id='remove-".$order['cartID']."' class='btn del-btn' value='Remove'/>
+                        
+                        <input type='button' name='actionType' id='remove-".$order['cartID']."' class='btn del-btn' value='Remove'/>
                     </div>
 
                 </div>
@@ -91,8 +92,8 @@
             </form>
             ";
 
-
-
+// <button class='btn edit-btn'>Edit</button>
+//<input type='button' class='btn edit-btn' id='purchase-".$order['cartID']."' value='Purchase'/>
         }
 
         if(!$hasOrder){

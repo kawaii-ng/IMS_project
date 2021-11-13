@@ -1,5 +1,5 @@
 
-<div class='remove-modal-container'>
+<div class='remove-modal-container modal-container'>
     
     <div class='remove-modal'>
         <div class='modal-header'>

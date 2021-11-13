@@ -43,6 +43,12 @@
 
 }
 
+/* .order-card:hover .remove-btn-container {
+
+    opacity: 1;
+
+} */
+
 .order-img {
 
     width: 40%;
@@ -94,3 +100,11 @@
 
 }
 
+/* .remove-btn-container{
+
+    position: absolute;
+    bottom: 30px;
+    width: 90%;
+    opacity: 0;
+
+} */

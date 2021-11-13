@@ -1,6 +1,7 @@
 .product-grid {
 
-    
+    margin-top: 10vh;
+    margin-bottom: 10vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 

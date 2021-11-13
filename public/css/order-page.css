@@ -1,19 +1,21 @@
 .search-container label {
 
-    width: fit-content;
+    width: 100px
 
 }
 
 .search-container input {
 
-    width: 100px;
+    width: 200px;
 
 }
 
-.search-container label, .search-container input {
+.search-container label, .search-container input, select {
 
     margin-right: 1em;
     background: #f4f4f4;
+    width: 100px;
+    text-align: right;
 
 }
 

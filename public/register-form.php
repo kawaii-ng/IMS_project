@@ -101,10 +101,10 @@
 
      
     <div class="step-link-container">
-        <a class="step-btn" id='prev-btn'>
-            <i class="fas fa-long-arrow-alt-left"></i> Previous
+        <a class="step-btn prev-btn">
+            <i class='fas fa-long-arrow-alt-left'></i> Previous
         </a>
-        <a class="step-btn" id='next-btn'>
+        <a class="step-btn next-btn">
             Next <i class="fas fa-long-arrow-alt-right"></i>
         </a>
     </div>

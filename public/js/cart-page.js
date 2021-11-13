@@ -19,13 +19,22 @@ $('document').ready(function() {
 
         })
 
+        $('#purchase-' + id).click(function() {
+
+            $('.purchase-modal-container').css('display', 'flex')
+    
+    
+        })
+
         $('#confirm-btn-'+id).click(function() {
 
             $('.remove-modal-container').css('display', 'none')
             $('#remove-' + id).attr('type', 'submit')
+            $('#purchase-' + id).attr('type', 'submit')
             $('#cart-ID').val(id)
             cartForm.submit()
             $('#remove-' + id).attr('type', 'button')      
+            $('#purchase-' + id).attr('type', 'button')      
 
         })
 
@@ -40,8 +49,45 @@ $('document').ready(function() {
     $('#cancel-btn').click(function() {
 
         $('.remove-modal-container').css('display', 'none')
+        $('.purchase-modal-container').css('display', 'none')
 
     })
 
+    $('#buy-all-btn').click(function () {
+
+        $('#payment-step-1').css('display', 'flex')
+        $('#payment-step-2').css('display', 'none')
+        $('.purchase-modal-container').css('display', 'flex')
+
+    })
+
+    $('#confirm-total-btn').click(function() {
+        
+        $('#payment-step-1').css('display', 'none')
+        $('#payment-step-2').css('display', 'flex')
+
+    })
+
+    $('#purchase-all-btn').click(function() {
+        
+    
+        $('.purchase-modal-container').css('display', 'none')
+        $.ajax({
+
+            url: '/project/functions/customer-functions.php',
+            method: "POST",
+            data: {op: "buy_all"},
+            success: function(data){
+
+                console.log(success)
+                location.reload();
+
+            }
+
+        })
+
+
+    })
+    
 
 })

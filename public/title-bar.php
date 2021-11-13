@@ -1,6 +1,10 @@
 <div class='title-bar'>
     <?php
 
+        include_once('../config/db-connection.php');
+        $idListSQL = 'select userID from user';
+        $idListQ = mysqli_query($connect, $idListSQL);
+
         switch ($_GET['page']){
 
             case 'profile':
@@ -18,7 +22,7 @@
                     <h3>My Shopping Cart</h3>
                     <div>
                         <strong>Total: HK$" .  $_SESSION['totalPrice'] ."</strong>     
-                        <button class='btn buy-btn'>Buy all</button>
+                        <input type='button' class='btn buy-btn' id='buy-all-btn' value='Buy All'>
                     </div>";
                 break;
 
@@ -47,8 +51,20 @@
                 <div class='search-container'>
                     <form action='/project/public/dashboard-page.php' method='get'>
                         <label for=''>User ID: </label>
+                        <select name='search_id'>";
+                            
+                        while($id = mysqli_fetch_assoc($idListQ)){
+
+                            $id_ = $id['userID'];
+
+                            echo "<option value='$id_'>$id_</option>";
+
+                        }
+
+                        echo "
+                        </select>
                         <input type='hidden' name='page' value='order'>
-                        <input type='text' name='search_id'>
+                        
                         <button value='Search' class='btn buy-btn'>
                             <i class='fas fa-search'></i>
                         </button>

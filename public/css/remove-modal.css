@@ -1,4 +1,4 @@
-.remove-modal-container {
+.modal-container {
 
     position: fixed;
     z-index: 1999;
@@ -50,6 +50,7 @@
     position: absolute;
     margin: 0em 1em;
     height: 150px;
+    width: 280px;
 
 }
 
@@ -57,5 +58,19 @@
 
     width: 100%;
     margin: 0em 1em;
+    position: absolute;
+    bottom: 0;
+
+}
+
+#payment-step-1 {
+
+    display: flex;
+
+}
+
+#payment-step-2{
+
+    display: none;
 
 }

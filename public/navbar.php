@@ -45,7 +45,7 @@
 
                 echo "
                     <a class='menu-btn ". isActive('products') ."' href='/project/public/dashboard-page.php?page=products'>
-                        <i class='fas fa-tshirt'></i></i><span> Tops</span>
+                        <i class='fas fa-tshirt'></i><span>Products</span>
                     </a>";
 
                 $orderNumSQL = "
