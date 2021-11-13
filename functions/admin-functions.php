@@ -155,7 +155,6 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
             `productPrice`='".$newPrice."',
             `productImage`='".$imgPath."'
             WHERE `productID` = '".$pid."'
-
         ";
 
         echo 'imgPath: \n'.$imgPath;
@@ -322,9 +321,7 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
             if($newColors[$i] != ""){
 
                 $newColorSQL = "
-
                     INSERT INTO `color`(`colorID`, `colorCode`) VALUES (NULL,'".$newColors[$i]."')
-
                 ";
 
                 if(mysqli_query($connect, $newColorSQL)){
@@ -478,7 +475,6 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
                 for($j = 0; $j < count($sizeArr); $j++){
 
                     $addStockSQL = "
-
                         INSERT INTO `stock`(
                             `stockID`, `productID`, `colorID`, 
                             `size`, `stockQuantity`

@@ -11,7 +11,6 @@ if(isset($_POST['id'])){
     
         select * from product
         where productID = '".$pid."'
-
     ";
 
     $productQ = mysqli_query($connect, $productSQL);
