@@ -75,7 +75,7 @@ function getColor($pid) {
 
 if(isset($_GET['op']) && $_GET['op'] == 'update_qty'){
 
-
+    echo $_POST['newQty'];
     $updateSQL = "
     
         UPDATE `stock` 
@@ -86,11 +86,11 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_qty'){
 
     if(mysqli_query($connect, $updateSQL)){
 
-        header('Location: /project/public/dashboard-page.php?page=stock_checking&table=inventory&status=updated');
+        //header('Location: /project/public/dashboard-page.php?page=stock_checking&table=inventory&status=updated');
 
     }else {
 
-        header("Location: /project/public/dashboard-page.php?page=stock_checking&table=inventory&status=error");
+        //header("Location: /project/public/dashboard-page.php?page=stock_checking&table=inventory&status=error");
 
     }
 
@@ -503,7 +503,7 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
             }
 
-            //header("Location: /project/public/dashboard-page.php?page=stock_checking&table=category");
+            header("Location: /project/public/dashboard-page.php?page=stock_checking&table=category");
 
 
         }else {

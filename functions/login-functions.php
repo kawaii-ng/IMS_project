@@ -24,7 +24,7 @@ function loginAC($userID, $userPW) {
             setcookie('userPW', $userPW, time() + (60 * 60 * 24));
             $_SESSION['userID'] = $userID;
             $_SESSION['role'] = $user['role'];
-            
+
             if($user['role'] == "admin"){
 
                 header("Location: /project/public/dashboard-page.php?page=stock_checking&table=inventory");
@@ -192,6 +192,12 @@ if(isset($_GET['op']) && $_GET['op'] == 'sign_out'){
     session_unset();
     session_destroy();
     header("Location: /project/public/index.php");
+
+}
+
+if(isset($_POST['op']) && $_POST['op'] == 'get_role'){
+
+    echo $_SESSION['role'];
 
 }
 

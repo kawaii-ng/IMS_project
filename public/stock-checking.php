@@ -15,173 +15,171 @@
 
 <?php
 
-    include_once('./title-bar.php');
+    // include_once('../config/db-connection.php');
 
-    $stockSQL = "
+    // $stockSQL = "
 
-        select * from stock, product, color
-        where stock.productID = product.productID
-        and stock.colorID = color.colorID
+    //     select * from stock, product, color
+    //     where stock.productID = product.productID
+    //     and stock.colorID = color.colorID
     
-    ";
+    // ";
 
-    $stockQ = mysqli_query($connect, $stockSQL);
+    // $stockQ = mysqli_query($connect, $stockSQL);
 
-    $productSQL = "
+    // $productSQL = "
     
-        select * from product
+    //     select * from product
     
-    ";
+    // ";
 
-    $productQ = mysqli_query($connect, $productSQL);
+    // $productQ = mysqli_query($connect, $productSQL);
 
 
-    if($_GET['table'] == 'category'){
+    // if($_GET['table'] == 'category'){
 
-        echo "
-        <div class=''>
-        <table class='my-table'>
-            <tr>
-                <th></th>
-                <th>Product</th>
-                <th>Gender</th>
-                <th>Price</th>
-                <th>Color</th>
-                <th>Size</th>
-                <th></th>
-                <th></th>
-            </tr>   
-        ";
+    //     echo "
+    //     <div class=''>
+    //     <table class='my-table'>
+    //         <tr>
+    //             <th></th>
+    //             <th>Product</th>
+    //             <th>Gender</th>
+    //             <th>Price</th>
+    //             <th>Color</th>
+    //             <th>Size</th>
+    //             <th></th>
+    //             <th></th>
+    //         </tr>   
+    //     ";
 
-    }else {
+    // }else {
 
-        echo "
-        <div class='cart'>
-        <table class='my-table'>
-            <tr>
-                <th></th>
-                <th>Product</th>
-                <th>Size</th>
-                <th>Color</th>
-                <th>Qty</th>
-                <th></th>
-            </tr>   
-        ";
+    //     echo "
+    //     <div class='cart'>
+    //     <table class='my-table'>
+    //         <tr>
+    //             <th></th>
+    //             <th>Product</th>
+    //             <th>Size</th>
+    //             <th>Color</th>
+    //             <th>Qty</th>
+    //             <th></th>
+    //         </tr>   
+    //     ";
 
-    }
+    // }
 
-    if($_GET['table'] == 'category'){
+    // if($_GET['table'] == 'category'){
 
-        while($stock = mysqli_fetch_assoc($productQ)){
+    //     while($stock = mysqli_fetch_assoc($productQ)){
 
-            $colorSQL = "
+    //         $colorSQL = "
             
-                SELECT colorCode FROM `stock`, `color` 
-                WHERE stock.colorID = color.colorID
-                AND stock.productID = ".$stock['productID']."
-                GROUP by stock.productID, stock.colorID;
+    //             SELECT colorCode FROM `stock`, `color` 
+    //             WHERE stock.colorID = color.colorID
+    //             AND stock.productID = ".$stock['productID']."
+    //             GROUP by stock.productID, stock.colorID;
             
-            ";
+    //         ";
 
-            $colorQ = mysqli_query($connect,$colorSQL);
+    //         $colorQ = mysqli_query($connect,$colorSQL);
             
-            $sizeSQL = "
+    //         $sizeSQL = "
             
-                SELECT * FROM `stock`
-                WHERE stock.productID = ".$stock['productID']."
-                GROUP by stock.productID, stock.size;
+    //             SELECT * FROM `stock`
+    //             WHERE stock.productID = ".$stock['productID']."
+    //             GROUP by stock.productID, stock.size;
             
-            ";
+    //         ";
 
-            $sizeQ = mysqli_query($connect,$sizeSQL);
+    //         $sizeQ = mysqli_query($connect,$sizeSQL);
 
-            echo "
+    //         echo "
             
-                <tr>
-                    <td>
-                        <img src='".$stock['productImage']."' alt=''>
-                    </td>
-                    <td>".$stock['productName']."</td>
-                    <td>".$stock['productGender']."</td>
-                    <td>HK$".$stock['productPrice']."</td>
-                    <td>";
+    //             <tr>
+    //                 <td>
+    //                     <img src='".$stock['productImage']."' alt=''>
+    //                 </td>
+    //                 <td>".$stock['productName']."</td>
+    //                 <td>".$stock['productGender']."</td>
+    //                 <td>HK$".$stock['productPrice']."</td>
+    //                 <td>";
                     
-                        while($color = mysqli_fetch_assoc($colorQ)){
+    //                     while($color = mysqli_fetch_assoc($colorQ)){
 
-                            echo "<div class='color' style='background: ".$color['colorCode']."'></div>";
+    //                         echo "<div class='color' style='background: ".$color['colorCode']."'></div>";
 
-                        }
+    //                     }
                         
-                    echo "
-                    </td>
-                    <td>";
+    //                 echo "
+    //                 </td>
+    //                 <td>";
 
-                        while($size = mysqli_fetch_assoc($sizeQ)){
+    //                     while($size = mysqli_fetch_assoc($sizeQ)){
 
-                            echo "<div>".$size['size']."</div>";
+    //                         echo "<div>".$size['size']."</div>";
 
-                        }
+    //                     }
 
-                    echo"
-                    </td>
-                    <td>
-                        <button class='btn edit-btn open-edit-btn' id='open-edit-model-".$stock['productID']."'>Edit</button>
-                    </td>
-                    <td>
-                        <button class='btn del-btn delete-product-btn' id='delete-product-".$stock['productID']."'>Delete</button>
-                    </td>
-                </tr>
+    //                 echo"
+    //                 </td>
+    //                 <td>
+    //                     <button class='btn edit-btn open-edit-btn' id='open-edit-model-".$stock['productID']."'>Edit</button>
+    //                 </td>
+    //                 <td>
+    //                     <button class='btn del-btn delete-product-btn' id='delete-product-".$stock['productID']."'>Delete</button>
+    //                 </td>
+    //             </tr>
             
-            ";
+    //         ";
         
-        }
+    //     }
 
 
-    }else {
+    // }else {
 
-        while($stock = mysqli_fetch_assoc($stockQ)){
+    //     while($stock = mysqli_fetch_assoc($stockQ)){
 
-            echo "
+    //         echo "
 
-                <form action='/project/functions/admin-functions.php?op=update_qty' 
-                        method='post' name='updateQtyFrom'>
-                <input name='stockID' type='hidden' value='".$stock['stockID']."'>
-                <tr>
-                    <td>
-                        <img src='".$stock['productImage']."' alt=''>
-                    </td>
-                    <td>
-                        ".$stock['productName']."
-                    </td>
-                    <td>
-                        ".$stock['size']."
-                    </td>
-                    <td>
-                        <input type='hidden' value='".$stock['colorID']."'/>
-                        <div class='color' style='background: ".$stock['colorCode']."'></div>
-                    </td>
-                    <td>
-                        <input type='number' name='newQty' 
-                                value='".$stock['stockQuantity']."'
-                                onchange='this.value = Math.abs(this.value)'
-                        />
-                    </td>
-                    <td>
-                        <button name='updateQty' class='btn edit-btn'>Update</button>
-                    </td>
-                </tr>
+    //             <form action='/project/functions/admin-functions.php?op=update_qty' 
+    //                     method='post' name='updateQtyFrom'>
+    //             <input name='stockID' type='hidden' value='".$stock['stockID']."'>
+    //             <tr>
+    //                 <td>
+    //                     <img src='".$stock['productImage']."' alt=''>
+    //                 </td>
+    //                 <td>
+    //                     ".$stock['productName']."
+    //                 </td>
+    //                 <td>
+    //                     ".$stock['size']."
+    //                 </td>
+    //                 <td>
+    //                     <input type='hidden' value='".$stock['colorID']."'/>
+    //                     <div class='color' style='background: ".$stock['colorCode']."'></div>
+    //                 </td>
+    //                 <td>
+    //                     <input type='number' name='newQty' 
+    //                             value='".$stock['stockQuantity']."'
+    //                             onchange='this.value = Math.abs(this.value)'
+    //                     />
+    //                 </td>
+    //                 <td>
+    //                     <button name='updateQty' id='update-qty-btn' class='btn edit-btn'>Update</button>
+    //                 </td>
+    //             </tr>
             
-                </form>
-            ";
+    //             </form>
+    //         ";
 
-        }
+    //     }
 
-    }
+    // }
 
 ?>
-
-    
-    </table>
+    <table class='my-table'></table>
     </div>
 
 </div>

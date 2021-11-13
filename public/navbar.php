@@ -2,7 +2,7 @@
 
     function isActive($thisPage) {
 
-        return  $_GET['page'] == $thisPage? "menu-btn-active":"";
+        //return  $_GET['page'] == $thisPage? "menu-btn-active":"";
 
     }
 
@@ -22,11 +22,7 @@
                     if ($_SESSION['role'] == 'admin')
                         echo " admin-profile-btn";
                     
-                    echo "' href='";
-                     if ($_SESSION['role'] == 'user')
-                            echo "/project/public/dashboard-page.php?page=profile";
-                        else 
-                            echo "#";
+                    echo "' href='#' data-target='profile'";
 
                     echo "'>";
             ?>
@@ -44,8 +40,8 @@
             if($_SESSION['role'] == "user"){
 
                 echo "
-                    <a class='menu-btn ". isActive('products') ."' href='/project/public/dashboard-page.php?page=products'>
-                        <i class='fas fa-tshirt'></i></i><span> Tops</span>
+                    <a class='menu-btn ". isActive('products') ."' href='#' data-target='products'>
+                        <i class='fas fa-tshirt'></i></i><span>Tops</span>
                     </a>";
 
                 $orderNumSQL = "
@@ -70,7 +66,7 @@
 
                     echo isActive('shopping_cart');
 
-                    echo "' href='/project/public/dashboard-page.php?page=shopping_cart' >
+                    echo "' href='#' data-target='shopping-cart'>
                         <i class='fas fa-shopping-cart'></i>
                         <span>Cart <span>";
 
@@ -80,7 +76,7 @@
                 }else {
                     
                     echo "
-                    <a class='menu-btn ". isActive("shopping_cart") ."' href='/project/public/dashboard-page.php?page=shopping_cart'>
+                    <a class='menu-btn ". isActive("shopping_cart") ."' href='#' data-target='shopping-cart'>
                         <i class='fas fa-shopping-cart'></i><span>Cart <span>0</span></span>
                     </a>";
 
@@ -88,15 +84,26 @@
 
             }else if($_SESSION['role'] == 'admin'){
 
+                // echo "
+                //     <a class='menu-btn ". isActive("stock_checking") ."' href='/project/public/dashboard-page.php?page=stock_checking&table=inventory'
+                //     >
+                //         <i class='fas fa-box-open'></i><span>Stock</span>
+                //     </a>
+                //     <a class='menu-btn ". isActive("order") ."' href='/project/public/dashboard-page.php?page=order'>
+                //         <i class='fas fa-tasks'></i><span>Order</span>
+                //     </a>
+                //     <a class='menu-btn ". isActive("statisitic") ."' href='/project/public/dashboard-page.php?page=statistic'>
+                //         <i class='fas fa-chart-line'></i><span>Statistic</span>
+                //     </a>
+                // ";
                 echo "
-                    <a class='menu-btn ". isActive("stock_checking") ."' href='/project/public/dashboard-page.php?page=stock_checking&table=inventory'
-                    >
+                    <a class='menu-btn ". isActive("stock_checking") ."' href='#' data-target='stock-checking'>
                         <i class='fas fa-box-open'></i><span>Stock</span>
                     </a>
-                    <a class='menu-btn ". isActive("order") ."' href='/project/public/dashboard-page.php?page=order'>
+                    <a class='menu-btn ". isActive("order") ."' href='#' data-target='order-page'>
                         <i class='fas fa-tasks'></i><span>Order</span>
                     </a>
-                    <a class='menu-btn ". isActive("statisitic") ."' href='/project/public/dashboard-page.php?page=statistic'>
+                    <a class='menu-btn ". isActive("statisitic") ."' href='#'>
                         <i class='fas fa-chart-line'></i><span>Statistic</span>
                     </a>
                 ";

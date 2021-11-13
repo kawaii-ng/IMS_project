@@ -1,3 +1,5 @@
+const customerPageManager = () => {
+
 $('document').ready(function () {
     
     var currentID = '';
@@ -256,3 +258,5 @@ $('document').ready(function () {
 
 
 })
+
+}

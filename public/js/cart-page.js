@@ -1,3 +1,5 @@
+const cartManager = () => {
+
 $('document').ready(function() {
 
     var orderList = $('.order-card').map(function(index) {
@@ -45,3 +47,5 @@ $('document').ready(function() {
 
 
 })
+
+}

@@ -1,3 +1,5 @@
+const formManager = () => {
+
 $('document').ready(function() {
 
     var step = 1;
@@ -660,3 +662,5 @@ $('document').ready(function() {
 
 
 })
+
+}

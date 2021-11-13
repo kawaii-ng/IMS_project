@@ -14,8 +14,11 @@
 ?>
     
     <div class="dashboard-content">
+        <div class='title-bar'></div>
+        <div class="dashboard-panel"></div>
         <?php 
         
+        /*
             if($_SESSION['role'] == "user"){
 
                 switch ($_GET['page']){
@@ -66,7 +69,7 @@
 
 
             }
-
+            */
             
         ?>
     </div>

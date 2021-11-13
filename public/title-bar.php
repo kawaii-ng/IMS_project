@@ -1,7 +1,8 @@
-<div class='title-bar'>
-    <?php
+<?php
 
-        switch ($_GET['page']){
+    if(isset($_POST['page'])){
+
+        switch ($_POST['page']){
 
             case 'profile':
                 echo "<h3>Profile</h3>";
@@ -13,7 +14,7 @@
                 ";
                 break;
 
-            case 'shopping_cart':
+            case 'shopping-cart':
                 echo"
                     <h3>My Shopping Cart</h3>
                     <div>
@@ -22,16 +23,16 @@
                     </div>";
                 break;
 
-            case 'stock_checking':
+            case 'stock-checking':
                 echo "
                     
                     <h3>Stock</h3>
                     <div>
-                        <button onclick=\"location.href='/project/public/dashboard-page.php?page=stock_checking&table=category'\"
+                        <button id='category-btn' 
                             class=\"btn buy-btn\">
                             Category
                         </button>
-                        <button onclick=\"location.href='/project/public/dashboard-page.php?page=stock_checking&table=inventory'\"
+                        <button id='inventory-btn' 
                             class='btn buy-btn'>
                             Inventory
                         </button>
@@ -40,7 +41,7 @@
                 ";
                 break;
 
-            case 'order':
+            case 'order-page':
                 echo "
                     
                 <h3>Order</h3>
@@ -69,6 +70,8 @@
 
         }
 
-    ?>
-</div>
+    }
+
+?>
+
 

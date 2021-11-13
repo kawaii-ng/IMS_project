@@ -7,7 +7,7 @@
 <div class="content">
 <?php
 
-    include_once('./title-bar.php');
+    include_once('../config/db-connection.php');
 
 ?>
 
