@@ -1,6 +1,7 @@
 
 $('document').ready(function () {
     
+    // disable enter to submit
     $(window).keydown(function(event){
         if(event.keyCode == 13) {
             event.preventDefault();
@@ -100,6 +101,7 @@ $('document').ready(function () {
                 }, 
                 500, 
                 ()=>{}
+
             )
 
         })
@@ -165,6 +167,8 @@ $('document').ready(function () {
 
         })
 
+        
+
         $('#update-product-btn').click(function() {
 
             console.log('clicked')
@@ -183,15 +187,47 @@ $('document').ready(function () {
     $('.open-edit-btn').click(function() {
 
         var id = getID($(this).attr('id'))
+
         $.ajax({
 
             url: "/project/public/edit-modal.php",
             method: "POST",
+            context: this,
             data: {op: "edit_product", id: id},
             success: function(data){
                 
                 $('.edit-modal').html(data)
                 editFunction()
+
+                $('#edit-new-image-btn').click(() => {
+
+                    console.log('clicked');
+        
+                    $('#new-img-path').change((e)=>{
+                    
+                        var file = e.target.files[0];
+                        var path = URL.createObjectURL(file);
+                        // var defaultPath = "../public/images/icon-add-128.png"
+                        console.log(file.name);
+                        var re = /.png|.jpg|.jpeg/i;
+                        if(file.name.search(re) !== -1){
+                            
+                            $('#new-profile-error').css('opacity', '0');
+                            $('#new-product-img').attr('src', path);
+        
+                        }else {
+        
+                            console.log('error')
+                            e.value = '';
+                            $('#new-product-img').attr('src', 'https://cdn-icons.flaticon.com/png/512/4533/premium/4533754.png?token=exp=1636781807~hmac=3934e632eed8c743be888b915aca3f7c');
+                            $('#new-profile-error').css('opacity', '1');
+                            // errorDisplay('#profile-path', 'Image', 'notValid');
+        
+                        }
+                        
+                    })
+        
+                })
 
             }                
             
@@ -216,16 +252,50 @@ $('document').ready(function () {
 
     $('#add-product-btn').click(function(){
 
+        var img = $(this).children('#new-product-img');
+
         $.ajax({
 
             url: "/project/public/edit-modal.php",
             method: "POST",
+            context: this,
             data: {op: "add_product"},
             success: function(data){
                 
                 $('.edit-modal').html(data)
                 //console.log(data)
-                editFunction();               
+                editFunction(); 
+                // $('#new-product-img').attr('src', '');
+                $('#edit-new-image-btn').click(() => {
+
+                    console.log('clicked');
+
+        
+                    $('#new-img-path').change((e)=>{
+                    
+                        var file = e.target.files[0];
+                        var path = URL.createObjectURL(file);
+                        // var defaultPath = "../public/images/icon-add-128.png"
+                        console.log(file.name);
+                        var re = /.png|.jpg|.jpeg/i;
+                        if(file.name.search(re) !== -1){
+                            
+                            $('#new-profile-error').css('opacity', '0');
+                            $('#new-product-img').attr('src', path);
+        
+                        }else {
+        
+                            console.log('error')
+                            e.value = '';
+                            $('#new-product-img').attr('src', 'https://cdn-icons.flaticon.com/png/512/4533/premium/4533754.png?token=exp=1636781807~hmac=3934e632eed8c743be888b915aca3f7c');
+                            $('#new-profile-error').css('opacity', '1');
+                            // errorDisplay('#profile-path', 'Image', 'notValid');
+        
+                        }
+                        
+                    })
+        
+                })
 
             }                
             

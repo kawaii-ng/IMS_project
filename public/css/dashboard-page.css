@@ -56,7 +56,6 @@
 
     text-align: center;
     border-spacing: 0px;
-    background-color: #f4f4f4;
 
 }
 
@@ -91,18 +90,24 @@
 .my-table tr:not(:nth-child(1)) {
 
     box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
-    background: #f4f4f4;
     cursor: pointer;
     
 }
 
-.my-table tr:not(:nth-child(1)):hover {
+/* .my-table tr:not(:nth-child(1)):hover {
     
-    background: white;
+    background-color: black;
     box-shadow: 0px 0px 50px rgba(0, 0, 0, .2);
     transform: translateZ(1em) scale(1.1);
 
+} */
+
+.my-table tr:not(:nth-child(1)):hover td {
+    
+    background-color: white;
+
 }
+
 
 .my-table tr td {
 

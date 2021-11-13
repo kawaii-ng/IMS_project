@@ -24,7 +24,7 @@ if(isset($_POST['id'])){
 ?>
 <!-- /project/functions/admin-functions.php -->
 
-<form action='/project/functions/admin-functions.php?op=update_product' method="post" class='product-form' name="productForm">
+<form action='/project/functions/admin-functions.php?op=update_product' method="post" class='product-form' name="productForm"  enctype="multipart/form-data">
 
 <?php
 
@@ -245,12 +245,16 @@ function fillData($field){
 
     ?>'/>
     </div>
+    <p class='error' id='new-profile-error'>
+        <i class='fas fa-exclamation-circle'></i>
+        Profile Image Failed to Upload. Please Try Again.
+    </p>
     
 </div>
 
 <div class='panel'>
-    <label for='new-img-path' class='edit-new-image'>
-        <img src='<?php fillData('productImage');?>' alt="">
+    <label for='new-img-path' class='edit-new-image' id='edit-new-image-btn'>
+        <img src='<?php if(fillData('productImage') == "") echo "https://cdn-icons.flaticon.com/png/512/4533/premium/4533754.png?token=exp=1636781807~hmac=3934e632eed8c743be888b915aca3f7c";?>' alt="" id='new-product-img' />
     </label>
     <input type="file" name='newImg' id='new-img-path'>
 </div>

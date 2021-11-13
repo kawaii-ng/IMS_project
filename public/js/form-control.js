@@ -624,6 +624,7 @@ $('document').ready(function() {
             var re = /.png|.jpg|.jpeg/i;
             if(file.name.search(re) !== -1){
                 
+                console.log('path: ', path);
                 $('#new-profile-error').css('opacity', '0');
                 $('#profile-img').attr('src', path);
 

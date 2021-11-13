@@ -132,6 +132,19 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
         // do update the product basic info first
 
+        $newImgName = $_FILES['newImg']['name'];
+        $imgTMP = $_FILES['newImg']['tmp_name'];
+        $imgEX = strtolower(pathinfo($newImgName, PATHINFO_EXTENSION));
+        $imgPath = "../uploads/product/" . $newImgName;
+        
+        if(!$newImgName){
+
+            $imgPath = "\'\'";
+
+        }
+
+        move_uploaded_file($imgTMP, $imgPath);
+
         $updateSQL = "
         
             UPDATE `product` 
@@ -139,10 +152,13 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
             `productName`='".$newName."',
             `productDescription`='".$newDes."',
             `productGender`='".$newGender."',
-            `productPrice`='".$newPrice."'
+            `productPrice`='".$newPrice."',
+            `productImage`='".$imgPath."'
             WHERE `productID` = '".$pid."'
 
         ";
+
+        echo 'imgPath: \n'.$imgPath;
 
         if(mysqli_query($connect, $updateSQL)){
 
@@ -407,6 +423,19 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
     }else if($_POST['submitType'] == 'Add'){
 
+        $newImgName = $_FILES['newImg']['name'];
+        $imgTMP = $_FILES['newImg']['tmp_name'];
+        $imgEX = strtolower(pathinfo($newImgName, PATHINFO_EXTENSION));
+        $imgPath = "../uploads/product/" . $newImgName;
+        
+        if(!$newImgName){
+
+            $imgPath = "\'\'";
+
+        }
+
+        move_uploaded_file($imgTMP, $imgPath);
+
         $addSQL = "
             INSERT INTO `product`(
                 `productID`, `productName`, `productType`, 
@@ -415,7 +444,7 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
             ) VALUES (
                 NULL,'".$newName."','',
                 '".$newDes."','".$newGender."',
-                '".$newPrice."','')
+                '".$newPrice."','".$imgPath."')
         ";
 
         $lastID = NULL;
@@ -474,7 +503,7 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
             }
 
-            header("Location: /project/public/dashboard-page.php?page=stock_checking&table=category");
+            //header("Location: /project/public/dashboard-page.php?page=stock_checking&table=category");
 
 
         }else {
