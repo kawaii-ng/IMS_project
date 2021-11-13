@@ -107,6 +107,8 @@ function fillData($field){
 
     if($_POST['op'] == 'edit_product')
         echo $product[$field];
+    else if($field == 'productImage')
+        echo "https://cdn-icons.flaticon.com/png/512/4533/premium/4533754.png?token=exp=1636781807~hmac=3934e632eed8c743be888b915aca3f7c";
     else
         echo "";
 
@@ -253,7 +255,7 @@ function fillData($field){
 
 <div class='panel'>
     <label for='new-img-path' class='edit-new-image' id='edit-new-image-btn'>
-        <img src='<?php if(fillData('productImage') == "") echo "https://cdn-icons.flaticon.com/png/512/4533/premium/4533754.png?token=exp=1636781807~hmac=3934e632eed8c743be888b915aca3f7c";?>' alt="" id='new-product-img' />
+        <img src='<?php fillData('productImage');?>' alt="" id='new-product-img' />
     </label>
     <input type="file" name='newImg' id='new-img-path'>
 </div>
