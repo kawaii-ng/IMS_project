@@ -1,0 +1,245 @@
+.progressbar {
+
+    position: relative;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    border: 1px solid #007777;
+    overflow: hidden;
+
+}
+
+.progress {
+
+    width: 33.33%;
+    height: 100%;
+    background: #007777;
+
+}
+
+.container {
+
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    background: #f4f4f4;
+
+}
+
+.flex-column {
+
+    flex-direction: column;
+
+}
+
+.img-section {
+
+    width: 40vw;
+    height: 100vh;
+    object-fit: cover;
+
+}
+
+.form-section {
+
+    background-color: white;
+    width: 60vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.my-form {
+
+    width: 30vw;
+    height: 550px;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.select-img-btn {
+
+    padding: .5em 1em;
+    border: 2px solid #007777;
+    background-color: #007777;
+    color: white;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+
+}
+
+.select-img-btn:hover {
+
+    background-color: transparent;
+    color: #007777;
+
+}
+
+.my-form-btn {
+
+    margin: 2em 0em;
+    background-color: #007777;
+    border: 2px solid #007777;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .3);
+    padding: 1em;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+
+}
+
+.my-form-btn:hover {
+
+    background: white;
+    color: #007777;
+
+}
+
+.my-form-btn:disabled{
+
+    background: lightgrey;
+    border-color: lightgrey;
+
+}
+
+.my-form-btn:disabled:hover{
+
+    background: lightgrey;
+    border-color: lightgrey;
+    color: white;
+
+}
+
+.step-link-container {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    margin-bottom: 1em;
+    margin-top: 1.5em;
+
+}
+
+.next-btn, .prev-btn {
+
+    border: 1px solid #007777;
+    border-radius: 5px;
+    padding: .5em;
+    text-decoration: none;
+
+}
+
+
+.next-btn:hover, .prev-btn:hover {
+
+    background: #007777;
+    color: white;
+
+}
+
+.next-btn {
+
+    position: absolute;
+    right: 0;
+
+}
+
+.prev-btn {
+
+    position: absolute;
+    left: 0;
+
+}
+
+.profile-img-container {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 3em 0em;
+   
+}
+
+.profile-img-border {
+
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #007777;
+    cursor: pointer;
+    overflow: hidden;
+
+}
+
+.reg-profile {
+
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+
+}
+
+.reg-profile:hover {
+
+    opacity: .8;
+
+}
+
+#login-form {
+
+    display: block;
+    opacity: 1;
+
+}
+
+#reset-form, #register-form {
+
+    display: none;
+    margin-left: -50px;
+    opacity: 0;
+
+}
+
+#register-form-1, #register-form-2, #register-form-3,
+#reset-form-1, #reset-form-2, #reset-form-3 {
+
+    margin-left: -50px;
+    opacity: 0;
+
+}
+
+.error {
+
+    position: absolute;
+    margin: 0px 0em;
+    color: red;
+    font-size: 8px;
+
+}
+
+#sQuestion {
+
+    font-weight: bold;
+    color: black;
+    
+
+}

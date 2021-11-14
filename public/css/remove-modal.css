@@ -1,0 +1,229 @@
+.modal-container {
+
+    position: fixed;
+    z-index: 1999;
+
+    background: rgba(0, 0, 0, .3);
+
+    top: 0;
+    bottom: 0;
+    left: 0px;
+    right: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
+
+.remove-modal{
+
+    width: 350px;
+    height: 200px;
+
+}
+
+.purchase-modal{
+
+    width: 80vw;
+    height: 80vh;
+
+}
+
+.modal {
+
+    position: absolute;
+    background: white;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, .6);
+
+}
+
+.modal::before {
+
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0px;
+    right: 0;
+    position: absolute;
+
+}
+
+.modal-header {
+
+    margin: 0em 1em;
+    height: 25px;
+    border-bottom:  1px solid #007777;
+
+}
+
+.modal-content {
+
+    position: absolute;
+    margin: 0em 1em;
+    height: 90%;
+    width: 90%;
+
+}
+
+.modal-content .btn-group {
+
+    width: 100%;
+    margin: 0em 1em;
+    position: absolute;
+    bottom: 0;
+
+}
+
+#payment-step-1 {
+
+    display: flex;
+
+}
+
+#payment-step-2{
+
+    display: none;
+
+}
+
+.purchase-panel {
+
+    display: flex;
+    width: 100%;
+    height: -webkit-fill-available;
+    justify-content: space-between;
+}
+
+.purchase-panel div {
+
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.purchase-panel div .btn-group {
+
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.purchase-panel table {
+
+    width: 100%;
+
+}
+
+.purchase-panel input, .purchase-panel input[type=number] {
+
+    margin: 0;
+
+}
+
+#card-num {
+
+    width: 100%;
+    text-align: left;
+
+}
+
+#total-amount {
+    
+    text-align: center;
+
+}
+
+#total-amount span {
+    
+    color: #007777;
+    font-weight: bold;
+
+}
+
+
+
+.credit-card {
+
+    position: relative;
+    min-width: 450px;
+    min-height: 300px;
+    /* background: rgb(39, 39, 39); */
+    background: rgb(0,0,0);
+    background: linear-gradient(338deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8382703423166141) 34%, rgba(0,119,119,1) 100%);
+    border-radius: 25px;
+    color: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+
+}
+
+.credit-card::after{
+
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
+
+.credit-card i {
+
+    position: absolute;
+    right: 1em;
+    top: .5em;
+    animation: none;
+    background: transparent;
+    padding: 0;
+
+}
+
+.card-card-number {
+
+    position: absolute;
+    left: 1em;
+
+}
+
+.credit-card .card-bottom {
+
+    position: absolute;
+    left: 1em;
+    bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+
+}
+
+.credit-card .card-bottom div {
+
+    width: fit-content;
+    padding: 0em 1em;
+
+}
+
+.credit-card .card-bottom h1,
+.credit-card .card-bottom h2,
+.credit-card .card-bottom h3,
+.credit-card .card-bottom h4,
+.credit-card .card-bottom h5,
+.credit-card .card-bottom h6,
+.credit-card h1,
+.credit-card h2,
+.credit-card h3,
+.credit-card h4,
+.credit-card h5,
+.credit-card h6{
+
+    color: white;
+
+}

@@ -1,0 +1,104 @@
+.profile-section {
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.profile-form {
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+}
+
+.profile-form input, .profile-form select {
+
+    background-color: #f4f4f4;
+
+}
+
+.profile-form .my-form-btn {
+
+    background-color: #007777;
+
+}
+
+.profile-form .my-form-btn:hover {
+
+    background-color: #f4f4f4;
+
+}
+
+.profile-form div{
+
+    width: 30%;
+    margin: 1em;
+
+}
+
+#profile-img {
+
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+
+}
+
+#new-profile-label {
+
+    position: absolute;
+    cursor: pointer;
+    width: 350px;
+    height: 350px;
+    transition: all .4s ease-in-out;
+    overflow: hidden;
+    margin-top: 2em;
+
+}
+
+#new-profile-label::after {
+
+    content: '';
+    position: absolute;
+    z-index: 2;
+    top: 0; bottom: 0; left: 0; right: 0;
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .4s ease-in-out;
+
+}
+
+#new-profile-label:hover #profile-img {
+
+    transform: scale(1.2);
+    transition: all .4s ease-in-out;
+
+}
+
+#new-profile-label:hover::after {
+
+    content: 'Upload';
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+#new-profile-error {
+
+    opacity: 0;
+    line-height: 50px;
+}
+
+#new-pw-error {
+
+    opacity: 0;
+    line-height: 50px;
+}

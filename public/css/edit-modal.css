@@ -1,0 +1,307 @@
+.edit-modal {
+
+    position: fixed;
+    z-index: -1; /*-1*/
+    width: 100vw;
+    height: 100vh;
+    top: 100px; /*100px*/
+    left: 0;
+    background-color: white;
+    display: flex;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.product-form {
+
+    width: 80vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 3em;
+    justify-self: center;
+    
+    
+}
+
+.product-form h1 {
+
+    background-color: #007777;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+
+}
+
+.product-form .panel {
+
+    position: absolute;
+    height: 80%;
+    top: 10%;
+    width: 50%;
+
+}
+
+.product-form input[type=button] {
+    
+    position: absolute;
+    bottom: 0;
+    border: 2px solid #007777;
+    background-color: #007777;
+    color: white;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
+    cursor: pointer;
+
+}
+
+.product-form input[type=button]:hover {
+    
+    background-color: white;
+    color: #007777;
+
+}
+
+.toggle-btn-group {
+
+    border: none;
+    border-radius: 5px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: fit-content;
+    cursor: pointer;
+
+}
+
+.toggle-btn-1, .toggle-btn-2 {
+
+    background-color: white;
+    color: #007777;
+    border: 1px solid #007777;
+    height: fit-content;
+    width: 50%;
+    padding: .8em 1em;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;;
+
+}
+
+.toggle-btn-1:hover, .toggle-btn-2:hover {
+
+    opacity: .8;
+
+}
+
+.toggle-btn-1 {
+
+    border-radius: 5px 0px 0px 5px;
+
+}
+
+.toggle-btn-2 {
+
+    border-radius: 0px 5px 5px 0px;
+
+}
+
+.toggle-btn-active {
+
+    color: white;
+    background-color: #007777;
+
+}
+
+.panel-container {
+
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+    width: 100%;
+
+}
+
+#edit-panel-1 {
+
+    display: block;
+
+}
+
+#edit-panel-2 {
+
+    display: none;
+
+}
+
+.info-panel {
+
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.checkbox-container {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.checkbox-container label, .checkbox-container input {
+
+    width: fit-content;
+
+}
+
+#product-color-picker::-webkit-color-swatch {
+
+    border-radius: 5px;
+
+}
+
+input[type="color"] {
+
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    padding: .1em;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .3);
+    border: none;
+    cursor: pointer;
+    margin-right: 1em;
+
+}
+
+#color-control-panel {
+
+    display: flex;
+    align-items: center;
+
+}
+
+#product-color-code {
+
+    width: 250px;
+
+}
+
+#add-color-btn {
+
+    background-color: #007777;
+    color: white;
+    padding: .5em 1em;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+#add-color-btn:hover {
+
+    opacity: .8;
+
+}
+
+.color-list {
+
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    overflow-y: scroll;
+    height: 120px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+}
+
+.selected-color {
+
+    position: relative;
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    overflow: hidden;
+
+}
+
+.selected-color:hover {
+
+    
+
+}
+
+.selected-color::after {
+
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .4s ease-in-out;
+    color: white;
+
+}
+
+.selected-color:hover::after {
+
+    content: "Remove";
+    backdrop-filter: brightness(.3);
+
+}
+
+.edit-new-image {
+
+    position: fixed;
+    margin: 0;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 500px;
+    transition: all .4s ease-in-out;
+
+}
+
+.edit-new-image::after {
+
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 50px;
+    transition: all .4s ease-in-out;
+
+}
+
+.edit-new-image:hover::after {
+
+    content: "Upload";
+    backdrop-filter: brightness(.3);
+    
+}
+
+.edit-new-image img {
+
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    
+}

@@ -1,0 +1,332 @@
+/*
+
+Color scheme: 
+Hex	RGB
+#007777	(0,119,119)
+#006666	(0,102,102)
+#005555	(0,85,85)
+#004444	(0,68,68)
+#003333	(0,51,51)
+
+*/
+
+* {
+
+    transition: all .4s ease-in-out;
+    scroll-behavior: smooth;
+
+}
+
+::-webkit-scrollbar {
+
+    width: 5px;
+    height: 0px;
+
+}
+
+::-webkit-scrollbar-track {
+    background: #f4f4f4; 
+    border-radius: 25px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 25px;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+body {
+
+    margin: 0; 
+    padding: 0;
+    top: 0; 
+    bottom: 0;
+    left: 0; 
+    right: 0;
+    width: 100%; 
+    height: 100%;
+    font-family: 'Martel', serif;
+    font-size: 16px;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+    color: #007777;
+    margin: .3em 0em;
+    
+}
+
+h5 span {
+
+    color: rgba(0, 0, 0, .3);
+    font-size: 1.1rem;
+
+}
+
+input {
+
+    margin: .5em 0em;
+    padding: .5em 0em;
+    padding-left: .3em;
+    border: none;
+    /* border-bottom: 1px solid #007777; */
+    border: 1px solid #007777;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+
+}
+
+input:focus {
+
+    outline-style: none;
+
+}
+
+input::placeholder {
+
+    color: rgba(0, 0, 0, .3);
+    font-weight: 400;
+
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]{
+
+    width: 60px;
+    margin: 0em 1em;
+    background-color: transparent;
+    text-align: center;
+    line-height: 25px;
+
+}
+
+input[type=file] {
+
+    display:none;
+}
+
+textarea {
+
+    border: none;
+    border: 1px solid #007777;
+    border-radius: 5px;
+    resize: none;
+    width: 100%;
+    height: 100px;
+
+}
+
+textarea:focus{
+
+    outline-style: none;
+
+}
+
+label {
+
+    margin: 1em 0em;
+    font-weight: 700;
+    font-size: 12px;
+    color: #007777;
+
+}
+
+a {
+
+    width: fit-content;
+    font-size: 12px;
+    color: #007777;
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+
+}
+
+a:hover {
+
+    text-decoration: underline;
+
+}
+
+select {
+
+    margin: .5em 0em;
+    padding: .8em .3em;
+    border: none;
+    /* border-bottom:#007777 1px solid; */
+    border:#007777 1px solid;
+    border-radius: 5px;
+    width: 100%;
+
+}
+
+select:focus {
+
+    outline: none;
+
+}
+
+.center-anything {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/*
+
+    Floating Action Button
+
+*/
+
+.fab-group {
+
+    position: fixed;
+    z-index: 1000;
+    bottom: 50px;
+    right: 50px;
+
+
+}
+
+.fab {
+
+    background-color: #007777;
+    margin: 1em 0em;
+    padding: .5em;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #f4f4f4;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+.fab:hover {
+
+    text-decoration: none;
+    animation: btn-shake 1s infinite ease-in-out;
+
+}
+
+/*
+
+    Button
+
+*/
+
+.btn-group {
+
+    position: absolute;
+    width: 90%;
+    bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.btn {
+
+    width: 100%;
+    padding: .8em 1em;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 5px;
+
+}
+
+.btn:hover {
+
+    filter: brightness(.9);
+
+}
+
+.btn-group .btn {
+
+    width: 40%;
+
+}
+
+.edit-btn {
+
+    color: #007777;
+    background: #efefef;
+
+}
+
+
+.del-btn {
+
+    background: red;
+    color: white;
+
+}
+
+.buy-btn {
+
+    width: fit-content;
+    color: white;
+    background-color: #007777;
+
+}
+
+/*
+
+    Animation
+
+*/
+
+@keyframes btn-shake {
+    0% {transform: rotate(0deg);}
+    30% {transform: rotate(5deg);}
+    80% {transform: rotate(-5deg);}
+    100% {transform: rotate(0deg);}
+}
+
+/*
+
+    Color Display
+
+*/
+
+.color {
+
+    margin: 6px 0em;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: white solid 3px; 
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .2);
+    font-size: 0px;
+    color: transparent;
+
+}
+
+.color-size-active {
+
+    transform: scale(1.8);
+    font-weight: 700;
+    color: #007777;
+
+}

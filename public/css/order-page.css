@@ -1,0 +1,30 @@
+.search-container label {
+
+    width: 100px;
+    text-align: right;
+
+}
+
+.search-container input {
+
+    width: 200px;
+
+}
+
+.search-container label, .search-container input, .search-container select {
+
+    margin-right: 1em;
+    background: #f4f4f4;
+    width: 100px;
+
+}
+
+.search-container, .search-container form{
+
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+

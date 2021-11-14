@@ -1,0 +1,27 @@
+.stat-panel{
+
+    margin: 2em auto;
+    width: 80vw;
+    height: fit-content;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 50px;
+
+}
+
+.stat-panel div {
+
+    padding: 1em;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 5px 5px 30px rgba(0,0, 0, 0.1);
+    text-align: center;
+
+}
+
+#pie-chart-container {
+
+    grid-row: 1 / 3;
+
+}

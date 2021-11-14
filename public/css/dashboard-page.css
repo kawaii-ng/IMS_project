@@ -1,0 +1,130 @@
+/* .content-section {
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: scroll;
+} */
+
+.dashboard {
+
+    position: relative;
+    height: 100vh;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.dashboard-content {
+
+    margin-left: 00px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: scroll;
+
+}
+
+.content {
+
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+
+}
+
+.content table {
+
+    margin: 3em auto;
+
+}
+
+/*
+    Table
+*/
+
+.my-table {
+
+    text-align: center;
+    border-spacing: 0px;
+
+}
+
+.my-table tr td:nth-child(1), tr th:nth-child(1) {
+
+    border-radius: 0px 0px 0px 0px;
+}
+
+.my-table tr td:nth-last-child(1), tr th:nth-last-child(1) {
+
+    border-radius: 0px 0px 0px 0px;
+}
+
+.my-table th {
+
+    background-color: #f4f4f4;
+    color: #007777;
+    min-width: 80px;
+    border-radius: 0px 0px 0px 0px;
+    padding: .8em 1em;
+    font-weight: bold;
+    box-shadow: 0px 0px 5px rgba(0, 119, 119, .5);
+
+}
+
+.my-table th:nth-child(2) {
+
+    width: 250px;
+    
+}
+
+.my-table tr:not(:nth-child(1)) {
+
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    
+}
+
+/* .my-table tr:not(:nth-child(1)):hover {
+    
+    background-color: black;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, .2);
+    transform: translateZ(1em) scale(1.1);
+} */
+
+.my-table tr:not(:nth-child(1)):hover td {
+    
+    background-color: white;
+
+}
+
+
+.my-table tr td {
+
+    height: 80px;
+    width: fit-content;
+    text-align: center;
+    background: #f4f4f4;
+    padding: 1.5em .5em;
+    border-radius: 0px;
+
+}
+
+.my-table td .color {
+
+    margin: 6em auto;
+
+}
+
+.my-table img {
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+}
