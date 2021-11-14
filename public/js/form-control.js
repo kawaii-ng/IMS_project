@@ -690,15 +690,42 @@ $('document').ready(function() {
 
     })
 
+    $('#new-pw-error').css({'opacity': '0', 'position': 'relative'});
+    $('#new-nickname-error').css({'opacity': '0', 'position': 'relative'});
+    $('#new-email-error').css({'opacity': '0', 'position': 'relative'});
+
     $('#update-profile-btn').click(function () {
 
-        $('#new-profile-error').css('opacity', '0');
+        let isOk = true
+
+        let regex = /^([0-9a-z])+?@[a-z]+?.com/; 
+
+        $('#new-pw-error').css('opacity', '0');
+        $('#new-nickname-error').css('opacity', '0');
+        $('#new-email-error').css('opacity', '0');
 
         if($('#new-pw').val() != $('#new-confirm-pw').val() || ($('#new-pw').val().length < 8 && $('#new-pw').val().length > 1)){
 
             $('#new-pw-error').css('opacity', '1');
+            isOk = false
 
-        }else {
+        }
+        
+        if($('#new-nickname').val().length == 0){
+
+            $('#new-nickname-error').css('opacity', '1');
+            isOk = false
+        
+        }
+        
+        if($('#new-email').val() != 0 && !($('#new-email').val().match(regex))){
+
+            $('#new-email-error').css('opacity', '1');
+            isOk = false
+
+        }
+        
+        if(isOk){
 
             profileForm.submit();
 

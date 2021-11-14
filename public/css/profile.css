@@ -94,11 +94,11 @@
 #new-profile-error {
 
     opacity: 0;
-    line-height: 50px;
+    line-height: 16px;
 }
 
 #new-pw-error {
 
     opacity: 0;
-    line-height: 50px;
+    line-height: 16px;
 }

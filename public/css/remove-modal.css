@@ -147,7 +147,22 @@
 
 }
 
+#purchase-all-btn {
 
+    background-color: #007777;
+
+}
+
+#purchase-all-btn:disabled {
+
+    background: grey;
+
+}
+#purchase-all-btn:disabled:hover {
+
+    background: grey;
+
+}
 
 .credit-card {
 

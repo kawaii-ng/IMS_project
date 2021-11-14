@@ -13,10 +13,10 @@ $('document').ready(function(){
                 datasets: [{
                     data: JSON.parse(data),
                     backgroundColor: [
-                        '#007777',
-                        '#134f4e',
+                        '#000000',
                         '#122929',
-                        '#000000'
+                        '#134f4e',
+                        '#007777'
                     ],
                 }], 
                 labels: [

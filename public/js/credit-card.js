@@ -1,8 +1,24 @@
 $(document).ready(function() {
 
+    const updataBtnState = () => {
+
+        if($('#card-holder').val().length == 0
+           || $('#card-num').val().length < 16
+           || $('#expiry-month').val().length < 2
+           || $('#expiry-year').val().length < 2
+           || $('#cvc').val().length < 3)
+           $('#purchase-all-btn').prop('disabled', true)
+        else
+           $('#purchase-all-btn').prop('disabled', false)
+
+    }
+
+    updataBtnState()
+
     $('#card-holder').change(function(){
 
         $('#card-card-name').html($('#card-holder').val())
+        updataBtnState()
 
     })
 
@@ -27,6 +43,7 @@ $(document).ready(function() {
         }
 
         $('.card-card-number').html(temp)
+        updataBtnState()
 
     })
 
@@ -41,6 +58,7 @@ $(document).ready(function() {
         }
 
         $('#card-card-month').html(m)
+        updataBtnState()
 
     })
     
@@ -56,6 +74,7 @@ $(document).ready(function() {
         }
 
         $('#card-card-year').html(y)
+        updataBtnState()
 
     })
 
@@ -71,6 +90,7 @@ $(document).ready(function() {
         }
 
         $('#card-card-cvc').html(cvc)
+        updataBtnState()
 
     })
 

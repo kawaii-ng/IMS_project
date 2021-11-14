@@ -21,10 +21,7 @@ $user = mysqli_fetch_assoc(mysqli_query($connect, $userSQL));
         <div>
             <h6>User ID: <?php echo $user['userID'];?></h6>
             <input type="hidden" value="<?php echo $user['userID']; ?>" name="userID">
-            <p class='error' id='new-profile-error'>
-                <i class='fas fa-exclamation-circle'></i>
-                Profile Image Failed to Upload. Please Try Again.
-            </p>
+            
             <label for="new-profile-path" id='new-profile-label'>
                 <img src="<?php 
                     if($user['icon'] != "''" && $user['icon']){
@@ -35,13 +32,23 @@ $user = mysqli_fetch_assoc(mysqli_query($connect, $userSQL));
             </label>
             <input type='file' name='newProfileImg' id='new-profile-path' />
 
+            <p class='error' id='new-profile-error'>
+                <i class='fas fa-exclamation-circle'></i>
+                Profile Image Failed to Upload. Please Try Again.
+            </p>
+
         </div>
 
         <div>
 
-            <label>Nick Name</label><input type="text" name="nickName" id='new-nickname' value="<?php
+            <label>Nick Name</label><span class='error' id='new-nickname-error'>
+                <i class='fas fa-exclamation-circle'></i>
+                Nick name should not be empty.
+            </span>
+            <input type="text" name="nickName" id='new-nickname' value="<?php
                 echo $user['userName'];
             ?>">
+            
             <label>Gender</label>
             <select name="gender">
                 <?php
@@ -59,15 +66,22 @@ $user = mysqli_fetch_assoc(mysqli_query($connect, $userSQL));
                 
                 ?>
             </select>
-            <label>Email</label><input type="text" name="email" id='new-email' value="<?php
+            <label>Email</label>
+            <span class='error' id='new-email-error'>
+                <i class='fas fa-exclamation-circle'></i>
+                Email is invalid.
+            </span>
+            <input type="text" name="email" id='new-email' value="<?php
                 echo $user['email'];
             ?>">
+            
             <label>Password</label><input type="password" name="password" id='new-pw' value="">
             <label>Confirm Password</label><input type="password" name="confirmPassword" id='new-confirm-pw' value="">
-            <p class='error' id='new-pw-error'>
+            <span class='error' id='new-pw-error'>
                 <i class='fas fa-exclamation-circle'></i>
                 Password should be longer than 8 and same with the confirmed password.
-            </p>
+            </span>
+            <br>
             <input type="button" value="Update" class="my-form-btn" id='update-profile-btn'>
 
         </div>

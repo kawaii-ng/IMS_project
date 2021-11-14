@@ -165,7 +165,20 @@ function fillData($field){
                 <label for='new-type'>Type</label>
                 <select name='newType' id="new-type">
                     <option value='<?php fillData('productType');?>'><?php fillData('productType');?></option>
+                    <?php
 
+                        if(isset($product))
+                            $type = $product['productType'];
+                        else
+                            $type = "";
+
+                        if($_POST['op'] == "add_product" || $type != "Tops")
+                            echo "<option value='Tops'>Tops</option>";
+                        if($_POST['op'] == "add_product" || $type != "Bottoms")
+                            echo "<option value='Bottoms'>Bottoms</option>";
+                        if($_POST['op'] == "add_product" || $type != "Outerwear")
+                            echo "<option value='Outerwear'>Outerwear</option>";
+                    ?>
                 </select>
             </div>
             <div>

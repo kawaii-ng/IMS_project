@@ -58,16 +58,30 @@ if($_POST['op'] == 'get_line'){
     // get sales last 7 days
     $salesSQL = "
     
-        select * from (
-            select sum(product.productPrice * cart.quantity) as sales, DATE(cart.time) as date 
+        select a.date, ifnull(b.totalsales,0) as sales from (
+            select curdate() as date
+            union all
+            select date_sub(curdate(), interval 1 day) as date
+            union all
+            select date_sub(curdate(), interval 2 day) as date
+            union all
+            select date_sub(curdate(), interval 3 day) as date
+            union all
+            select date_sub(curdate(), interval 4 day) as date
+            union all
+            select date_sub(curdate(), interval 5 day) as date
+            union all
+            select date_sub(curdate(), interval 6 day) as date
+        ) a left join (
+            select sum(product.productPrice * cart.quantity) as totalsales, DATE(cart.time) as date 
             from cart, product, stock
             where cart.status = 'purchased'
             and stock.stockID = cart.stockID
             and product.productID = stock.productID
             group by date
             order by date DESC
-            limit 7) as totalSales
-        order by totalSales.date ASC;
+        ) as b on a.date = b.date
+        order by a.date ASC;
 
     ";
 

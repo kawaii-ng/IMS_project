@@ -29,6 +29,7 @@ $('document').ready(function () {
         $('#new-product-name').css(normalBorder1)
         $('#new-product-des').css(normalBorder1)
         $('#new-gender').css(normalBorder1)
+        $('#new-type').css(normalBorder1)
         $('#new-price').css(normalBorder1)
         $('.checkbox-container').css(normalBorder2)
         $('.color-list').css(normalBorder2)
@@ -51,6 +52,13 @@ $('document').ready(function () {
 
             isCorrect = false;
             $('#new-gender').css(errBorder)
+
+        }
+        
+        if($('#new-type').val() == ""){
+
+            isCorrect = false;
+            $('#new-type').css(errBorder)
 
         }
 
