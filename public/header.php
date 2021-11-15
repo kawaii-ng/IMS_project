@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="../public/css/products.css">
     <link rel="stylesheet" href="../public/css/product-detail.css">
     <link rel="stylesheet" href="../public/css/shopping-cart.css">
-    <link rel="stylesheet" href="../public/css/remove-modal.css">
+    <link rel="stylesheet" href="../public/css/purchase-remove-modal.css">
     <link rel="stylesheet" href="../public/css/profile.css">
     <link rel="stylesheet" href="../public/css/stock-checking.css">
     <link rel="stylesheet" href="../public/css/order-page.css">
