@@ -139,9 +139,6 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
         if(!$newImgName){
 
-            $imgPath = "\'\'";
-            move_uploaded_file($imgTMP, $imgPath);
-            echo "hu";
             $updateSQL = "
         
                 UPDATE `product` 
@@ -167,6 +164,7 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
         }else {
 
+            move_uploaded_file($imgTMP, $imgPath);
             $updateSQL = "
         
                 UPDATE `product` 
@@ -456,9 +454,12 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
             $imgPath = "https://www.svgrepo.com/show/260897/polo-fashion.svg";
 
+        }else {
+
+            move_uploaded_file($imgTMP, $imgPath);
+
         }
 
-        move_uploaded_file($imgTMP, $imgPath);
 
         $addSQL = "
             INSERT INTO `product`(
