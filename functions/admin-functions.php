@@ -104,7 +104,7 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
     $newName = $_POST['newName'];
     $newDes = $_POST['newDes'];
-    // new Type later
+    $newType = $_POST['newType'];
     $newGender = $_POST['newGender'];
     $newPrice = $_POST['newPrice'];
     $sizeArr = array();
@@ -139,14 +139,12 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
         if(!$newImgName){
 
-            $imgPath = "\'\'";
-            move_uploaded_file($imgTMP, $imgPath);
-            echo "hu";
             $updateSQL = "
         
                 UPDATE `product` 
                 SET 
                 `productName`='".$newName."',
+                `productType` = '".$newType."',
                 `productDescription`='".$newDes."',
                 `productGender`='".$newGender."',
                 `productPrice`='".$newPrice."'
@@ -166,11 +164,13 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
         }else {
 
+            move_uploaded_file($imgTMP, $imgPath);
             $updateSQL = "
         
                 UPDATE `product` 
                 SET 
                 `productName`='".$newName."',
+                `productType` = '".$newType."',
                 `productDescription`='".$newDes."',
                 `productGender`='".$newGender."',
                 `productPrice`='".$newPrice."',
@@ -454,9 +454,12 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
 
             $imgPath = "https://www.svgrepo.com/show/260897/polo-fashion.svg";
 
+        }else {
+
+            move_uploaded_file($imgTMP, $imgPath);
+
         }
 
-        move_uploaded_file($imgTMP, $imgPath);
 
         $addSQL = "
             INSERT INTO `product`(
@@ -464,7 +467,7 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
                 `productDescription`, `productGender`, 
                 `productPrice`, `productImage`
             ) VALUES (
-                NULL,'".$newName."','',
+                NULL,'".$newName."','".$newType."',
                 '".$newDes."','".$newGender."',
                 '".$newPrice."','".$imgPath."')
         ";

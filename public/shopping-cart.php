@@ -82,7 +82,6 @@
                     </table>
 
                     <div class='btn-group'>
-                        
                         <input type='button' name='actionType' id='remove-".$order['cartID']."' class='btn del-btn' value='Remove'/>
                     </div>
 
@@ -92,8 +91,6 @@
             </form>
             ";
 
-// <button class='btn edit-btn'>Edit</button>
-//<input type='button' class='btn edit-btn' id='purchase-".$order['cartID']."' value='Purchase'/>
         }
 
         if(!$hasOrder){
