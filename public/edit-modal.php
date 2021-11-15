@@ -142,11 +142,17 @@ function fillData($field){
 
     ?></h1>
 
+
+
     <div class='toggle-btn-group'>
         <div class='toggle-btn-1 toggle-btn-active'>Basic Info</div>
         <div class='toggle-btn-2'>Size & Color</div>
     </div>
 
+    <p class='error' id='new-profile-error'>
+        <i class='fas fa-exclamation-circle'></i>
+        Profile Image Failed to Upload. Please Try Again.
+    </p>
     <div id='edit-panel-1'>
         <br>
         <h3>Basic Info</h3>
@@ -259,10 +265,6 @@ function fillData($field){
 
     ?>'/>
     </div>
-    <p class='error' id='new-profile-error'>
-        <i class='fas fa-exclamation-circle'></i>
-        Profile Image Failed to Upload. Please Try Again.
-    </p>
 
 </div>
 
