@@ -13,7 +13,7 @@
 
             case 'products':
                 echo "
-                    <h3>Tops</h3>
+                    <h3>Products</h3>
                 ";
                 break;
 

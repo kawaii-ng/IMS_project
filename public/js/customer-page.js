@@ -79,29 +79,6 @@ $('document').ready(function () {
                 var color = $(e.target).text()
                 $('.colorValue').val(color.trim())
 
-                // var qty = $('.count').val();
-                // var color = $('.colorValue').val();
-                // var size = $('.sizeValue').val();
-
-                // console.log('id: ', currentID)
-                // console.log('color: ', color)
-                // console.log('size: ', size)
-                // console.log('qty: ', qty)
-
-                // $.ajax({
-        
-                //     url: "/project/functions/checking-stock.php",
-                //     method: "POST",
-                //     data: {op: "check_stock",id: currentID, color: color, size: size, qty: qty},
-                //     success: function(data){
-            
-                //         console.log("data: " + data)
-                //         $('#product-btn-' + currentID).attr("disabled", data)
-            
-                //     }                
-            
-                // })
-
                 setButton();
             
             }
@@ -119,29 +96,6 @@ $('document').ready(function () {
 
                 setButton();
 
-                // var qty = $('.count').val();
-                // var color = $('.colorValue').val();
-                // var size = $('.sizeValue').val();
-
-                // console.log('id: ', currentID)
-                // console.log('color: ', color)
-                // console.log('size: ', size)
-                // console.log('qty: ', qty)
-    
-                // $.ajax({
-        
-                //     url: "/project/functions/checking-stock.php",
-                //     method: "POST",
-                //     data: {op: "check_stock",id: currentID, color: color, size: size, qty: qty},
-                //     success: function(data){
-            
-                //         console.log("data: " + data)
-                //         $('#product-btn-' + currentID).attr("disabled", data)
-            
-                //     }                
-            
-                // })
-    
             }
     
         })
@@ -164,34 +118,6 @@ $('document').ready(function () {
     
         })
 
-        // $('#product-modal-'+id).change(function () {
-    
-        //     let ID = id;
-        //     currentID = ID;
-        //     var color = $('.colorValue').val();
-        //     var size = $('.sizeValue').val();
-        //     var qty = $('.count').val();
-        //     console.log('id: ', ID)
-        //     console.log('color: ', color)
-        //     console.log('size: ', size)
-        //     console.log('qty: ', qty)
-        
-        //     $.ajax({
-        
-        //         url: "/project/functions/checking-stock.php",
-        //         method: "POST",
-        //         data: {op: "check_stock",id: ID, color: color, size: size, qty: qty},
-        //         success: function(data){
-        
-        //             console.log("data: " + data)
-        
-        //         }                
-        
-        //     })
-        
-        // })
-        
-
     }
 
     $('.count-add-btn').click(()=>{
@@ -200,26 +126,6 @@ $('document').ready(function () {
         $('.count').val(parseInt($('.count').val()) + 1);
 
         setButton();
-        // var qty = $('.count').val();
-        // var color = $('.colorValue').val();
-        // var size = $('.sizeValue').val();
-        // console.log('id: ', currentID)
-        // console.log('color: ', color)
-        // console.log('size: ', size)
-        // console.log('qty: ', qty)
-        // $.ajax({
-        
-        //     url: "/project/functions/checking-stock.php",
-        //     method: "POST",
-        //     data: {op: "check_stock",id: currentID, color: color, size: size, qty: qty},
-        //     success: function(data){
-    
-        //         console.log("data: " + data)
-        //         $('#product-btn-' + currentID).attr("disabled", data)
-    
-        //     }                
-    
-        // })
 
     })
     
@@ -227,28 +133,6 @@ $('document').ready(function () {
 
         if(parseInt($('.count').val()) > 1)
             $('.count').val(parseInt($('.count').val()) - 1);
-
-        // var qty = $('.count').val();
-        // var color = $('.colorValue').val();
-        // var size = $('.sizeValue').val();
-
-        // console.log('id: ', currentID)
-        // console.log('color: ', color)
-        // console.log('size: ', size)
-        // console.log('qty: ', qty)
-        // $.ajax({
-        
-        //     url: "/project/functions/checking-stock.php",
-        //     method: "POST",
-        //     data: {op: "check_stock",id: currentID, color: color, size: size, qty: qty},
-        //     success: function(data){
-    
-        //         console.log("data: " + data)
-        //         $('#product-btn-' + currentID).attr("disabled", data)
-    
-        //     }                
-    
-        // })
 
         setButton();
 

@@ -17,6 +17,7 @@
     <div id='reset-form-3'>
         <label for="reset-pw">New Password</label> 
         <input type="password" name="resetPW" id='reset-pw' placeholder="New Password">
+        <br>
         <label for="confirm-reset-pw">Confirmed New Pasword</label> 
         <input type="password" name="confirmResetPW" id='confirm-reset-pw' placeholder="Confirmed Password">
         <br>

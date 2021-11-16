@@ -368,31 +368,65 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
                 var_dump($allSizeArr);
                 echo "<br>";
 
+                if(count($allSizeArr) == 0){
 
-                for($j = 0; $j < count($allSizeArr); $j++){
+                    for($j = 0; $j < count($sizeArr); $j++){
 
-                    $newColorSQL = "
-                        INSERT INTO `stock`(
-                            `stockID`, `productID`, `colorID`, `size`, `stockQuantity`
-                        ) VALUES (
-                            NULL,'".$pid."','".$newColorID."','".$allSizeArr[$j]['size']."','0'
-                        )
-                    ";
+                        $newColorSQL = "
+                            INSERT INTO `stock`(
+                                `stockID`, `productID`, `colorID`, `size`, `stockQuantity`
+                            ) VALUES (
+                                NULL,'".$pid."','".$newColorID."','".$sizeArr[$j]."','0'
+                            )
+                        ";
+                        if(mysqli_query($connect, $newColorSQL)){
+        
+                            echo 'ok';
 
-                    if(mysqli_query($connect, $newColorSQL)){
+                        }else {
 
-                        echo 'ok';
+                            echo 'add new color fail\n';
 
-                    }else {
+                        }
 
-                        echo 'add new color fail\n';
+                        echo $sizeArr[$j];
+                        echo "add ".$newColors[$i]." into ". $sizeArr[$j] . "<br>";
 
                     }
 
-                    echo $allSizeArr[$j]['size'];
-                    echo "add ".$newColors[$i]." into ". $allSizeArr[$j]['size'] . "<br>";
 
-                }
+
+
+                }else {
+
+
+                    for($j = 0; $j < count($allSizeArr); $j++){
+    
+                        $newColorSQL = "
+                            INSERT INTO `stock`(
+                                `stockID`, `productID`, `colorID`, `size`, `stockQuantity`
+                            ) VALUES (
+                                NULL,'".$pid."','".$newColorID."','".$allSizeArr[$j]['size']."','0'
+                            )
+                        ";
+    
+                        if(mysqli_query($connect, $newColorSQL)){
+    
+                            echo 'ok';
+    
+                        }else {
+    
+                            echo 'add new color fail\n';
+    
+                        }
+    
+                        echo $allSizeArr[$j]['size'];
+                        echo "add ".$newColors[$i]." into ". $allSizeArr[$j]['size'] . "<br>";
+    
+                    }
+
+
+                }    
 
             }
 
@@ -402,43 +436,49 @@ if(isset($_GET['op']) && $_GET['op'] == 'update_product'){
         var_dump($sizeArr);
         echo "<br>";
 
-        for($i = 0; $i < count($sizeArr); $i++){
+        if(count($allSizeArr) != 0){
 
-            echo "$i : $sizeArr[$i]<br>";
 
-            if($sizeArr[$i] != ""){
-
-               $allColorArr = getColor($pid);
-               var_dump($allColorArr);
-               echo "<br>";
-               
-               for($j = 0; $j < count($allColorArr); $j++){
-
-                    $newSizeSQL = "
-                        INSERT INTO `stock`(
-                            `stockID`, `productID`, `colorID`, `size`, `stockQuantity`
-                        ) VALUES (
-                            NULL,'".$pid."','".$allColorArr[$j]['colorID']."','".$sizeArr[$i]."','0'
-                        )
-                    ";
-
-                    if(mysqli_query($connect, $newSizeSQL)){
-
-                        echo 'ok';
-
-                    }else {
-
-                        echo 'add new size fail\n';
-
-                    }
-
-                    echo "add new size: " .$sizeArr[$i]. " to " .$allColorArr[$j]['colorCode'] . "<br>";
-
-               }
-
+            for($i = 0; $i < count($sizeArr); $i++){
+    
+                echo "$i : $sizeArr[$i]<br>";
+    
+                if($sizeArr[$i] != ""){
+    
+                   $allColorArr = getColor($pid);
+                   var_dump($allColorArr);
+                   echo "<br>";
+                   
+                   for($j = 0; $j < count($allColorArr); $j++){
+    
+                        $newSizeSQL = "
+                            INSERT INTO `stock`(
+                                `stockID`, `productID`, `colorID`, `size`, `stockQuantity`
+                            ) VALUES (
+                                NULL,'".$pid."','".$allColorArr[$j]['colorID']."','".$sizeArr[$i]."','0'
+                            )
+                        ";
+    
+                        if(mysqli_query($connect, $newSizeSQL)){
+    
+                            echo 'ok';
+    
+                        }else {
+    
+                            echo 'add new size fail\n';
+    
+                        }
+    
+                        echo "add new size: " .$sizeArr[$i]. " to " .$allColorArr[$j]['colorCode'] . "<br>";
+    
+                   }
+    
+                }
+    
             }
 
         }
+
 
         header("Location: /project/public/dashboard-page.php?page=stock_checking&table=category");
 

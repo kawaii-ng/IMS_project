@@ -3,10 +3,12 @@ $(document).ready(function() {
     const updataBtnState = () => {
 
         if($('#card-holder').val().length == 0
+            || !($('#card-holder').val().match(/^[A-Z]+[a-z]*\s*([A-Z]+[a-z]*\s*)*$/))
            || $('#card-num').val().length < 16
            || $('#expiry-month').val().length < 2
            || $('#expiry-year').val().length < 2
-           || $('#cvc').val().length < 3)
+           || $('#cvc').val().length < 3 
+           || $('#expiry-month').val() > 12)
            $('#purchase-all-btn').prop('disabled', true)
         else
            $('#purchase-all-btn').prop('disabled', false)
@@ -25,6 +27,13 @@ $(document).ready(function() {
     $('#card-num').change(function() {
 
         var cardNum = $('#card-num').val()
+
+        if(cardNum < 0){
+            
+            $('#card-num').val(abs(y))
+            cardNum = $('#card-num').val()
+
+        }
 
         if(cardNum.length > 16){
 
@@ -51,6 +60,13 @@ $(document).ready(function() {
 
         var m = $('#expiry-month').val()
 
+        if(m < 0){
+            
+            $('#expiry-month').val(abs(m))
+            m = $('#expiry-month').val()
+
+        }
+
         if(m.length > 2){
 
             $('#expiry-month').val(m.substring(0, 2))
@@ -65,6 +81,13 @@ $(document).ready(function() {
     $('#expiry-year').change(function(){
 
         var y = $('#expiry-year').val()
+
+        if(y < 0){
+            
+            $('#expiry-year').val(abs(y))
+            y = $('#expiry-year').val()
+
+        }
 
         if(y.length > 2){
 
@@ -82,6 +105,13 @@ $(document).ready(function() {
 
         var cvc = $('#cvc').val()
 
+        if(cvc < 0){
+
+            $('#cvc').val(abs(cvc))
+            cvc = $('#cvc').val()
+
+        }
+           
         if(cvc.length > 3){
 
             $('#cvc').val(cvc.substring(0, 3))

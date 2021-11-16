@@ -68,6 +68,13 @@ $('document').ready(function () {
             $('#new-price').css(errBorder)
 
         }
+        
+        if($('#new-price').val() < 0){
+
+            isCorrect = false;
+            $('#new-price').css(errBorder)
+
+        }
 
         if(!($('#xxl').is(':checked')) && !($('#xl').is(':checked')) && !($('#l').is(':checked'))
             && !($('#m').is(':checked')) && !($('#s').is(':checked'))
@@ -294,7 +301,7 @@ $('document').ready(function () {
         
                             console.log('error')
                             e.value = '';
-                            $('#new-product-img').attr('src', 'https://cdn-icons.flaticon.com/png/512/4533/premium/4533754.png?token=exp=1636781807~hmac=3934e632eed8c743be888b915aca3f7c');
+                            $('#new-product-img').attr('src', 'https://www.svgrepo.com/show/260897/polo-fashion.svg');
                             $('#new-profile-error').css('opacity', '1');
                             // errorDisplay('#profile-path', 'Image', 'notValid');
         

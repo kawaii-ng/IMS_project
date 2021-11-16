@@ -217,7 +217,7 @@ function fillData($field){
 
     <div id='edit-panel-2'>
         <br>
-        <h3>Style & Color</h3>
+        <h3>Size & Color</h3>
         <label for="new-size">Size(s)</label>
         <div class='checkbox-container' id='new-size'>
             <input type="checkbox" name="xxl" id='xxl' <?php isChecked('XXL');?>>

@@ -89,6 +89,13 @@ $('document').ready(function() {
 
             }
 
+            if($('#nick-name').val().length != 0 && !($('#nick-name').val().match(/^[A-Z]+[a-z]*\s*([A-Z]+[a-z]*\s*)*$/))){
+
+                errorDisplay('#nick-name', 'Nick name is invalid', 'custom')
+                isValid = false;
+
+            }
+
             if($('#birthday').val().length !== 0 
                 && (new Date($('#birthday').val()).getFullYear() < new Date().getFullYear() - 100
                 || new Date($('#birthday').val()).getFullYear() > new Date().getFullYear() - 10)){
@@ -101,7 +108,7 @@ $('document').ready(function() {
             if($('#email').val().length !== 0){
                     
                 let email = $('#email').val();
-                let regex = /^([0-9a-z])+?@[a-z]+?.com/; 
+                let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*))@([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}$/
                 if(!email.match(regex)){
                     
                     errorDisplay('#email', 'Email is invalid.', 'custom')
@@ -139,7 +146,7 @@ $('document').ready(function() {
 
             if($('#user-pw').val().length > 0 && $('#user-pw').val().length < 8){
 
-                errorDisplay('#user-pw', 'Password is not less than 8.', 'custom')
+                errorDisplay('#user-pw', 'Password is less than 8.', 'custom')
                 isValid = false 
 
             }
@@ -698,7 +705,7 @@ $('document').ready(function() {
 
         let isOk = true
 
-        let regex = /^([0-9a-z])+?@[a-z]+?.com/; 
+        let regex =  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*))@([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}$/ 
 
         $('#new-pw-error').css('opacity', '0');
         $('#new-nickname-error').css('opacity', '0');
@@ -716,6 +723,11 @@ $('document').ready(function() {
             $('#new-nickname-error').css('opacity', '1');
             isOk = false
         
+        }else if(!($('#new-nickname').val().match(/^[A-Z]+[a-z]*\s*([A-Z]+[a-z]*\s*)*$/))){
+
+            $('#new-nickname-error').css('opacity', '1');
+            isOk = false;
+
         }
         
         if($('#new-email').val() != 0 && !($('#new-email').val().match(regex))){

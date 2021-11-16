@@ -43,7 +43,7 @@ $user = mysqli_fetch_assoc(mysqli_query($connect, $userSQL));
 
             <label>Nick Name</label><span class='error' id='new-nickname-error'>
                 <i class='fas fa-exclamation-circle'></i>
-                Nick name should not be empty.
+                Nick name is not valid.
             </span>
             <input type="text" name="nickName" id='new-nickname' value="<?php
                 echo $user['userName'];
