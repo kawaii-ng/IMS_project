@@ -116,7 +116,7 @@ if(isset($_POST['submitType']) && $_POST['submitType'] == 'Register'){
 
         if(!preg_match("/png|jpg|jpeg/i", $imgEX)){
 
-            $imgPath = "https://avatars.dicebear.com/api/initials/". $_POST['nickName'];
+            $imgPath = "https://avatars.dicebear.com/api/initials/". $_POST['nickName'] . ".svg";
 
         }else{
 
