@@ -1,5 +1,10 @@
 <?php 
 
+/*
+* main purpose is to check the user id in register process and reset password process. 
+* also, obtaining the security quesiton and answer after checking the user id
+*/
+
 include_once('../config/db-connection.php');
 session_start();
 

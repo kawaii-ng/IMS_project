@@ -1,5 +1,9 @@
 <?php
 
+/*
+* to perform login, register and reset password function
+*/
+
 session_start();
 include_once('../config/db-connection.php');
 
@@ -11,8 +15,6 @@ function loginAC($userID, $userPW) {
     where userID ='" . $userID . "'";
     $userQuery = mysqli_query($connect, $userSQL);
     $user = mysqli_fetch_assoc($userQuery);
-
-    echo $userID; 
 
     if($userID == $user['userID'] && password_verify($userPW, $user['password'])){
 
@@ -112,13 +114,15 @@ if(isset($_POST['submitType']) && $_POST['submitType'] == 'Register'){
         $imgEX = strtolower(pathinfo($imgName, PATHINFO_EXTENSION));
         $imgPath = "../uploads/profile/" . $imgName;
 
-        if(!$imgName){
+        if(!preg_match("/png|jpg|jpeg/i", $imgEX)){
 
-            $imgPath = "\'\'";
+            $imgPath = "https://avatars.dicebear.com/api/initials/". $_POST['nickName'];
+
+        }else{
+
+            move_uploaded_file($imgTMP, $imgPath);
 
         }
-
-        move_uploaded_file($imgTMP, $imgPath);
 
         $loginInfoSQL = "
 
@@ -175,6 +179,7 @@ if(isset($_POST['submitType']) && $_POST['submitType'] == 'Reset'){
 
     if(mysqli_query($connect, $resetSQL)){
 
+        echo $userPW;
         loginAC($userID, $userPW);
     
     }else {

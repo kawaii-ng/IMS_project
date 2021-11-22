@@ -1,5 +1,9 @@
 <?php
 
+    /*
+    * perform the customer fucntion including update profile, add to cart, pucrchase product
+    */
+
     session_start();
     include_once('../config/db-connection.php');
 
@@ -9,14 +13,12 @@
         $imgTMP = $_FILES['newProfileImg']['tmp_name'];
         $imgEX = strtolower(pathinfo($newImgName, PATHINFO_EXTENSION));
         $imgPath = "../uploads/profile/" . $newImgName;
-        
-        if(!$newImgName){
 
-            $imgPath = "\'\'";
+        if(preg_match("/png|jpg|jpeg/i", $imgEX)){
+
+            move_uploaded_file($imgTMP, $imgPath);
 
         }
-
-        move_uploaded_file($imgTMP, $imgPath);
 
         if($_POST['nickName'] != ""){
 
@@ -31,7 +33,7 @@
 
         }
         
-        if($imgPath != "\'\'"){
+        if(preg_match("/png|jpg|jpeg/i", $imgEX)){
 
             $imgPathSQL = "
     
@@ -150,13 +152,15 @@
         $cartSQL = "
         
             delete from cart
-            where cartID = '".$_POST['cart-ID']."'
+            where cartID = '".$_GET['cartID']."'
         
         ";
 
+        echo $_GET['cartID'];
+
         if(mysqli_query($connect, $cartSQL)){
 
-            header("Location: /project/public/dashboard-page.php?page=shopping_cart");
+           header("Location: /project/public/dashboard-page.php?page=shopping_cart");
 
 
         }else{

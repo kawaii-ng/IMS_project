@@ -1,5 +1,9 @@
 <?php
 
+/*
+* check whether the stock is sufficient when customer selecting the amount of purchasing a specific product
+*/
+
 include_once('../config/db-connection.php');
 session_start();
 
@@ -32,8 +36,6 @@ if($_POST['op'] == 'check_stock'){
             }
 
         }
-
-       //echo "<p>fretch fail</p>";
 
     }else {
 

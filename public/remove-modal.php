@@ -9,7 +9,7 @@
             <p>Are you confirm to remove this item?</p>
             <div class='btn-group'>
                 <button class='btn edit-btn' id='cancel-btn'>Cancel</button>
-                <?php echo"<input type='button' value='Remove' class='btn del-btn' id='confirm-btn-".$order['cartID']."' />"; ?>
+                <?php echo"<input type='button' value='Remove' class='btn del-btn' id='confirm-btn-".$_SESSION['cartID']."' />"; ?>
             </div>
         </div>
     </div>

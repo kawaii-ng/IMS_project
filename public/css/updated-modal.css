@@ -1,0 +1,26 @@
+.updated-modal{
+
+    position: fixed;
+    z-index: 999;
+    top: 50px;
+    left: 50%;
+    min-height: 25px;
+    max-height: 100px;
+    width: fit-content;
+    padding: .8em 1em;
+    background-color: #007777;
+    color: white;
+    border: 0px solid #007777;
+    border-radius: 50px;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.updated-modal i {
+
+    margin-right: 1em;
+
+}

@@ -56,7 +56,7 @@
                         </tr>
                         <tr>
                             <td colspan='3'>
-                                <input type="number" id='card-num' placeholder='1234 5678 8765 4321' >
+                                <input type="number" id='card-num' placeholder='1234 5678 8765 4321' max='9999999999999999'>
                             </td>
                         </tr>
                         <tr>

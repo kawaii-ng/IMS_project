@@ -30,7 +30,7 @@ $(document).ready(function() {
 
         if(cardNum < 0){
             
-            $('#card-num').val(abs(y))
+            $('#card-num').val(Math.abs(cardNum))
             cardNum = $('#card-num').val()
 
         }
@@ -62,10 +62,12 @@ $(document).ready(function() {
 
         if(m < 0){
             
-            $('#expiry-month').val(abs(m))
+            $('#expiry-month').val(Math.abs(m))
             m = $('#expiry-month').val()
 
         }
+
+        console.log(m)
 
         if(m.length > 2){
 
@@ -84,7 +86,7 @@ $(document).ready(function() {
 
         if(y < 0){
             
-            $('#expiry-year').val(abs(y))
+            $('#expiry-year').val(Math.abs(y))
             y = $('#expiry-year').val()
 
         }
@@ -107,7 +109,7 @@ $(document).ready(function() {
 
         if(cvc < 0){
 
-            $('#cvc').val(abs(cvc))
+            $('#cvc').val(Math.abs(cvc))
             cvc = $('#cvc').val()
 
         }

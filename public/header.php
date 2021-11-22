@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="../public/css/stock-checking.css">
     <link rel="stylesheet" href="../public/css/order-page.css">
     <link rel="stylesheet" href="../public/css/edit-modal.css">
+    <link rel="stylesheet" href="../public/css/updated-modal.css">
     <link rel="stylesheet" href="../public/css/statistic.css">
 </head>
 <body>

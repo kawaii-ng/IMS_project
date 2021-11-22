@@ -51,12 +51,14 @@
                 where colorID = ".$order['colorID']."
             
             ";
+
+            $_SESSION['cartID'] = $order['cartID'];
             
             $color = mysqli_fetch_assoc(mysqli_query($connect, $colorSQL));
             include_once("./remove-modal.php");
             include_once('./purchase-modal.php');
 
-            echo "<div class='order-card' id='order-".$order['cartID']."'>
+            echo "<div class='order-card' id='order-".$_SESSION['cartID']."'>
             
                 <div class='order-img'>
                     <img src='".$order['productImage']."'/>
@@ -82,16 +84,19 @@
                     </table>
 
                     <div class='btn-group'>
-                        <input type='button' name='actionType' id='remove-".$order['cartID']."' class='btn del-btn' value='Remove'/>
+                        <input type='button' name='actionType' id='remove-".$_SESSION['cartID']."' class='btn del-btn' value='Remove'/>
                     </div>
 
                 </div>
             
             </div>
-            </form>
+            
             ";
 
         }
+
+        echo "</form>";
+        
 
         if(!$hasOrder){
 

@@ -23,12 +23,7 @@ $user = mysqli_fetch_assoc(mysqli_query($connect, $userSQL));
             <input type="hidden" value="<?php echo $user['userID']; ?>" name="userID">
             
             <label for="new-profile-path" id='new-profile-label'>
-                <img src="<?php 
-                    if($user['icon'] != "''" && $user['icon']){
-                        echo $user['icon'];
-                    }else{
-                        echo "https://avatars.dicebear.com/api/initials/".$user['userName'].".svg";
-                    }?>" alt="" id="profile-img">
+                <img src="<?php echo $user['icon'];?>" alt="" id="profile-img">
             </label>
             <input type='file' name='newProfileImg' id='new-profile-path' />
 

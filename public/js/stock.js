@@ -8,6 +8,12 @@ $('document').ready(function () {
         }
     });
 
+    var stockIDList = $('.update-qty-btn').map(function(index) {
+
+        return this.id
+
+    })
+
     const getID = (id) => {
         
         var pattern = /\d/g
@@ -118,6 +124,15 @@ $('document').ready(function () {
 
             )
 
+        })
+
+        $('#new-price').keyup(function(e){
+
+            if(e.target.value < 0){
+                $('#new-price').val(Math.abs(e.target.value))
+    
+            }
+    
         })
 
         $('.toggle-btn-1').click(function () {
@@ -233,7 +248,7 @@ $('document').ready(function () {
         
                             console.log('error')
                             e.value = '';
-                            $('#new-product-img').attr('src', 'https://cdn-icons.flaticon.com/png/512/4533/premium/4533754.png?token=exp=1636781807~hmac=3934e632eed8c743be888b915aca3f7c');
+                            $('#new-product-img').attr('src', 'https://www.svgrepo.com/show/260897/polo-fashion.svg');
                             $('#new-profile-error').css('opacity', '1');
                             // errorDisplay('#profile-path', 'Image', 'notValid');
         
@@ -280,6 +295,7 @@ $('document').ready(function () {
                 //console.log(data)
                 editFunction(); 
                 // $('#new-product-img').attr('src', '');
+                
                 $('#edit-new-image-btn').click(() => {
 
                     console.log('clicked');
@@ -331,7 +347,6 @@ $('document').ready(function () {
 
     })
 
-
     $('.delete-product-btn').click(function() {
 
         var id = getID($(this).attr('id'))
@@ -352,5 +367,42 @@ $('document').ready(function () {
 
     })
     
+    for(let i = 0; i < stockIDList.length; i++){
+
+        var stockIDName = stockIDList[i].toString()
+        let regex = /\d/g
+        let index = stockIDName.indexOf(stockIDName.match(regex)[0])
+        let id = stockIDName.substring(index)
+
+        console.log(id)
+
+        $('#update-qty-' + id).click(function() {
+
+            console.log('clike')
+            
+            $.ajax({
+
+                url: '/project/functions/admin-functions.php',
+                method: 'POST',
+                data: {op: "update_qty", stockID: id, newQty: $('#qty-'+id).val()},
+                success: function(data){
+    
+                    $('.updated-modal').animate({'opacity': '1'}, 100, ()=>{
+
+                        setTimeout(()=>{
+
+                            $('.updated-modal').animate({'opacity': '0'}, 100)
+
+                        }, 1000)
+
+                    })                        
+
+                }
+
+            })
+
+        })
+
+    }
     
 })

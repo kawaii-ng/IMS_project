@@ -1,6 +1,11 @@
 <?php
 
+    /*
+    * to obtain the data from the database and generate the statistic based on these obtained data
+    */
+
     include_once('../config/db-connection.php');
+
 
 if($_POST['op'] == 'get_pie'){
 

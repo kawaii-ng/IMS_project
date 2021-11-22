@@ -6,6 +6,7 @@ $('document').ready(function() {
     var isOK = true;
     var isUserExist = false;
 
+    // aniamtion to show some element
     var showAnimation = {
 
         'opacity': '1',
@@ -13,6 +14,7 @@ $('document').ready(function() {
 
     }
 
+    // aniamtion to hide some element
     var hideAnimation = {
 
         'opacity': '0',
@@ -28,6 +30,7 @@ $('document').ready(function() {
 
     }
 
+    // function to determine the content of error message
     const errorMessage = (elementName, type) => {
 
         if(type == "empty")
@@ -44,6 +47,7 @@ $('document').ready(function() {
 
     }
 
+    // function to display specific error with the specific css style and location
     const errorDisplay = (elementID, elementName, type) => {
 
         $(elementID).css('border-color', 'red');
@@ -51,6 +55,7 @@ $('document').ready(function() {
 
     }
 
+    // function to check input validity
     const checkValid = () => {
         
         var isValid = true;
@@ -61,6 +66,7 @@ $('document').ready(function() {
 
         if(step == 0){
 
+            // login page 
             if($('#login-id').val().length == 0){
 
                 errorDisplay('#login-id', 'User ID', 'empty')
@@ -82,6 +88,7 @@ $('document').ready(function() {
 
         if(step == 1){
 
+            // register page step 1
             if($('#nick-name').val().length == 0){
 
                 errorDisplay('#nick-name', 'nick name', 'empty')
@@ -127,6 +134,7 @@ $('document').ready(function() {
 
         if(step == 2){
 
+            // register page step 2
             if($('#user-id').val().length == 0){
 
                 errorDisplay('#user-id', 'user ID', 'empty');
@@ -189,11 +197,12 @@ $('document').ready(function() {
         $('input').css('border-color', '#007777');
         $('.error').remove();
 
+        // check input valid
         if(currentPage == "Reset"){
 
             if(step == 3){
 
-
+                // reset password page
                 if($('#reset-pw').val() != $('#confirm-reset-pw').val() && $('#reset-pw').val().length >= 8){
 
                     errorDisplay('#confirm-reset-pw', 'Password', 'notMatch')
@@ -212,6 +221,7 @@ $('document').ready(function() {
 
         }
 
+        // determine the type of submit button, so that it can submit the form when the input is valid
         if(((step == 0 && checkValid()) || step !== 0) && (currentPage == 'Login' || currentPage == "Register") || (currentPage == "Reset") && canReset){
 
             $('#form-action-btn').attr('type', 'submit');
@@ -326,13 +336,15 @@ $('document').ready(function() {
   
     })
 
-    $('#user-id').change(function() {
+    $('#user-id').keyup(function(e) {
+
+        console.log(e.target.value)
 
         $.ajax({
 
             url: '/project/functions/check-user-id.php',
             method: 'POST',
-            data: {op: "check_id_exist", id: $('#user-id').val()},
+            data: {op: "check_id_exist", id: e.target.value},
             success: function(data){
 
                 console.log('data: ', data)
@@ -389,7 +401,8 @@ $('document').ready(function() {
             if(step == 3){
     
                 if(currentPage == 'Register'){
-    
+
+                    $('#reg-profile').attr('src', 'https://avatars.dicebear.com/api/initials/'+$('#nick-name').val()+'.svg');    
     
                     $('#register-form-2').animate(hideAnimation, 100, () => {
         
@@ -660,8 +673,8 @@ $('document').ready(function() {
             }else {
 
                 e.value = '';
-                $('#reg-profile').attr('src', 'images/icon-add-128.png');
-                errorDisplay('#profile-path', 'Image', 'notValid');
+                $('#reg-profile').attr('src', 'https://avatars.dicebear.com/api/initials/'+$('#nick-name').val()+'.svg');
+                errorDisplay('#reg-profile-heading', 'Image', 'notValid');
 
             }
 
@@ -687,7 +700,7 @@ $('document').ready(function() {
 
                 console.log('error')
                 e.value = '';
-                $('#profile-img').attr('src', '');
+                // $('#profile-img').attr('src', 'https://avatars.dicebear.com/api/initials/'+name+'.svg');
                 $('#new-profile-error').css('opacity', '1');
                 // errorDisplay('#profile-path', 'Image', 'notValid');
 

@@ -16,6 +16,8 @@ $('document').ready(function() {
         $('#remove-' + id).click(function() {
 
             $('.remove-modal-container').css('display', 'flex')
+            $('#cart-ID').val(id)
+            console.log("id", $('#cart-ID').val())
 
         })
 
@@ -29,11 +31,23 @@ $('document').ready(function() {
         $('#confirm-btn-'+id).click(function() {
 
             $('.remove-modal-container').css('display', 'none')
-            $('#remove-' + id).attr('type', 'submit')
+            //$('#remove-' + id).attr('type', 'submit')
             $('#purchase-' + id).attr('type', 'submit')
-            $('#cart-ID').val(id)
-            cartForm.submit()
-            $('#remove-' + id).attr('type', 'button')      
+            $.ajax({
+
+                url: '/project/functions/customer-functions.php',
+                method: "GET",
+                data: {op: "update_cart", cartID: $('#cart-ID').val()},
+                success: function(data){
+
+                    console.log(data)
+                    location.reload()
+
+                }
+
+            })
+            console.log(id + "clicked")
+            //$('#remove-' + id).attr('type', 'button')      
             $('#purchase-' + id).attr('type', 'button')      
 
         })
@@ -50,6 +64,7 @@ $('document').ready(function() {
 
         $('.remove-modal-container').css('display', 'none')
         $('.purchase-modal-container').css('display', 'none')
+        $('#cart-ID').val("")
 
     })
 
@@ -58,6 +73,7 @@ $('document').ready(function() {
         $('#payment-step-1').css('display', 'flex')
         $('#payment-step-2').css('display', 'none')
         $('.purchase-modal-container').css('display', 'flex')
+        $('#cart-ID').val("")
 
     })
 

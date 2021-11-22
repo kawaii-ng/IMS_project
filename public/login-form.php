@@ -10,5 +10,7 @@
     <?php 
         if(isset($_GET['error']) && $_GET['error'] == "login_fail")
             echo "<p class=\"error\"><i class='fas fa-exclamation-circle'></i> Login Failed. </p>";
+        if(isset($_GET['error']) && $_GET['error'] == "invalid_user")
+            echo "<p class=\"error\"><i class='fas fa-exclamation-circle'></i> Invalid User. Please Try Again. </p>";
     ?>
 </div>

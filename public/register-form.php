@@ -52,7 +52,7 @@
             <tr>
                 <td colspan='2'>
                     <label for="regUserID">User ID</label> 
-                    <input type="text" name="regUserID" id='user-id' placeholder="User ID" spellcheck="false">
+                    <input type="text" name="regUserID" id='user-id' placeholder="User ID" spellcheck="false" autocomplete="off">
                 </td>
             </tr>
             <tr>
@@ -88,10 +88,10 @@
 
     <!-- step 3 -->
     <div id='register-form-3'>
-        <h3>Upload Profile Image</h3>
+        <h3 id='reg-profile-heading'>Upload Profile Image</h3>
         <div class='profile-img-container'>
             <div class="profile-img-border">
-                <img src="./images/icon-add-128.png" alt="" class='reg-profile' id="reg-profile">       
+                <img src="" alt="" class='reg-profile' id="reg-profile">       
             </div>
             <br>
             <label for="profile-path" class="select-img-btn" id="profile-btn">Select Image</label>

@@ -141,11 +141,13 @@
 
         while($stock = mysqli_fetch_assoc($stockQ)){
 
+            $stockID = $stock['stockID'];
+
             echo "
 
                 <form action='/project/functions/admin-functions.php?op=update_qty' 
                         method='post' name='updateQtyFrom'>
-                <input name='stockID' type='hidden' value='".$stock['stockID']."'>
+                <input name='stockID' id='update-qty-id-".$stockID."' type='hidden' value='".$stockID."'>
                 <tr>
                     <td>
                         <img src='".$stock['productImage']."' alt=''>
@@ -161,13 +163,13 @@
                         <div class='color' style='background: ".$stock['colorCode']."'></div>
                     </td>
                     <td>
-                        <input type='number' name='newQty' 
+                        <input type='number' name='newQty' id='qty-".$stockID."'
                                 value='".$stock['stockQuantity']."'
                                 onchange='this.value = Math.abs(this.value)'
                         />
                     </td>
                     <td>
-                        <button name='updateQty' class='btn edit-btn'>Update</button>
+                        <input type='button' name='updateQty' class='btn edit-btn update-qty-btn' value='Update' id='update-qty-".$stockID."' />
                     </td>
                 </tr>
             
@@ -175,6 +177,8 @@
             ";
 
         }
+
+        include_once('./updated-modal.php');
 
     }
 
